@@ -5,10 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".fragments.CartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- TODO: DIEP VAN TY -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="CART FRAGMENT" />
+        >
+        <ImageView
+            android:layout_width="@dimen/sizeOfLogo"
+            android:layout_height="wrap_content"
+        />
+    </ScrollView>
 
 </FrameLayout>
