@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:name="com.man293.food_ordering_spoon.fragments.HomeFragment"
         android:layout_weight="1"
-        tools:layout="@layout/fragment_home"
+        tools:layout="@layout/fragment_cart"
         />
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/MeowBottomNavigation"
