@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
 <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="150dp"
+    android:layout_height="90dp"
     android:orientation="vertical">
     <LinearLayout
         android:layout_marginLeft="25dp"
@@ -56,22 +56,27 @@
             android:layout_height="wrap_content"
             android:text="Password"
             android:textSize="15dp"></TextView>
+
         <EditText
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Please enter your password"
-            android:textColorHint="@color/gray"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/edittextlogin"
-            />
+            android:drawableRight="@drawable/eye"
+            android:textSize="12dp"
+            android:hint="Please enter your password"
+            android:textColorHint="@color/gray"></EditText>
+
+
     </LinearLayout>
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="15dp">
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="370dp"
             android:layout_height="wrap_content"
@@ -83,7 +88,6 @@
             android:textColor="@color/white"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
