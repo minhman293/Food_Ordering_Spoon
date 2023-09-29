@@ -26,7 +26,7 @@
         android:orientation="vertical">
         <TextView
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create an account"
@@ -35,7 +35,7 @@
             />
         <TextView
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="First name"
@@ -117,6 +117,7 @@
             android:hint="Please enter your password"
             android:textColorHint="@color/gray"
             android:background="@drawable/edittextlogin"
+            android:drawableRight="@drawable/eye2"
             />
         <TextView
             android:layout_marginLeft="20dp"
@@ -135,6 +136,7 @@
             android:hint="Please enter your password again"
             android:textColorHint="@color/gray"
             android:background="@drawable/edittextlogin"
+            android:drawableRight="@drawable/eye2"
             />
     </LinearLayout>
     </ScrollView>
@@ -142,7 +144,9 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@drawable/dropshadow"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="370dp"
             android:layout_height="wrap_content"
@@ -154,7 +158,6 @@
             android:textColor="@color/white"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
