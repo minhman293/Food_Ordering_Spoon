@@ -68,7 +68,15 @@
             android:background="@drawable/edittextlogin"
             android:textSize="15dp"
             android:hint="Please enter your password"
-            android:textColorHint="@color/gray"></EditText>
+            android:textColorHint="@color/gray"
+            android:drawableRight="@drawable/eye2"></EditText>
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password ?"
+            android:textSize="15dp"></TextView>
 
 
     </LinearLayout>
@@ -82,7 +90,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="370dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/nutlogin"
             android:text="Login"
