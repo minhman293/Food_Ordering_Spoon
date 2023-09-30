@@ -38,9 +38,7 @@
                android:layout_height="wrap_content"
                android:text="My cart"
                android:layout_marginBottom="@dimen/pad"
-               android:textColor="@color/black"
-               android:textSize="30dp"
-               android:textStyle="bold"
+               style="@style/heading"
                android:layout_gravity="center"
                android:gravity="center"
                />
@@ -73,13 +71,14 @@
                            android:layout_marginLeft="10dp"
                            android:layout_marginRight="20dp"
                            >
+
                            <com.google.android.material.imageview.ShapeableImageView
                                android:layout_width="90dp"
                                android:layout_height="90dp"
-                               android:src="@drawable/product_1"
                                android:scaleType="centerCrop"
-                               app:shapeAppearanceOverlay="@style/image_rounded"
-                               />
+                               android:src="@drawable/product_1"
+                               app:shapeAppearanceOverlay="@style/image_rounded" />
+
                            <TextView
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
@@ -441,6 +440,7 @@
                    />
            </LinearLayout>
            <androidx.appcompat.widget.AppCompatButton
+               android:id="@+id/cartCheckoutBtn"
                android:text="Checkout"
                style="@style/button"
                android:background="@drawable/background_orange_round"

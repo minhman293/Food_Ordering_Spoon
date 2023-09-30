@@ -1,5 +1,6 @@
 package com.man293.food_ordering_spoon.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -14,6 +15,7 @@ import android.widget.ImageButton;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.activities.PaymentActivity;
 
 public class CartFragment extends Fragment {
     public CartFragment() { }
@@ -26,6 +28,13 @@ public class CartFragment extends Fragment {
         deleteButton.setOnClickListener(v -> {
            showDialog();
         });
+
+
+        AppCompatButton cartCheckoutBtn = view.findViewById(R.id.cartCheckoutBtn);
+        cartCheckoutBtn.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), PaymentActivity.class));
+        });
+
 
         return view;
     }
