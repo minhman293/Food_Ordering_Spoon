@@ -157,6 +157,7 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/nutlogin"
                     android:text="Sign In"
+                    android:id="@+id/nutback"
                     android:textStyle="bold"
                     android:textSize="17dp"
                     android:textColor="@color/white"/>

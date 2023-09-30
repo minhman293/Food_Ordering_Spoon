@@ -86,6 +86,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/nutlogin"
             android:text="Login"
+            android:id="@+id/nutlogin"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:textStyle="bold"/>
@@ -99,11 +100,15 @@
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:text="Don't have an account ?"/>
-        <TextView
-            android:layout_marginLeft="3dp"
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/changeToSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Click here"/>
-
+            android:background="@color/white"
+            android:text="Click here"
+            android:textColor="@color/orange"
+            android:textStyle="italic"
+            android:textSize="12dp"/>
     </LinearLayout>
 </LinearLayout>

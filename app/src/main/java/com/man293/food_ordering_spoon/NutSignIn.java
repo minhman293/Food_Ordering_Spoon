@@ -7,26 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class NutSignIn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nutlogin);
+        setContentView(R.layout.signin);
 
-
-        configureNext2Button();
+        configureBackButton();
     }
-
-
-    private void configureNext2Button() {
-        Button nextButton = (Button) findViewById(R.id.nutnext);
+    private void configureBackButton() {
+        Button nextButton = (Button) findViewById(R.id.nutback);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity( new Intent(MainActivity.this, NutLogin.class));
+            public void onClick(View v) {
+                startActivity( new Intent(NutSignIn.this, NutLogin.class));
             }
         });
     }
-
 }
