@@ -3,6 +3,8 @@ package com.man293.food_ordering_spoon.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 
 import com.man293.food_ordering_spoon.R;
 
@@ -12,5 +14,52 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+
+        handleSelectPaymentMethod();
+        handleUnselectOtherPaymentMethod();
+    }
+
+    /**
+     * CLICK LINEARLAYOUT TO CHECK RADIO BUTTON
+     * */
+    private void handleSelectPaymentMethod() {
+        LinearLayout[] paymentMethods = {
+                findViewById(R.id.visa),
+                findViewById(R.id.mastercard),
+                findViewById(R.id.paypal),
+                findViewById(R.id.delivery)
+        };
+
+        for (LinearLayout method:  paymentMethods  ) {
+            method.setOnClickListener(v -> {
+                int currentRadioId = getResources().getIdentifier(
+                        getResources().getResourceEntryName(v.getId()) + "RadioButton",
+                        "id",
+                        getPackageName());
+                RadioButton radioButton =  findViewById(currentRadioId);
+                 // radioButton.setChecked(true);
+                radioButton.performClick(); // auto invoke handlePaymentSelect()
+            });
+        }
+    }
+
+    /** UNCHECK RADIO BUTTON
+     * BECAUSE THE RADIO GROUP CONTAINS LINEARLAYOUTS */
+    private void handleUnselectOtherPaymentMethod() {
+        RadioButton[] paymentMethods =  {
+                findViewById(R.id.visaRadioButton),
+                findViewById(R.id.mastercardRadioButton),
+                findViewById(R.id.paypalRadioButton),
+                findViewById(R.id.deliveryRadioButton),
+        }; 
+        for(RadioButton currentMethod : paymentMethods) {
+            currentMethod.setOnClickListener(v-> {
+                for(RadioButton p : paymentMethods ){
+                    if(p != currentMethod) {
+                        p.setChecked(false);
+                    }
+                }
+            });
+        }
     }
 }

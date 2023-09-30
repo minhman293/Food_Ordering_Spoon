@@ -71,8 +71,8 @@
         <item name="android:layout_width">27dp</item>
         <item name="android:layout_height">27dp</item>
         <item name="android:layout_gravity">center_vertical</item>
-<!--        <item name="android:button">@android:color/transparent</item>-->
-<!--        <item name="android:background">@drawable/custom_radio_button</item>-->
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:background">@drawable/custom_radio_button</item>
     </style>
 
 </resources>

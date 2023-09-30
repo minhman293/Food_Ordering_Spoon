@@ -67,6 +67,8 @@
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="12dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginHorizontal="1dp"
                 />
 
             <LinearLayout
@@ -92,11 +94,13 @@
                 android:layout_marginBottom="10dp"
                 />
             <RadioGroup
+                android:id="@+id/paymentMethods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="@dimen/pad"
                 >
                 <LinearLayout
+                    android:id="@+id/visa"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -130,10 +134,10 @@
                     <RadioButton
                         android:id="@+id/visaRadioButton"
                         style="@style/custom_radio_button"
-                        android:name="paymentMethod"
                         />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/mastercard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -167,10 +171,10 @@
                     <RadioButton
                         android:id="@+id/mastercardRadioButton"
                         style="@style/custom_radio_button"
-                        android:name="paymentMethod"
                         />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/paypal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -204,7 +208,6 @@
                     <RadioButton
                         android:id="@+id/paypalRadioButton"
                         style="@style/custom_radio_button"
-                        android:name="paymentMethod"
                         />
                 </LinearLayout>
                 <TextView
@@ -213,6 +216,7 @@
                     android:layout_marginBottom="10dp"
                     />
                 <LinearLayout
+                    android:id="@+id/delivery"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -240,7 +244,6 @@
                     <RadioButton
                         android:id="@+id/deliveryRadioButton"
                         style="@style/custom_radio_button"
-                        android:name="paymentMethod"
                         />
                 </LinearLayout>
             </RadioGroup>
