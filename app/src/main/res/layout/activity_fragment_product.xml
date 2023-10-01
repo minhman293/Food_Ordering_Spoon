@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context="fragment.fragment_PRODUCT">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:drawableLeft="@drawable/back_icon"
+        android:paddingHorizontal="7dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_add_cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.AppCompatButton>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -124,14 +137,14 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
-                android:paddingHorizontal="20dp"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_add_cart"
                 android:drawableLeft="@drawable/cart_white"
+                android:paddingHorizontal="20dp"
                 android:text="Add to cart"
                 android:textColor="@color/white"
                 android:textSize="17sp"
@@ -142,5 +155,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
