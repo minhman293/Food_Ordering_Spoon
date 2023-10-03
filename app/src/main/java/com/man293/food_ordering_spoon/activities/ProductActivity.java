@@ -1,4 +1,4 @@
-package fragment;
+package com.man293.food_ordering_spoon.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,14 +13,14 @@ import android.widget.Toast;
 
 import com.man293.food_ordering_spoon.R;
 
-public class fragment_PRODUCT extends AppCompatActivity {
+public class ProductActivity extends AppCompatActivity {
 
     Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment_product);
+        setContentView(R.layout.activity_product);
         button=(Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
