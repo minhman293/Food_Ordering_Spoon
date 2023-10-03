@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Spoon</string>
     <string name="address">Enter the delivery address, leaving blank will be your home address.</string>
+    <string name="title_activity_nutlogin">nutlogin</string>
 </resources>
