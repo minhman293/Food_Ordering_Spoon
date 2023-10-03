@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="water">#D2F4FF</color>
     <color name="lightgray">#D9D9D9</color>
+    <color name="lightgray_75">#BFD9D9D9</color>
     <color name="whitegray">#F1F1F1</color>
     <color name="green">#00AB44</color>
     <color name="purple">#C729FF</color>

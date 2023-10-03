@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="widthOfLogo">120dp</dimen>
+    <dimen name="heightOfLogo">90dp</dimen>
+    <dimen name="pad">10dp</dimen>
+    <dimen name="text_small">12.5sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xl">28sp</dimen>
+</resources>
