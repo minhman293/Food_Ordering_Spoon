@@ -43,8 +43,10 @@ public class CartFragment extends Fragment {
         ImageButton closeButton;
         LottieAnimationView animationRecycle;
 
+
         BottomSheetDialog deleteDialog  = new BottomSheetDialog(getContext() , R.style.bottom_sheet_dialog_theme);
         deleteDialog.setContentView(R.layout.dialog_confirm);
+
 
         animationRecycle = deleteDialog.findViewById(R.id.animationRecycle);
         deleteButton = deleteDialog.findViewById(R.id.cofirm_delete_button);
