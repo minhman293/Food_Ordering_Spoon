@@ -71,14 +71,12 @@
                            android:layout_marginLeft="10dp"
                            android:layout_marginRight="20dp"
                            >
-
                            <com.google.android.material.imageview.ShapeableImageView
                                android:layout_width="90dp"
                                android:layout_height="90dp"
                                android:scaleType="centerCrop"
                                android:src="@drawable/product_1"
                                app:shapeAppearanceOverlay="@style/image_rounded" />
-
                            <TextView
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
@@ -449,5 +447,4 @@
                />
        </LinearLayout>
     </ScrollView>
-
 </FrameLayout>

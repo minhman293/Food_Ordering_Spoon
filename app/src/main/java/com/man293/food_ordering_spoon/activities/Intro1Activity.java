@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 import com.man293.food_ordering_spoon.R;
 
-public class MainActivity extends AppCompatActivity {
+public class Intro1Activity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN_TIME = 5000;
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         // full screen at intro
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_intro1);
 
         // load animation
         topAnima = AnimationUtils.loadAnimation(this, R.anim.top_logo_animation);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(MainActivity.this, Intro2Activity.class));
+                startActivity(new Intent(Intro1Activity.this, Intro2Activity.class));
                 finish();
             }
         }, SPLASH_SCREEN_TIME);
