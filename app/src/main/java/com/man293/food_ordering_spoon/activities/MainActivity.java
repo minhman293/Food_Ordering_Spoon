@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN_TIME = 5000;
 
+
     Animation topAnima, bottomAnima;
     ImageView logo, brand;
 

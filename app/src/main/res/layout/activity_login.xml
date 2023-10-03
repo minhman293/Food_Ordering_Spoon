@@ -88,13 +88,13 @@
         android:paddingBottom="15dp">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nutlogin"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/nutlogin"
             android:text="Login"
-            android:id="@+id/nutlogin"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:textStyle="bold"/>

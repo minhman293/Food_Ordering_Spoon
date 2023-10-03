@@ -157,7 +157,7 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/nutlogin"
                     android:text="Sign In"
-                    android:id="@+id/nutback"
+                    android:id="@+id/nutSignin"
                     android:textStyle="bold"
                     android:textSize="17dp"
                     android:textColor="@color/white"/>
@@ -172,6 +172,7 @@
                     android:layout_height="25dp"
                     android:text="Don't have an account ?"/>
                 <TextView
+                    android:id="@+id/nutback"
                     android:layout_marginLeft="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
