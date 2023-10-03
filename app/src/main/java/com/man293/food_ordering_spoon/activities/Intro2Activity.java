@@ -23,19 +23,19 @@ public class Intro2Activity extends AppCompatActivity {
         btnCreateAnAccount = findViewById(R.id.btn_createAnAccount) ;
         textHaveAccount = findViewById(R.id.text_haveAccount);
 
-        /** Change to login activity */
+        /** Change to sign in activity */
         btnCreateAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intro2Activity.this, LoginActivity.class));
+                startActivity(new Intent(Intro2Activity.this, SignInActivity.class));
             }
         });
 
-        /** Change to sign in activity */
+        /** Change to login activity */
         textHaveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intro2Activity.this, SignInActivity.class));
+                startActivity(new Intent(Intro2Activity.this, LoginActivity.class));
             }
         });
     }
