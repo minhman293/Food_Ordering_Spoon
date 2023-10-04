@@ -15,7 +15,7 @@
             android:layout_margin="15dp"
             android:orientation="vertical">
 
-            // top of home
+            <!-- top of home -->
 
             <RelativeLayout
                 android:id="@+id/top_home"
@@ -30,7 +30,6 @@
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     app:fontFamily="@font/poppins_bold" />
-
                 <ImageButton
                     style="@style/icon_button"
                     android:layout_alignParentRight="true"
@@ -38,7 +37,7 @@
 
             </RelativeLayout>
 
-            // search bar
+            <!-- search bar-->
 
             <EditText
                 android:id="@+id/search_bar_home"
@@ -52,8 +51,10 @@
                 android:inputType="text"
                 android:padding="15dp" />
 
-            // slider in home: right-to-left
+            <!--slider in home: right-to-left-->
 
+            <!--
+            TODO: PHẦN NAY CHƯA CHẠY ĐC NHA MẪN
             <ViewFlipper
                 android:id="@+id/slider_home"
                 android:layout_width="match_parent"
@@ -81,6 +82,8 @@
 
             </ViewFlipper>
 
+            -->
+
             <TextView
                 android:id="@+id/txt_category"
                 android:layout_width="match_parent"
@@ -90,8 +93,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:fontFamily="@font/poppins_bold" />
-
-
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -174,6 +175,7 @@
                 app:strokeWidth="1dp">
 
                 <RelativeLayout
+                    android:id="@+id/product1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
