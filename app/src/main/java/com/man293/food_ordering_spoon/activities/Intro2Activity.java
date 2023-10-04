@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.man293.food_ordering_spoon.R;
 
+/**TODO: TRUONG MINH MAN */
+
 public class Intro2Activity extends AppCompatActivity {
 
     private AppCompatButton btnCreateAnAccount;

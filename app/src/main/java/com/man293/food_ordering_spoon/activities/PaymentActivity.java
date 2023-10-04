@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.man293.food_ordering_spoon.R;
 
+/**TODO: DIEP VAN TY */
+
 public class PaymentActivity extends AppCompatActivity {
 
     @Override

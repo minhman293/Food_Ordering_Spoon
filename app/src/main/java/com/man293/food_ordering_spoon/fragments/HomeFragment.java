@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.man293.food_ordering_spoon.R;
 
+/**TODO: TRUONG MINH MAN & LE NGOC HAO  */
+
 public class HomeFragment extends Fragment {
     public HomeFragment() { }
 

@@ -16,6 +16,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.activities.PaymentActivity;
 
+/**TODO: DIEP VAN TY */
+
 public class CartFragment extends Fragment {
     public CartFragment() { }
     @Override
