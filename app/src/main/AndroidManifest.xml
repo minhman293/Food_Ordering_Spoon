@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_Ordering_Spoon">
         <activity
+            android:name=".activities.ViewHistory"
+            android:exported="false" />
+        <activity
             android:name=".activities.Profile"
             android:exported="false" />
         <activity

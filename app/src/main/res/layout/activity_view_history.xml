@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ViewHistory">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/header_history"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="vertical"
+            android:layout_gravity="right">
+
+            <Button
+                android:id="@+id/button_back"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/back_button"
+                android:background="@drawable/nut_logout"
+                app:backgroundTint="@color/white"
+                >
+
+            </Button>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:text="History"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+
+            </TextView>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/header_history">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/frame_data_product1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp">
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/id_order1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left">
+
+                                <TextView
+                                    android:id="@+id/tv_order1_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Order ID: OD01"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/tv_order1_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="110dp"
+                                    android:layout_toRightOf="@id/tv_order1_1"
+                                    android:text="Date: 28-09-2003"
+                                    android:textSize="20sp">
+
+                                </TextView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/image_history1"
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:layout_below="@id/tv_order1_1"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:foreground="@drawable/hinhtron_history_image"
+                                    app:cardCornerRadius="36dp">
+
+                                    <ImageView
+                                        android:layout_width="72dp"
+                                        android:layout_height="72dp"
+                                        android:background="@drawable/product_1"
+                                        android:foregroundGravity="left">
+
+                                    </ImageView>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:id="@+id/name_product1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv_order1_1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_toRightOf="@+id/image_history1"
+                                    android:text="Lorem Ipsum"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_product1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/image_history1"
+                                    android:text="Price:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_number_product1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/price_product1"
+                                    android:text="$24.00"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/qtt_product1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product1"
+                                    android:layout_marginLeft="120dp"
+                                    android:layout_toRightOf="@id/price_number_product1"
+                                    android:text="Quantity:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product1"
+                                    android:layout_toRightOf="@id/qtt_product1"
+                                    android:text="1"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/frame_product1"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/id_order2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left">
+
+                                <TextView
+                                    android:id="@+id/tv_order2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Order ID: OD02"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/tv_order2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="110dp"
+                                    android:layout_toRightOf="@id/tv_order2_1"
+                                    android:text="Date: 30-09-2003"
+                                    android:textSize="20sp">
+
+                                </TextView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/image_history2"
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:layout_below="@id/tv_order2_1"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:foreground="@drawable/hinhtron_history_image"
+                                    app:cardCornerRadius="36dp">
+
+                                    <ImageView
+                                        android:layout_width="72dp"
+                                        android:layout_height="72dp"
+                                        android:background="@drawable/product_1"
+                                        android:foregroundGravity="left">
+
+                                    </ImageView>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:id="@+id/name_product2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv_order2_1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_toRightOf="@+id/image_history2"
+                                    android:text="Lorem Ipsum"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_product2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/image_history2"
+                                    android:text="Price:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_number_product2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@id/price_product2"
+                                    android:text="$24.00"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/qtt_product2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product2"
+                                    android:layout_marginLeft="120dp"
+                                    android:layout_toRightOf="@id/price_number_product2"
+                                    android:text="Quantity:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product2"
+                                    android:layout_toRightOf="@id/qtt_product2"
+                                    android:text="1"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/frame_product2">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true">
+
+                            <TextView
+                                android:id="@+id/delivery_product1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginLeft="170dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Delivery:">
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/delivery_price_product1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="35dp"
+                                android:text="$0.00"
+                                android:textColor="@color/orange"
+                                android:textSize="20sp"
+                                android:textStyle="bold">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/delivery_product1"
+                                android:layout_marginLeft="170dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Subtotal"
+                                android:textSize="20sp"
+                                android:textStyle="bold">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/delivery_price_product1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="35dp"
+                                android:text="$48.00"
+                                android:textColor="@color/orange"
+                                android:textSize="20sp">
+
+                            </TextView>
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/frame_data_product3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/frame_data_product2"
+                    android:layout_marginTop="30dp"
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product1_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/id_order1_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_order1_1_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Order ID: OD01"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    >
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/tv_order1_2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date: 28-09-2003"
+                                    android:textSize="20sp"
+                                    android:layout_toRightOf="@id/tv_order1_1_2"
+                                    android:layout_marginLeft="110dp"
+                                    >
+
+                                </TextView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/image_history1_2"
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_below="@id/tv_order1_1_2"
+                                    android:foreground="@drawable/hinhtron_history_image"
+                                    app:cardCornerRadius="36dp"
+                                    >
+
+                                    <ImageView
+                                        android:layout_width="72dp"
+                                        android:layout_height="72dp"
+                                        android:background="@drawable/product_1"
+                                        android:foregroundGravity="left">
+
+                                    </ImageView>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:id="@+id/name_product1_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv_order1_1_2"
+                                    android:layout_toRightOf="@+id/image_history1_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="20dp"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:text="Lorem Ipsum">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_product1_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product1_2"
+                                    android:layout_toRightOf="@id/image_history1_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Price:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_number_product1_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_product1_2"
+                                    android:layout_below="@id/name_product1_2"
+                                    android:textColor="@color/orange"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="$24.00"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/qtt_product1_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_number_product1_2"
+                                    android:layout_below="@id/name_product1_2"
+                                    android:layout_marginLeft="120dp"
+                                    android:text="Quantity:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/qtt_product1_2"
+                                    android:layout_below="@id/name_product1_2"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold"
+                                    android:text="1">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product2_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_below="@id/frame_product1_2"
+                        android:layout_marginTop="20dp"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/id_order2_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_order2_1_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Order ID: OD02"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    >
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/tv_order2_2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date: 30-09-2003"
+                                    android:textSize="20sp"
+                                    android:layout_toRightOf="@id/tv_order2_1_2"
+                                    android:layout_marginLeft="110dp"
+                                    >
+
+                                </TextView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/image_history2_2"
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_below="@id/tv_order2_1_2"
+                                    android:foreground="@drawable/hinhtron_history_image"
+                                    app:cardCornerRadius="36dp"
+                                    >
+
+                                    <ImageView
+                                        android:layout_width="72dp"
+                                        android:layout_height="72dp"
+                                        android:background="@drawable/product_1"
+                                        android:foregroundGravity="left">
+
+                                    </ImageView>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:id="@+id/name_product2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv_order2_1_2"
+                                    android:layout_toRightOf="@+id/image_history2_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="20dp"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:text="Lorem Ipsum">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_product2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product2_2"
+                                    android:layout_toRightOf="@id/image_history2_2"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Price:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_number_product2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_product2_2"
+                                    android:layout_below="@id/name_product2_2"
+                                    android:textColor="@color/orange"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="$24.00"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/qtt_product2_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_number_product2_2"
+                                    android:layout_below="@id/name_product2_2"
+                                    android:layout_marginLeft="120dp"
+                                    android:text="Quantity:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/qtt_product2_2"
+                                    android:layout_below="@id/name_product2_2"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold"
+                                    android:text="1">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product3_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/frame_product2_2"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            >
+
+                            <TextView
+                                android:id="@+id/delivery_product1_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Delivery:"
+                                android:layout_marginLeft="170dp"
+                                android:layout_alignParentStart="true"
+                                >
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/delivery_price_product1_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:text="$0.00"
+                                android:textColor="@color/orange"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="35dp">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/delivery_product1_2"
+                                android:layout_marginLeft="170dp"
+                                android:layout_marginTop="5dp"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:text="Subtotal">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/delivery_price_product1_2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="35dp"
+                                android:textColor="@color/orange"
+                                android:textSize="20sp"
+                                android:text="$48.00">
+
+                            </TextView>
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/frame_data_product2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/frame_data_product1"
+                    android:layout_marginTop="30dp"
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product1_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/id_order1_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_order1_1_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Order ID: OD01"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    >
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/tv_order1_2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date: 28-09-2003"
+                                    android:textSize="20sp"
+                                    android:layout_toRightOf="@id/tv_order1_1_1"
+                                    android:layout_marginLeft="110dp"
+                                    >
+
+                                </TextView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/image_history1_1"
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_below="@id/tv_order1_1_1"
+                                    android:foreground="@drawable/hinhtron_history_image"
+                                    app:cardCornerRadius="36dp"
+                                    >
+
+                                    <ImageView
+                                        android:layout_width="72dp"
+                                        android:layout_height="72dp"
+                                        android:background="@drawable/product_1"
+                                        android:foregroundGravity="left">
+
+                                    </ImageView>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:id="@+id/name_product1_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv_order1_1_1"
+                                    android:layout_toRightOf="@+id/image_history1_1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="20dp"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:text="Lorem Ipsum">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_product1_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product1_1"
+                                    android:layout_toRightOf="@id/image_history1_1"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Price:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_number_product1_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_product1_1"
+                                    android:layout_below="@id/name_product1_1"
+                                    android:textColor="@color/orange"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="$24.00"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/qtt_product1_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_number_product1_1"
+                                    android:layout_below="@id/name_product1_1"
+                                    android:layout_marginLeft="120dp"
+                                    android:text="Quantity:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/qtt_product1_1"
+                                    android:layout_below="@id/name_product1_1"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold"
+                                    android:text="1">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product2_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_below="@id/frame_product1_1"
+                        android:layout_marginTop="20dp"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/id_order2_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_order2_1_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Order ID: OD02"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    >
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/tv_order2_2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date: 30-09-2003"
+                                    android:textSize="20sp"
+                                    android:layout_toRightOf="@id/tv_order2_1_1"
+                                    android:layout_marginLeft="110dp"
+                                    >
+
+                                </TextView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/image_history2_1"
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_below="@id/tv_order2_1_1"
+                                    android:foreground="@drawable/hinhtron_history_image"
+                                    app:cardCornerRadius="36dp"
+                                    >
+
+                                    <ImageView
+                                        android:layout_width="72dp"
+                                        android:layout_height="72dp"
+                                        android:background="@drawable/product_1"
+                                        android:foregroundGravity="left">
+
+                                    </ImageView>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:id="@+id/name_product2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv_order2_1_1"
+                                    android:layout_toRightOf="@+id/image_history2_1"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="20dp"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:text="Lorem Ipsum">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_product2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/name_product2_1"
+                                    android:layout_toRightOf="@id/image_history2_1"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Price:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/price_number_product2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_product2_1"
+                                    android:layout_below="@id/name_product2_1"
+                                    android:textColor="@color/orange"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="$24.00"
+                                    android:textStyle="bold">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/qtt_product2_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/price_number_product2_1"
+                                    android:layout_below="@id/name_product2_1"
+                                    android:layout_marginLeft="120dp"
+                                    android:text="Quantity:">
+
+                                </TextView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/qtt_product2_1"
+                                    android:layout_below="@id/name_product2_1"
+                                    android:textColor="@color/orange"
+                                    android:textStyle="bold"
+                                    android:text="1">
+
+                                </TextView>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/frame_product3_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/frame_product2_1"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            >
+
+                            <TextView
+                                android:id="@+id/delivery_product1_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Delivery:"
+                                android:layout_marginLeft="170dp"
+                                android:layout_alignParentStart="true"
+                                >
+
+                            </TextView>
+
+                            <TextView
+                                android:id="@+id/delivery_price_product1_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:text="$0.00"
+                                android:textColor="@color/orange"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="35dp">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/delivery_product1_1"
+                                android:layout_marginLeft="170dp"
+                                android:layout_marginTop="5dp"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:text="Subtotal">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/delivery_price_product1_1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginRight="35dp"
+                                android:textColor="@color/orange"
+                                android:textSize="20sp"
+                                android:text="$48.00">
+
+                            </TextView>
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
