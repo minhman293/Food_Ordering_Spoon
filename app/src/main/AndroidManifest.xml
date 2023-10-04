@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_Ordering_Spoon">
         <activity
+            android:name=".activities.AddressActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.PaymentActivity"
             android:exported="false" />
         <activity
@@ -17,16 +20,16 @@
             android:exported="false" />
         <activity
             android:name=".activities.SignInActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.LoginActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false"  />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.Intro1Activity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.Intro2Activity"
             android:exported="false" />
@@ -38,11 +41,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <meta-data-->
-<!--            android:name="preloaded_fonts"-->
-<!--            android:resource="@array/preloaded_fonts" />-->
     </application>
+
 </manifest>

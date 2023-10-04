@@ -3,13 +3,17 @@ package com.man293.food_ordering_spoon.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.man293.food_ordering_spoon.R;
+
+import org.w3c.dom.Text;
 
 /**TODO: DIEP VAN TY */
 
@@ -20,6 +24,11 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
+        /** CHANGE ADDRESS */
+        TextView changeAddressButton = findViewById(R.id.changeAddressButton);
+        changeAddressButton.setOnClickListener( v -> {
+            startActivity(new Intent(PaymentActivity.this, AddressActivity.class));
+        });
 
         /** GO BACK WHEN CLICK ARROW LEFT BUTTON */
         ((ImageButton) findViewById(R.id.goBackButton)).setOnClickListener( v -> {
