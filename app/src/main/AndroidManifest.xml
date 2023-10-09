@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_Ordering_Spoon">
         <activity
-            android:name=".activities.AddressActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.PaymentActivity"
             android:exported="false" />
         <activity

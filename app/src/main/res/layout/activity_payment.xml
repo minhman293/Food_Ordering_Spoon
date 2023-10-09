@@ -44,10 +44,11 @@
                     style="@style/heading2"
                     />
                 <TextView
+                    android:id="@+id/orderDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/pad"
-                    android:text="21/06/2023"
+                    android:text="21-06-2023"
                     />
             </LinearLayout>
             <TextView
@@ -55,52 +56,19 @@
                 style="@style/heading2"
                 />
 
-            <!--            <EditText-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:gravity="top"-->
-            <!--                android:hint="@string/address"-->
-            <!--                android:background="@drawable/background_gray_round"-->
-            <!--                android:textColor="@color/gray"-->
-            <!--                android:paddingHorizontal="10dp"-->
-            <!--                android:textSize="@dimen/text_small"-->
-            <!--                android:paddingVertical="12dp"-->
-            <!--                android:layout_marginBottom="10dp"-->
-            <!--                android:layout_marginTop="1dp"-->
-            <!--                android:layout_marginHorizontal="1dp"-->
-            <!--                />-->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_gray_outline"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="2dp"
-                android:padding="15dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Phu Nong, Tay Hoa, Phu Yen, Viet Nam"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
-                    />
-                <TextView
-                    android:id="@+id/changeAddressButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Change"
-                    android:layout_alignParentRight="true"
-                    android:textSize="@dimen/text_small"
-                    android:background="@color/whitegray"
+                    android:gravity="top"
+                    android:hint="@string/address"
+                    android:background="@drawable/background_gray_round"
+                    android:textColor="@color/gray"
                     android:paddingHorizontal="10dp"
-                    android:paddingVertical="5dp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="15dp"
+                    android:paddingVertical="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginHorizontal="1dp"
                     />
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,6 +80,7 @@
                     style="@style/heading2"
                     />
                 <TextView
+                    android:id="@+id/totalPrice"
                     android:layout_marginStart="@dimen/pad"
                     android:text="$24.00"
                     android:textSize="@dimen/text_large"

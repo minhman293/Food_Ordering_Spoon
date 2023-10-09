@@ -18,8 +18,8 @@
         >
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationRecycle"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             app:lottie_autoPlay="false"
             app:lottie_loop="false"
             app:lottie_rawRes="@raw/animation_recycle_2"

@@ -42,341 +42,14 @@
                 android:gravity="center"
                 />
 
-            <!-- CART CARD -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- PRODUCTS -->
+            <com.man293.food_ordering_spoon.components.ListViewComponent
+                android:id="@+id/cartItems"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/lightgray"
-                app:cardPreventCornerOverlap="false"
-                >
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="10dp"
-                        >
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="20dp"
-                            >
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/product_1"
-                                app:shapeAppearanceOverlay="@style/image_rounded" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="$24.00"
-                                android:textStyle="bold"
-                                android:textColor="@color/orange"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="10dp"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Lorem Ipsum"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/text_small"
-                                android:text="It is a established fact a established that a.."
-                                />
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/background_gray_round"
-                                android:layout_marginTop="10dp"
-                                >
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="8dp"
-                                    android:textStyle="bold"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="2"
-                                    android:paddingVertical="6.8dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:paddingHorizontal="12dp"
-                                    android:textStyle="bold"
-                                    android:background="@color/white"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="8dp"
-                                    android:textStyle="bold"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/delete_button"
-                        android:layout_width="65dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:background="@drawable/delete_button"
-                        android:padding="9dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/recycle_bin" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/lightgray"
-                app:cardPreventCornerOverlap="false"
-                >
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="10dp"
-                        >
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="20dp"
-                            >
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:src="@drawable/product_1"
-                                android:scaleType="centerCrop"
-                                app:shapeAppearanceOverlay="@style/image_rounded"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="$24.00"
-                                android:textStyle="bold"
-                                android:textColor="@color/orange"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="10dp"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Lorem Ipsum"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/text_small"
-                                android:text="It is a established fact a established that a.."
-                                />
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/background_gray_round"
-                                android:layout_marginTop="10dp"
-                                >
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="8dp"
-                                    android:textStyle="bold"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="2"
-                                    android:paddingVertical="6.8dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:paddingHorizontal="12dp"
-                                    android:textStyle="bold"
-                                    android:background="@color/white"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="8dp"
-                                    android:textStyle="bold"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <ImageButton
-                        android:layout_width="65dp"
-                        android:layout_height="40dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/recycle_bin"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:background="@drawable/delete_button"
-                        android:padding="9dp"
-                        />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/lightgray"
-                app:cardPreventCornerOverlap="false"
-                >
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="10dp"
-                        >
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="20dp"
-                            >
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:src="@drawable/product_1"
-                                android:scaleType="centerCrop"
-                                app:shapeAppearanceOverlay="@style/image_rounded"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="$24.00"
-                                android:textStyle="bold"
-                                android:textColor="@color/orange"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="10dp"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Lorem Ipsum"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/text_small"
-                                android:text="It is a established fact a established that a.."
-                                />
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/background_gray_round"
-                                android:layout_marginTop="10dp"
-                                >
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="-"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="8dp"
-                                    android:textStyle="bold"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="2"
-                                    android:paddingVertical="6.8dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:paddingHorizontal="12dp"
-                                    android:textStyle="bold"
-                                    android:background="@color/white"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="+"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="8dp"
-                                    android:textStyle="bold"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <ImageButton
-                        android:layout_width="65dp"
-                        android:layout_height="40dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/recycle_bin"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:background="@drawable/delete_button"
-                        android:padding="9dp"
-                        />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="true"
+                android:dividerHeight="10dp"
+                android:divider="@android:color/transparent"/>
 
             <!-- CHECKOUT -->
             <LinearLayout
@@ -387,12 +60,14 @@
                 android:layout_marginTop="30dp"
                 >
                 <TextView
+                    android:id="@+id/selectedItems"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Selected items (2)"
                     />
                 <TextView
+                    android:id="@+id/totalPrice"
                     style="@style/text_bold_black"
                     android:text="$78.00"
                     />
@@ -409,6 +84,7 @@
                     android:text="Delivery"
                     />
                 <TextView
+                    android:id="@+id/deliveryFee"
                     style="@style/text_bold_black"
                     android:text="$0.00"
                     />
@@ -432,17 +108,18 @@
                     android:text="Subtotal"
                     />
                 <TextView
+                    android:id="@+id/subtotalPrice"
                     style="@style/text_bold_orange"
                     android:text="$78.00"
                     />
             </LinearLayout>
-            <androidx.appcompat.widget.AppCompatButton
+            <com.man293.food_ordering_spoon.components.ButtonComponent
                 android:id="@+id/cartCheckoutBtn"
                 android:text="Checkout"
                 style="@style/button"
                 android:background="@drawable/background_orange_round"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 />
         </LinearLayout>
     </ScrollView>
