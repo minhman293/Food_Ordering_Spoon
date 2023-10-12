@@ -34,7 +34,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void configureBackButton() {
-        TextView nextButton = (TextView) findViewById(R.id.nutback);
+        Button nextButton = (Button) findViewById(R.id.nutback);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
