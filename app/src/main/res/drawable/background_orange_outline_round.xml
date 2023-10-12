@@ -3,6 +3,6 @@
 <!--<<<<<<< HEAD-->
 <!--    <stroke android:width="2dp" android:color="@color/redpink" />-->
 <!--=======-->
-    <stroke android:width="2dp" android:color="@color/orange" />
+    <stroke android:width="2dp" android:color="@color/redpink" />
     <corners android:radius="12dp"/>
 </shape>
