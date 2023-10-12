@@ -23,6 +23,4 @@
         app:mbn_backgroundBottomColor="@color/white"
         app:mbn_defaultIconColor="@color/gray"
         app:mbn_selectedIconColor="@color/orange" />
-
-
 </LinearLayout>

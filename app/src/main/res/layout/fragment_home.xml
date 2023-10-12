@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,7 +15,7 @@
             android:layout_margin="15dp"
             android:orientation="vertical">
 
-            // top of home
+            <!-- top of home -->
 
             <RelativeLayout
                 android:id="@+id/top_home"
@@ -31,7 +30,6 @@
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     app:fontFamily="@font/poppins_bold" />
-
                 <ImageButton
                     style="@style/icon_button"
                     android:layout_alignParentRight="true"
@@ -39,7 +37,7 @@
 
             </RelativeLayout>
 
-            // search bar
+            <!-- search bar-->
 
             <EditText
                 android:id="@+id/search_bar_home"
@@ -53,7 +51,7 @@
                 android:inputType="textPersonName"
                 android:padding="15dp" />
 
-            // slider in home: right-to-left
+            <!--slider in home: right-to-left-->
 
             <ViewFlipper
                 android:id="@+id/slider_home"
@@ -68,19 +66,23 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/slide_1" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/slide_2" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/slide_3" />
 
             </ViewFlipper>
+
 
             <TextView
                 android:id="@+id/txt_category"
@@ -93,6 +95,7 @@
                 app:fontFamily="@font/poppins_bold" />
 
             // slide button
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -175,6 +178,7 @@
                 app:strokeWidth="1dp">
 
                 <RelativeLayout
+                    android:id="@+id/product1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 

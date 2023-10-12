@@ -1,5 +1,6 @@
 package com.man293.food_ordering_spoon.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -10,10 +11,17 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.RelativeLayout;
+
 import android.widget.Button;
 import android.widget.TextView;
 
+
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.activities.ProductActivity;
+
+/**TODO: TRUONG MINH MAN & LE NGOC HAO  */
 
 public class HomeFragment extends Fragment {
 
@@ -26,6 +34,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
+
 
         btnCatAll = view.findViewById(R.id.btn_category_all);
         btnCatBeef = view.findViewById(R.id.btn_category_beef);
@@ -80,6 +89,7 @@ public class HomeFragment extends Fragment {
                 Unclick(btnCatAll);
                 Unclick(btnCatPizza);
             }
+
         });
 
         return view;

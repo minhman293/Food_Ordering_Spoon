@@ -4,5 +4,7 @@
     <dimen name="heightOfLogo">90dp</dimen>
     <dimen name="pad">10dp</dimen>
     <dimen name="text_small">12.5sp</dimen>
-    <dimen name="text_large">18dp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xl">25sp</dimen>
+    <dimen name="text_2xl">30sp</dimen>
 </resources>

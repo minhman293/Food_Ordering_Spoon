@@ -10,6 +10,8 @@ import com.man293.food_ordering_spoon.fragments.CartFragment;
 import com.man293.food_ordering_spoon.fragments.HomeFragment;
 import com.man293.food_ordering_spoon.fragments.ProfileFragment;
 
+/**TODO: DIEP VAN TY */
+
 public class AppActivity extends AppCompatActivity {
 
     @Override
