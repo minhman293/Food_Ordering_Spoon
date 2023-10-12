@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_Ordering_Spoon">
         <activity
+
+            android:name="fragment.fragment_PRODUCT"
+            android:exported="true" />
+
+        <activity>
             android:name=".activities.Intro2Activity"
             android:exported="true" />
         <activity
@@ -20,12 +25,14 @@
 
         <activity
             android:name=".activities.AppActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <activity
             android:name=".activities.MainActivity"
@@ -36,6 +43,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>
