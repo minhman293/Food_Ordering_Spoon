@@ -38,7 +38,7 @@
         android:id="@+id/btn_createAnAccount"
         android:text="Create an account"
         style="@style/button"
-        android:background="@drawable/background_orange_round"
+        android:background="@drawable/background_green_round"
         android:layout_margin="20dp"
         app:fontFamily="@font/poppins_bold"
         app:layout_constraintTop_toBottomOf="@+id/text_intro2"

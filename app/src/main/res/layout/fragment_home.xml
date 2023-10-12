@@ -50,7 +50,7 @@
                 android:drawableLeft="@drawable/ic_search"
                 android:drawablePadding="10dp"
                 android:hint="What are you looking for?"
-                android:inputType="text"
+                android:inputType="textPersonName"
                 android:padding="15dp" />
 
             // slider in home: right-to-left
@@ -92,7 +92,7 @@
                 android:textSize="20sp"
                 app:fontFamily="@font/poppins_bold" />
 
-
+            // slide button
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -211,7 +211,7 @@
                                 android:textSize="@dimen/text_small" />
 
                             <TextView
-                                style="@style/text_bold_orange"
+                                style="@style/text_bold_green"
                                 android:layout_marginTop="5dp"
                                 android:text="$24.00" />
                         </LinearLayout>
@@ -277,7 +277,7 @@
                                 android:textSize="@dimen/text_small" />
 
                             <TextView
-                                style="@style/text_bold_orange"
+                                style="@style/text_bold_green"
                                 android:layout_marginTop="5dp"
                                 android:text="$24.00" />
                         </LinearLayout>
@@ -342,7 +342,7 @@
                                 android:textSize="@dimen/text_small" />
 
                             <TextView
-                                style="@style/text_bold_orange"
+                                style="@style/text_bold_green"
                                 android:layout_marginTop="5dp"
                                 android:text="$24.00" />
                         </LinearLayout>
