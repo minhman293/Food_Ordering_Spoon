@@ -2,7 +2,7 @@ package com.man293.food_ordering_spoon.models;
 
 public class Product {
     private int id;
-    private int imageSrc;
+    private String imageSrc;
     private String name;
     private String desc;
     private double price;
@@ -11,7 +11,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, int imageSrc, String name, String desc, double price, int categoryId) {
+    public Product(int id, String imageSrc, String name, String desc, double price, int categoryId) {
         this.id = id;
         this.imageSrc = imageSrc;
         this.name = name;
@@ -28,11 +28,11 @@ public class Product {
         this.id = id;
     }
 
-    public int getImageSrc() {
+    public String getImageSrc() {
         return imageSrc;
     }
 
-    public void setImageSrc(int imageSrc) {
+    public void setImageSrc(String imageSrc) {
         this.imageSrc = imageSrc;
     }
 

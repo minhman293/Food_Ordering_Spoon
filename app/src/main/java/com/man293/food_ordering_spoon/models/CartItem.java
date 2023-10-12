@@ -6,7 +6,7 @@ public class CartItem extends Product {
         super();
     }
 
-    public CartItem(int id, int imageSrc, String name, String desc, double price, int categoryId, int quantity) {
+    public CartItem(int id, String imageSrc, String name, String desc, double price, int categoryId, int quantity) {
         super(id, imageSrc, name, desc, price, categoryId);
         this.quantity = quantity;
     }

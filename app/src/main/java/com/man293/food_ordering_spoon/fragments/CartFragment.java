@@ -14,6 +14,7 @@ import com.man293.food_ordering_spoon.activities.PaymentActivity;
 import com.man293.food_ordering_spoon.adapters.CartAdapter;
 import com.man293.food_ordering_spoon.components.ButtonComponent;
 import com.man293.food_ordering_spoon.components.ListViewComponent;
+import com.man293.food_ordering_spoon.data.FakeData;
 import com.man293.food_ordering_spoon.models.CartItem;
 import com.man293.food_ordering_spoon.models.Currency;
 
@@ -97,14 +98,7 @@ public class CartFragment extends Fragment {
     }
 
     private void initListView() {
-        ArrayList<CartItem> products = new ArrayList<>();
-        products.add(new CartItem(1, R.drawable.product_1, "Noodles", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 2, 1, 1));
-        products.add(new CartItem(2, R.drawable.product_1, "Beef", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 3, 1, 2));
-        products.add(new CartItem(3, R.drawable.product_1, "Chicken", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 4, 1, 3));
-        products.add(new CartItem(4, R.drawable.product_1, "Chicken", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 10, 1, 2));
-        products.add(new CartItem(5, R.drawable.product_1, "Chicken", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 20, 1, 1));
-
-        cartAdapter = new CartAdapter(getContext(), new ArrayList<>(products));
+        cartAdapter = new CartAdapter(getContext(), FakeData.getCartItems());
         listViewProduct.setAdapter(cartAdapter);
         listViewProduct.setFullHeight();
     }

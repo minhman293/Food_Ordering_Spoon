@@ -47,8 +47,9 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cart_item, parent,false);
          }
 
-        convertView.setId(product.getId());
-        ((ShapeableImageView) convertView.findViewById(R.id.productImageSrc)).setImageResource(product.getImageSrc());
+        ((ShapeableImageView) convertView.findViewById(R.id.productImageSrc)).setImageResource(
+                getContext().getResources().getIdentifier(product.getImageSrc(), "drawable", getContext().getPackageName())
+        );
         ((TextView) convertView.findViewById(R.id.productName)).setText(product.getName());
         ((TextView) convertView.findViewById(R.id.productDesc)).setText(product.getDesc());
         ((TextView) convertView.findViewById(R.id.quantity)).setText(String.valueOf(product.getQuantity()));
