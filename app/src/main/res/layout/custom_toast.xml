@@ -7,9 +7,6 @@
     android:layout_height="wrap_content"
 
     tools:context=".activities.ProductActivity"
-
-    <!-- tools:context="fragment.fragment_PRODUCT" -->
-
     android:orientation="horizontal"
     android:background="@drawable/rectangle_toast"
     android:layout_marginStart="15dp"

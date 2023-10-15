@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.man293.food_ordering_spoon.R;
-import com.example.kimnam_final.activities.EditProfile;
+import com.man293.food_ordering_spoon.activities.EditProfile;
 
 /**TODO: LE KIM NAM */
 public class ProfileFragment extends Fragment {
