@@ -1,7 +1,7 @@
 package com.man293.food_ordering_spoon.fragments;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+//import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -31,10 +31,11 @@ public class CartFragment extends Fragment {
     public CartFragment() {
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
+    // Man: "error about NonNull, i can't fix"
+//    @Override
+//    public void onSaveInstanceState(@NonNull Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

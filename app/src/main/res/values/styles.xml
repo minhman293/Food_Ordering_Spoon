@@ -30,7 +30,7 @@
 
     <style name="text_bold_green">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/mainGreen</item>
+        <item name="android:textColor">@color/jungle_green</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
