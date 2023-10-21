@@ -35,7 +35,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/spoon_orange">
+                        android:background="@drawable/spoon_green">
 
                     </RelativeLayout>
                 </RelativeLayout>
@@ -59,10 +59,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
                             android:background="@drawable/nut_logout"
-                            android:src="@drawable/logout_profile"
                             android:padding="10dp"
-                            android:layout_marginRight="10dp">
+                            android:src="@drawable/logout_profile">
 
                         </ImageButton>
                     </RelativeLayout>
@@ -164,11 +164,12 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/nut_edit_profile"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:text="Edit Profile"
+                style="@style/button"
                 android:textSize="20sp"
-                android:fontFamily="@font/poppins_medium"
-                app:backgroundTint="@color/orange">
+                app:backgroundTint="@color/jungle_green">
 
             </Button>
         </RelativeLayout>

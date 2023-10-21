@@ -25,7 +25,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/spoon_orange">
+                    android:background="@drawable/spoon_green">
                 </LinearLayout>
             </LinearLayout>
             <ScrollView
@@ -202,7 +202,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/nutlogin"
-                    android:text="Sign In"
+                    android:text="Register"
+                    style="@style/button"
                     android:id="@+id/nutSignin"
                     android:textStyle="bold"
                     android:textSize="17dp"
@@ -224,7 +225,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:text="Click here"
-                    android:textColor="@color/orange"
+                    android:textColor="@color/jungle_green"
                     android:textStyle="italic"
                     android:textSize="12sp"/>
 

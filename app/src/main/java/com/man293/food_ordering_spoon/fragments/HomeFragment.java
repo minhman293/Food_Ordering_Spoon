@@ -27,13 +27,22 @@ public class HomeFragment extends Fragment {
 
     AppCompatButton btnCatAll, btnCatBeef, btnCatPizza, btnCatNoodle;
     TextView txtDetail;
-
+    RelativeLayout rltLayProd1;
     public HomeFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
+
+        rltLayProd1 = view.findViewById(R.id.product1);
+        rltLayProd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ProductActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         btnCatAll = view.findViewById(R.id.btn_category_all);

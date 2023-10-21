@@ -16,7 +16,7 @@
 
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/orange</item>
+        <item name="android:statusBarColor">@color/jungle_green</item>
         <!-- Customize your theme here. -->
         <item name="android:textColorTertiary">@color/gray</item>
         <item name="android:textColorHint">@color/gray</item>
