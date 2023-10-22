@@ -51,18 +51,19 @@
                         android:layout_width="70dp"
                         android:layout_height="90dp"
                         android:orientation="vertical"
+                        android:layout_marginRight="15dp"
                         android:layout_gravity="right">
 
                         <ImageButton
                             android:id="@+id/button_logout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            style="@style/icon_button"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/nut_logout"
                             android:padding="10dp"
-                            android:src="@drawable/logout_profile">
+                            android:src="@drawable/logout_icon_green">
 
                         </ImageButton>
                     </RelativeLayout>
