@@ -103,9 +103,9 @@
             android:layout_below="@+id/title_frame">
 
             <RelativeLayout
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:padding="15dp"
                 android:background="@drawable/shadow_component_statictical"
                 >
@@ -114,18 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="October"
-                    android:textSize="25sp"
-                    android:textColor="@color/jungle_green">
-
-                </TextView>
-                <TextView
-                    android:id="@+id/year_month_statictical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/month_statictical"
-                    android:text="2023"
+                    android:text="October 2023"
                     android:textSize="25sp"
                     android:textColor="@color/jungle_green">
 
@@ -135,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/year_month_statictical"
+                    android:layout_below="@+id/month_statictical"
                     android:text="$6,000.00"
                     android:textSize="20sp"
                     android:textColor="@color/black"
@@ -145,24 +134,13 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/shadow_component_statictical"
                 android:layout_alignParentRight="true"
                 >
-                <TextView
-                    android:id="@+id/all_year_statictical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="All"
-                    android:textSize="25sp"
-                    android:textColor="@color/jungle_green">
-
-                </TextView>
-
                 <TextView
                     android:id="@+id/year_statictical"
                     android:layout_width="wrap_content"
@@ -170,7 +148,6 @@
                     android:layout_centerHorizontal="true"
                     android:text="2023"
                     android:textSize="25sp"
-                    android:layout_below="@id/all_year_statictical"
                     android:textColor="@color/jungle_green">
 
                 </TextView>
