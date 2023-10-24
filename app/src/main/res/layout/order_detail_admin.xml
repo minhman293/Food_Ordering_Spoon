@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".order_detail_admin">
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="5dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         android:background="@drawable/botron"
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
@@ -76,18 +76,19 @@
             >
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="15dp"
                 android:text="Status"
                 android:textColor="@color/gray"
-                android:textSize="24dp"
+                android:textSize="18sp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:textSize="18sp"
                 android:background="@drawable/success"
                 android:text="Success"
                 android:textColor="#5EC629" />
@@ -99,17 +100,18 @@
             android:layout_marginTop="5dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="Time:"
                 android:textColor="@color/gray"
-                android:textSize="24dp" />
+                android:textSize="18sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="21:34 - 20/10/2023"
+                android:textSize="18sp"
                 android:layout_gravity="right"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -119,17 +121,18 @@
             android:layout_marginBottom="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="Order code:"
                 android:textColor="@color/gray"
-                android:textSize="24dp" />
+                android:textSize="18sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="213420102023"
+                android:textSize="18sp"
                 android:layout_gravity="right"
                 ></TextView>
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -153,17 +156,18 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="Order item name"
                 android:textColor="@color/gray"
-                android:textSize="24dp" />
+                android:textSize="18sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" Lorem Ipsum"
+                android:textSize="18sp"
               android:layout_gravity="right"
                 ></TextView>
         </LinearLayout>
@@ -173,16 +177,17 @@
             android:layout_marginTop="5dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="Quantity: "
                 android:textColor="@color/gray"
-                android:textSize="24dp" />
+                android:textSize="18sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
                 android:text="2" />
         </androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -192,18 +197,19 @@
             android:layout_marginBottom="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:text="Price per item:"
                 android:layout_weight="1"
                 android:textColor="@color/gray"
-                android:textSize="24dp"
+                android:textSize="18sp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="24$"
+                android:textSize="18sp"
                 android:layout_gravity="right"
                />
 
@@ -219,18 +225,19 @@
             android:layout_marginBottom="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:text="Total price:"
                 android:layout_weight="1"
                 android:textColor="@color/gray"
-                android:textSize="24dp"
+                android:textSize="18sp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="48$"
+                android:textSize="18sp"
                 android:layout_gravity="right"
                 />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -248,22 +255,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:text="Phone number:"
                 android:textColor="@color/gray"
-                android:textSize="24dp" />
+                android:textSize="18sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0788589842"
+                android:textSize="18sp"
                 android:layout_gravity="right"
                 ></TextView>
         </LinearLayout>
@@ -273,17 +280,16 @@
             android:layout_marginTop="5dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="60dp"
-                android:layout_weight="1"
                 android:text="Address:"
                 android:textColor="@color/gray"
-                android:textSize="24dp" />
+                android:textSize="18sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="158 Trần Cao Vân, Tam Thuận, Thanh Khê, Đà Nẵng"
                 android:layout_weight="@integer/material_motion_duration_short_1"
                 android:layout_gravity="right"/>
@@ -301,7 +307,7 @@
                 android:text="Leave a message:"
                 android:layout_weight="1"
                 android:textColor="@color/gray"
-                android:textSize="24dp"
+                android:textSize="18sp"
                 />
             <TextView
                 android:layout_width="wrap_content"
