@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Intro2Activity"
+    android:background="@drawable/intro_image">
+
+    <ImageView
+        android:id="@+id/img_spoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/spoon"
+        android:layout_marginTop="20dp"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/text_intro2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Quick &amp; fastest delivery food for you"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:fontFamily="@font/_poppins_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_spoon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.5"/>
+    
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_createAnAccount"
+        android:text="Create an account"
+        style="@style/button"
+        android:background="@drawable/background_green_round"
+        android:layout_margin="20dp"
+        app:fontFamily="@font/_poppins_bold"
+        app:layout_constraintTop_toBottomOf="@+id/text_intro2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/text_haveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have account"
+        android:textSize="@dimen/text_large"
+        android:textColor="@color/white"
+        app:fontFamily="@font/_poppins_bold"
+        app:layout_constraintTop_toBottomOf="@+id/btn_createAnAccount"
+        app:layout_constraintStart_toStartOf="@+id/btn_createAnAccount"
+        app:layout_constraintEnd_toEndOf="@+id/btn_createAnAccount"
+        android:layout_marginTop="15dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

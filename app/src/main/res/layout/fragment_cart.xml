@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.CartFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-30dp"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/widthOfLogo"
+                    android:layout_height="@dimen/heightOfLogo"
+                    android:src="@drawable/spoon_green" />
+
+                <ImageButton
+                    android:id="@+id/btn_history"
+                    style="@style/icon_button"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/history_icon_green" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My cart"
+                android:layout_marginBottom="@dimen/pad"
+                style="@style/heading1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                />
+
+            <!-- PRODUCTS -->
+            <com.man293.food_ordering_spoon.components.ListViewComponent
+                android:id="@+id/cartItems"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="true"
+                android:dividerHeight="10dp"
+                android:divider="@android:color/transparent"/>
+
+            <!-- CHECKOUT -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
+                >
+                <TextView
+                    android:id="@+id/selectedItems"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Selected items (2)"
+                    />
+                <TextView
+                    android:id="@+id/totalPrice"
+                    style="@style/text_bold_black"
+                    android:text="$78.00"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery"
+                    />
+                <TextView
+                    android:id="@+id/deliveryFee"
+                    style="@style/text_bold_black"
+                    android:text="$0.00"
+                    />
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightgray"
+                android:layout_marginVertical="15dp"
+                android:layout_marginRight="50dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Subtotal"
+                    />
+                <TextView
+                    android:id="@+id/subtotalPrice"
+                    style="@style/text_bold_green"
+                    android:text="$78.00"
+                    />
+            </LinearLayout>
+            <com.man293.food_ordering_spoon.components.ButtonComponent
+                android:id="@+id/cartCheckoutBtn"
+                android:text="Checkout"
+                style="@style/button"
+                android:background="@drawable/background_green_round"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
