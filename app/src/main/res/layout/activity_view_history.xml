@@ -150,7 +150,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_toRightOf="@id/price_product1"
                                     android:text="$24.00"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold">
 
                                 </TextView>
@@ -172,7 +172,7 @@
                                     android:layout_below="@id/name_product1"
                                     android:layout_toRightOf="@id/qtt_product1"
                                     android:text="1"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold">
 
                                 </TextView>
@@ -277,7 +277,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_toRightOf="@id/price_product2"
                                     android:text="$24.00"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold">
 
                                 </TextView>
@@ -299,7 +299,7 @@
                                     android:layout_below="@id/name_product2"
                                     android:layout_toRightOf="@id/qtt_product2"
                                     android:text="1"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold">
 
                                 </TextView>
@@ -340,7 +340,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="35dp"
                                 android:text="$0.00"
-                                android:textColor="@color/orange"
+                                android:textColor="@color/jungle_green"
                                 android:textSize="20sp"
                                 android:textStyle="bold">
 
@@ -365,7 +365,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginRight="35dp"
                                 android:text="$48.00"
-                                android:textColor="@color/orange"
+                                android:textColor="@color/jungle_green"
                                 android:textSize="20sp">
 
                             </TextView>
@@ -475,7 +475,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/price_product1_2"
                                     android:layout_below="@id/name_product1_2"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:layout_marginLeft="10dp"
                                     android:text="$24.00"
                                     android:textStyle="bold">
@@ -498,7 +498,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/qtt_product1_2"
                                     android:layout_below="@id/name_product1_2"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold"
                                     android:text="1">
 
@@ -606,7 +606,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/price_product2_2"
                                     android:layout_below="@id/name_product2_2"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:layout_marginLeft="10dp"
                                     android:text="$24.00"
                                     android:textStyle="bold">
@@ -629,7 +629,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/qtt_product2_2"
                                     android:layout_below="@id/name_product2_2"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold"
                                     android:text="1">
 
@@ -673,7 +673,7 @@
                                 android:textStyle="bold"
                                 android:textSize="20sp"
                                 android:text="$0.00"
-                                android:textColor="@color/orange"
+                                android:textColor="@color/jungle_green"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="35dp">
@@ -698,7 +698,7 @@
                                 android:layout_below="@id/delivery_price_product1_2"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginRight="35dp"
-                                android:textColor="@color/orange"
+                                android:textColor="@color/jungle_green"
                                 android:textSize="20sp"
                                 android:text="$48.00">
 
@@ -809,7 +809,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/price_product1_1"
                                     android:layout_below="@id/name_product1_1"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:layout_marginLeft="10dp"
                                     android:text="$24.00"
                                     android:textStyle="bold">
@@ -832,7 +832,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/qtt_product1_1"
                                     android:layout_below="@id/name_product1_1"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold"
                                     android:text="1">
 
@@ -941,7 +941,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/price_product2_1"
                                     android:layout_below="@id/name_product2_1"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:layout_marginLeft="10dp"
                                     android:text="$24.00"
                                     android:textStyle="bold">
@@ -964,7 +964,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@id/qtt_product2_1"
                                     android:layout_below="@id/name_product2_1"
-                                    android:textColor="@color/orange"
+                                    android:textColor="@color/jungle_green"
                                     android:textStyle="bold"
                                     android:text="1">
 
@@ -1008,7 +1008,7 @@
                                 android:textStyle="bold"
                                 android:textSize="20sp"
                                 android:text="$0.00"
-                                android:textColor="@color/orange"
+                                android:textColor="@color/jungle_green"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="35dp">
@@ -1033,7 +1033,7 @@
                                 android:layout_below="@id/delivery_price_product1_1"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginRight="35dp"
-                                android:textColor="@color/orange"
+                                android:textColor="@color/jungle_green"
                                 android:textSize="20sp"
                                 android:text="$48.00">
 

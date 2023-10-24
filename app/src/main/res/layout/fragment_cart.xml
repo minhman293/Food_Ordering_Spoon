@@ -24,13 +24,13 @@
                 <ImageView
                     android:layout_width="@dimen/widthOfLogo"
                     android:layout_height="@dimen/heightOfLogo"
-                    android:src="@drawable/spoon_orange"
+                    android:src="@drawable/spoon_green"
                     />
 
                 <ImageButton
                     style="@style/icon_button"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/history_icon" />
+                    android:src="@drawable/history_icon_green" />
             </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"

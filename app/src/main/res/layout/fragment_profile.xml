@@ -116,10 +116,13 @@
                 android:id="@+id/name_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/image_profile"
-                android:layout_margin="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:text="Name Customer"
                 android:textColor="@color/black"
                 android:textSize="30sp"
@@ -143,10 +146,13 @@
                 android:id="@+id/address_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/phone_profile"
-                android:layout_margin="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
                 android:text="305 Trần Cao Vân Street - Đà Nẵng"
                 android:textColor="@color/gray"
                 android:textSize="20sp">
@@ -168,7 +174,7 @@
                 android:text="Edit Profile"
                 android:textSize="20sp"
                 android:fontFamily="@font/poppins_medium"
-                app:backgroundTint="@color/orange">
+                app:backgroundTint="@color/jungle_green">
 
             </Button>
         </RelativeLayout>

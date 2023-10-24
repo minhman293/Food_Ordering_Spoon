@@ -224,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:text="Click here"
-                    android:textColor="@color/orange"
+                    android:textColor="@color/jungle_green"
                     android:textStyle="italic"
                     android:textSize="12sp"/>
 

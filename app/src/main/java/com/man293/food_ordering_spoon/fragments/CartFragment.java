@@ -31,12 +31,6 @@ public class CartFragment extends Fragment {
     public CartFragment() {
     }
 
-    // Man: "error about NonNull, i can't fix"
-//    @Override
-//    public void onSaveInstanceState(@NonNull Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

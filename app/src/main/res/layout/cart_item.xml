@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="$24.00"
                 android:textStyle="bold"
-                android:textColor="@color/orange"
+                android:textColor="@color/jungle_green"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 />

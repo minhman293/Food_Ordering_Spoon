@@ -274,7 +274,7 @@
                 android:layout_marginRight="20dp"
                 android:text="Update"
                 android:background="@drawable/nut_edit_profile"
-                android:backgroundTint="@color/orange"
+                android:backgroundTint="@color/jungle_green"
                 >
 
             </Button>

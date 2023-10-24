@@ -15,6 +15,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.components.DialogComponent;
 import com.man293.food_ordering_spoon.components.ListViewComponent;
 import com.man293.food_ordering_spoon.models.Currency;
 import com.man293.food_ordering_spoon.models.CartItem;
@@ -101,45 +102,19 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
         };
     }
     private void confirmDelete(int position ) {
-        AppCompatButton deleteButton, cancelButton;
-        ImageButton closeButton;
-        LottieAnimationView animationRecycle;
 
-        BottomSheetDialog deleteDialog  = new BottomSheetDialog(getContext() , R.style.bottom_sheet_dialog_theme);
-        deleteDialog.setContentView(R.layout.dialog_delete);
+        DialogComponent deleteDialog = new DialogComponent(
+                getContext(),
+                R.style.bottom_sheet_dialog_theme,
+                "Are you sure you want to delete this item from your cart?"
+        );
 
-        animationRecycle = deleteDialog.findViewById(R.id.animationRecycle);
-        deleteButton = deleteDialog.findViewById(R.id.cofirm_delete_button);
-        cancelButton = deleteDialog.findViewById(R.id.cofirm_cancel_button);
-        closeButton = deleteDialog.findViewById(R.id.close_dialog_button);
-
-        deleteButton.setOnClickListener( v -> {
-            deleteButton.setEnabled(false);
-            cancelButton.setEnabled(false);
+        deleteDialog.setOnConfirmListener(() -> {
             remove(getItem(position));
-
             /** for update ui in cart fragment */
             if(onItemChangedListener != null) {
                 onItemChangedListener.onItemChanged(position);
             }
-
-            animationRecycle.playAnimation();
-
-            /** HIDE DIALOG AFTER 1.8s */
-            Handler handler = new Handler();
-            handler.postDelayed(() -> {
-                if(deleteButton.isShown()) {
-                    deleteDialog.dismiss();
-                }
-            }, 1800);
-        });
-
-        cancelButton.setOnClickListener(v -> {
-            deleteDialog.dismiss();
-        });
-
-        closeButton.setOnClickListener(v -> {
-            deleteDialog.dismiss();
         });
         deleteDialog.show();
     }
@@ -147,5 +122,4 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
     public interface OnItemChangedListener {
         void onItemChanged(int position);
     }
-
 }

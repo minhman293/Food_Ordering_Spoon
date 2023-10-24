@@ -39,9 +39,10 @@
 <!--            app:shapeAppearanceOverlay="@style/image_rounded"-->
 <!--            />-->
         <TextView
+            android:id="@+id/confirm_dialog_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Are you sure you want to delete this item from your cart?"
+            android:text="Are you sure you want to delete this item"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
