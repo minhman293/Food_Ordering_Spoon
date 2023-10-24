@@ -95,7 +95,7 @@
                 android:textSize="20sp"
                 app:fontFamily="@font/poppins_bold" />
 
-            // slide button
+            <!--slide button-->
 
             <HorizontalScrollView
                 android:layout_width="match_parent"

@@ -2,5 +2,11 @@
     <string name="app_name">Spoon</string>
     <string name="address">Enter the delivery address, leaving blank will be your home address.</string>
     <string name="title_activity_nutlogin">nutlogin</string>
+    <string-array name="categories">
+        <item>All</item>
+        <item>Pizza</item>
+        <item>Noodles</item>
+        <item>Beef</item>
+    </string-array>
 
 </resources>

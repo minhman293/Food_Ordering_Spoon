@@ -47,6 +47,6 @@ public class AppActivity extends AppCompatActivity {
 
         navigation.setOnReselectListener(item -> {  });
 
-        navigation.show(HOME, false);
+//        navigation.show(HOME, false);
     }
 }

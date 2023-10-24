@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="2dp"
+    android:layout_height="match_parent"
     app:cardCornerRadius="12dp"
     app:cardElevation="2dp"
     app:strokeWidth="1dp"
-    app:strokeColor="@color/lightgray"
-    app:cardPreventCornerOverlap="false"
-    >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    app:strokeColor="@color/gray"
+    app:cardPreventCornerOverlap="false">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingVertical="10dp"
-        >
+        android:elevation="5dp"
+        android:background="@drawable/bg_product_item">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            >
+            android:layout_marginRight="20dp">
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/productImageSrc"
                 android:layout_width="90dp"
@@ -41,8 +36,8 @@
                 android:layout_height="wrap_content"
                 android:text="$24.00"
                 android:textStyle="bold"
-                android:textColor="@color/jungle_green"
                 android:textSize="@dimen/text_large"
+                android:textColor="@color/jungle_green"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 />
@@ -52,13 +47,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="10dp"
-            >
+            android:layout_marginRight="10dp">
             <TextView
                 android:id="@+id/productName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lorem Ipsum"
+                android:textSize="@dimen/text_large"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 />
@@ -67,58 +62,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_small"
+                android:textColor="@color/gray"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:text="It is a established fact a established that a.."
+                android:paddingBottom="15dp"
                 />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_gray_round"
-                android:layout_marginTop="10dp"
-                >
-                <TextView
-                    android:id="@+id/decButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="8dp"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:id="@+id/quantity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2"
-                    android:paddingVertical="6.8dp"
-                    android:layout_gravity="center_vertical"
-                    android:paddingHorizontal="12dp"
-                    android:textStyle="bold"
-                    android:background="@color/white"
-                    />
-                <TextView
-                    android:id="@+id/incButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="8dp"
-                    android:textStyle="bold"
-                    />
-            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/delete_button"
-        android:layout_width="65dp"
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_button"
+        android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/delete_button"
         android:padding="9dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/recycle_bin" />
+        android:drawableLeft="@drawable/ic_carrier"
+        android:drawablePadding="-10dp"
+        android:paddingStart="15dp"
+        android:text="Edit"
+        android:textColor="@color/white"
+        android:textStyle="italic|bold"
+        android:textSize="@dimen/text_large"
+        android:gravity="center"/>
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:button="@android:color/transparent"
+        android:background="@drawable/custom_checkbox"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+
+        />
 </RelativeLayout>
-</com.google.android.material.card.MaterialCardView>
