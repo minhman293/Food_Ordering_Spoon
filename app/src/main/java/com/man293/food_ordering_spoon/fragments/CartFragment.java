@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.activities.PaymentActivity;
+import com.man293.food_ordering_spoon.activities.ViewHistory;
 import com.man293.food_ordering_spoon.adapters.CartAdapter;
 import com.man293.food_ordering_spoon.components.ButtonComponent;
 import com.man293.food_ordering_spoon.components.ListViewComponent;
@@ -27,6 +29,7 @@ public class CartFragment extends Fragment {
     private TextView selectedItemTextView, deliveryFeeTextView, totalPriceTextView, subtotalPriceTextView;
     private ButtonComponent checkoutButton;
     private CartAdapter cartAdapter;
+    private ImageButton btnHistory;
 
     public CartFragment() {
     }
@@ -42,6 +45,15 @@ public class CartFragment extends Fragment {
         totalPriceTextView = view.findViewById(R.id.totalPrice);
         subtotalPriceTextView = view.findViewById(R.id.subtotalPrice);
         checkoutButton = view.findViewById(R.id.cartCheckoutBtn);
+        btnHistory = view.findViewById(R.id.btn_history);
+
+        // go to History page
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ViewHistory.class));
+            }
+        });
 
         initListView();
 

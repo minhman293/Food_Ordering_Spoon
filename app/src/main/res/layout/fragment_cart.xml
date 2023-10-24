@@ -21,13 +21,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-30dp"
                 >
+
                 <ImageView
                     android:layout_width="@dimen/widthOfLogo"
                     android:layout_height="@dimen/heightOfLogo"
                     android:src="@drawable/spoon_green"
                     />
-
                 <ImageButton
+                    android:id="@+id/btn_history"
                     style="@style/icon_button"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/history_icon_green" />
@@ -109,7 +110,7 @@
                     />
                 <TextView
                     android:id="@+id/subtotalPrice"
-                    style="@style/text_bold_orange"
+                    style="@style/text_bold_green"
                     android:text="$78.00"
                     />
             </LinearLayout>
@@ -117,7 +118,7 @@
                 android:id="@+id/cartCheckoutBtn"
                 android:text="Checkout"
                 style="@style/button"
-                android:background="@drawable/background_orange_round"
+                android:background="@drawable/background_green_round"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="30dp"
                 />

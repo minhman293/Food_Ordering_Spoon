@@ -35,7 +35,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/spoon_orange">
+                        android:background="@drawable/spoon_green">
 
                     </RelativeLayout>
                 </RelativeLayout>
@@ -55,16 +55,17 @@
 
                         <ImageButton
                             android:id="@+id/button_logout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
                             android:background="@drawable/nut_logout"
+                            android:padding="12dp"
                             android:src="@drawable/logout_profile"
-                            android:padding="10dp"
-                            android:layout_marginRight="10dp">
-
-                        </ImageButton>
+                            android:scaleType="fitCenter"
+                            android:elevation="2dp"
+                            />
                     </RelativeLayout>
 
 
@@ -90,7 +91,7 @@
                 android:text="My Profile"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/image_profile"
@@ -126,7 +127,7 @@
                 android:text="Name Customer"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/phone_profile"
@@ -172,12 +173,10 @@
                 android:background="@drawable/nut_edit_profile"
                 android:gravity="center"
                 android:text="Edit Profile"
+                style="@style/button"
                 android:textSize="20sp"
                 android:fontFamily="@font/poppins_medium"
-                app:backgroundTint="@color/jungle_green">
-
-            </Button>
+                app:backgroundTint="@color/jungle_green"/>
         </RelativeLayout>
     </RelativeLayout>
-
 </FrameLayout>

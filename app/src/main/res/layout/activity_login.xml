@@ -20,7 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/spoon_orange"></LinearLayout>
+            android:background="@drawable/spoon_green">
+
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -130,6 +132,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/nutlogin"
             android:text="Login"
+            style="@style/button"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:textStyle="bold" />
