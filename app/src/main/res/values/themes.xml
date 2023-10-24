@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-
     <style name="Theme.Food_Ordering_Spoon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
 
@@ -26,5 +25,4 @@
     <color name="purple_500">#9C27B0</color>
     <color name="teal_200">#80CBC4</color>
     <color name="teal_700">#00796B</color>
-
 </resources>

@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-
     <style name="Theme.Food_Ordering_Spoon" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/jungle_green</item>
@@ -12,10 +11,7 @@
 
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-
         <!-- Customize your theme here. -->
     </style>
-
 <!--    <color name="purple_200">#CE93D8</color>-->
-
 </resources>
