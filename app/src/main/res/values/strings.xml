@@ -7,5 +7,11 @@
         <item>Noodles</item>
         <item>Beef</item>
     </string-array>
+    <string-array name="categories">
+        <item>All</item>
+        <item>Pizza</item>
+        <item>Noodles</item>
+        <item>Beef</item>
+    </string-array>
     <string name="select_product">Select a product</string>
 </resources>

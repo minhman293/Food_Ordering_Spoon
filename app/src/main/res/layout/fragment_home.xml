@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
+            android:paddingBottom="20dp"
             android:orientation="vertical">
 
             <!-- top of home -->
@@ -95,7 +96,7 @@
                 android:textSize="20sp"
                 app:fontFamily="@font/poppins_bold" />
 
-            // slide button
+            <!--slide button-->
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -114,7 +115,7 @@
                         android:background="@drawable/bounder_btn_green"
                         android:text="All"
                         android:textAllCaps="false"
-                        android:textColor="@color/green"
+                        android:textColor="@color/jungle_green"
                         android:textSize="20sp"
                         app:fontFamily="@font/poppins_bold" />
 
@@ -126,7 +127,7 @@
                         android:background="@drawable/bounder_btn_green"
                         android:text="Pizza"
                         android:textAllCaps="false"
-                        android:textColor="@color/green"
+                        android:textColor="@color/jungle_green"
                         android:textSize="20sp"
                         app:fontFamily="@font/poppins_bold" />
 
@@ -138,7 +139,7 @@
                         android:background="@drawable/bounder_btn_green"
                         android:text="Noodles"
                         android:textAllCaps="false"
-                        android:textColor="@color/green"
+                        android:textColor="@color/jungle_green"
                         android:textSize="20sp"
                         app:fontFamily="@font/poppins_bold" />
 
@@ -150,7 +151,7 @@
                         android:background="@drawable/bounder_btn_green"
                         android:text="Beef"
                         android:textAllCaps="false"
-                        android:textColor="@color/green"
+                        android:textColor="@color/jungle_green"
                         android:textSize="20sp"
                         app:fontFamily="@font/poppins_bold" />
 
@@ -229,7 +230,7 @@
                         android:layout_height="40dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:background="@drawable/delete_button"
+                        android:background="@drawable/small_green_button"
                         android:padding="9dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/add_icon_2" />
@@ -294,7 +295,7 @@
                         android:layout_height="40dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:background="@drawable/delete_button"
+                        android:background="@drawable/small_green_button"
                         android:padding="9dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/add_icon_2" />
@@ -359,7 +360,7 @@
                         android:layout_height="40dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:background="@drawable/delete_button"
+                        android:background="@drawable/small_green_button"
                         android:padding="9dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/add_icon_2" />

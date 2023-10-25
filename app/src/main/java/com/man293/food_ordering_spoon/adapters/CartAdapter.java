@@ -29,7 +29,7 @@ import androidx.appcompat.widget.AppCompatButton;
 public class CartAdapter extends ArrayAdapter<CartItem> {
 
     private CartAdapter.OnItemChangedListener onItemChangedListener;
-    private ListViewComponent parent;
+//    private ListViewComponent parent;
     private ArrayList<CartItem> cartItems;
 
 
@@ -42,7 +42,7 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        this.parent = (ListViewComponent) parent;
+//        this.parent = (ListViewComponent) parent;
         CartItem product = getItem(position);
          if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cart_item, parent,false);
@@ -73,7 +73,7 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
     @Override
     public void remove(@Nullable CartItem object) {
         super.remove(object);
-        this.parent.setFullHeight();
+//        this.parent.setFullHeight();
         notifyDataSetChanged();
     }
 

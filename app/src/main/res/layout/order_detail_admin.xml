@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".order_detail_admin">
+    tools:context=".activities.OrderDetailAdminActivity">
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@color/lightgreen"
+        android:background="@color/jungle_green"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

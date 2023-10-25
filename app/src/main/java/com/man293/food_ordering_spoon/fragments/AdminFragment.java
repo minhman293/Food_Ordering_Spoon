@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.activities.AdminProductActivity;
 import com.man293.food_ordering_spoon.activities.CreateProductActivity;
 import com.man293.food_ordering_spoon.activities.OrderDetailAdminActivity;
 import com.man293.food_ordering_spoon.activities.StatisticalData;
@@ -36,7 +37,7 @@ public class AdminFragment extends Fragment {
         });
 
         tvFoods.setOnClickListener(v-> {
-            startActivity(new Intent(getContext(), OrderDetailAdminActivity.class));
+            startActivity(new Intent(getContext(), AdminProductActivity.class));
         });
 
         btnAddNew.setOnClickListener(v -> {

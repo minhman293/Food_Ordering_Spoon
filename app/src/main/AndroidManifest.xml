@@ -15,7 +15,7 @@
             android:exported="false"/>
         <activity
             android:name=".activities.OrderDetailAdminActivity"
-            android:exported="true"/>
+            android:exported="false"/>
         <activity
             android:name=".activities.CreateProductActivity"
             android:exported="true"/>
@@ -23,7 +23,7 @@
             android:exported="false"/>
         <activity
             android:name=".activities.ViewHistory"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".activities.PaymentActivity"
             android:exported="false" />
@@ -37,7 +37,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.Intro2Activity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".activities.Intro1Activity"
             android:exported="true"
@@ -58,8 +58,10 @@
             android:exported="true" />
         <activity
             android:name=".activities.ProductActivity"
-            android:exported="true" />
-
+            android:exported="false" />
+        <activity
+            android:name=".activities.AdminProductActivity"
+            android:exported="false"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

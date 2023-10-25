@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
 
     public void Unclick(View v){
         Button btn = (Button) v;
-        int textColor = ContextCompat.getColor(v.getContext(), R.color.green);
+        int textColor = ContextCompat.getColor(v.getContext(), R.color.jungle_green);
         btn.setTextColor(textColor);
         btn.setBackground(getResources().getDrawable(R.drawable.bounder_btn_green));
     }
