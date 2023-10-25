@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.activities.EditProfile;
 import com.man293.food_ordering_spoon.activities.Intro2Activity;
 import com.man293.food_ordering_spoon.activities.LoginActivity;
+
 
 /**TODO: LE KIM NAM */
 public class ProfileFragment extends Fragment {
@@ -42,7 +44,6 @@ public class ProfileFragment extends Fragment {
             Log.i("CURRENT_USER", sharedPreferences.getString("current_user", "Nothing!"));
             startActivity(new Intent(getContext(), LoginActivity.class));
         });
-
         return  view;
     }
 }

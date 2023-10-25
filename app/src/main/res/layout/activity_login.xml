@@ -111,7 +111,6 @@
             android:textColor="@color/redpink"
             android:visibility="invisible"
             android:textSize="15sp"/>
-
     </LinearLayout>
 
     <LinearLayout

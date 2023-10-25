@@ -17,10 +17,6 @@ import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.data.FakeData;
 import com.man293.food_ordering_spoon.models.User;
 
-import java.util.logging.Logger;
-
-/**TODO: LE HA BINH */
-
 public class LoginActivity extends AppCompatActivity {
     private AppCompatButton nutlogin;
 

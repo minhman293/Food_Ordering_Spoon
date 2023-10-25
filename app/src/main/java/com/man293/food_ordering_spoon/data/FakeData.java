@@ -17,7 +17,6 @@ public class FakeData {
         cartItems.add(new CartItem(5, "product_5", "Chicken", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 10, 3, 2));
         return cartItems;
     }
-
     public static User login(User user) throws Exception {
 
         Hashtable<String, User> accounts = new Hashtable<String, User>();

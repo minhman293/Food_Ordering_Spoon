@@ -19,6 +19,8 @@
         <activity
             android:name=".activities.CreateProductActivity"
             android:exported="true"/>
+        <activity  android:name=".activities.StatisticalData"
+            android:exported="false"/>
         <activity
             android:name=".activities.ViewHistory"
             android:exported="true" />

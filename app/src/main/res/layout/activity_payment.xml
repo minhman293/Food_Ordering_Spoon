@@ -85,8 +85,7 @@
                     android:text="$24.00"
                     android:textSize="@dimen/text_large"
                     style="@style/heading2"
-                    android:textColor="@color/jungle_green"
-                    />
+                    android:textColor="@color/jungle_green"/>
             </LinearLayout>
             <TextView
                 android:text="Payment method"

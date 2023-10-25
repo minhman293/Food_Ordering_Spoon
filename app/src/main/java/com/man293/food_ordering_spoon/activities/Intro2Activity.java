@@ -29,7 +29,6 @@ public class Intro2Activity extends AppCompatActivity {
         if(sharedPreferences.getString("current_user", null) != null) {
             startActivity(new Intent(Intro2Activity.this, AppActivity.class));
         }
-
         btnCreateAnAccount = findViewById(R.id.btn_createAnAccount) ;
         textHaveAccount = findViewById(R.id.text_haveAccount);
 

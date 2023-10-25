@@ -1,5 +1,6 @@
 package com.man293.food_ordering_spoon.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.activities.CreateProductActivity;
+import com.man293.food_ordering_spoon.activities.OrderDetailAdminActivity;
+import com.man293.food_ordering_spoon.activities.UpdateProductActivity;
 
 public class AdminFragment extends Fragment {
     private TextView tvStatistics, tvFoods;
@@ -27,15 +31,15 @@ public class AdminFragment extends Fragment {
         btnAddNew = view.findViewById(R.id.rlAddNew);
 
         tvStatistics.setOnClickListener(v -> {
-            //todo: minh man
+            startActivity(new Intent(getContext(), UpdateProductActivity.class));
         });
 
         tvFoods.setOnClickListener(v-> {
-            //todo: minh man
+            startActivity(new Intent(getContext(), OrderDetailAdminActivity.class));
         });
 
         btnAddNew.setOnClickListener(v -> {
-            //todo: minh man
+            startActivity(new Intent(getContext(), CreateProductActivity.class));
         });
 
         return view ;

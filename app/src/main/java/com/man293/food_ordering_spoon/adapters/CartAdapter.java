@@ -102,7 +102,6 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
         };
     }
     private void confirmDelete(int position ) {
-
         DialogComponent deleteDialog = new DialogComponent(
                 getContext(),
                 R.style.bottom_sheet_dialog_theme,
@@ -118,7 +117,6 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
         });
         deleteDialog.show();
     }
-
     public interface OnItemChangedListener {
         void onItemChanged(int position);
     }
