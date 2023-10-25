@@ -78,15 +78,15 @@
             android:background="@drawable/background_orange_round"
             android:layout_marginVertical="20dp"
             >
+
             <TextView
-                android:layout_width="wrap_content"
-                android:drawablePadding="10dp"
-                android:layout_centerInParent="true"
                 android:id="@+id/cartCheckoutBtn"
-                android:drawableStart="@drawable/add_icon_2"
-                android:text="Add a new dish"
-                android:paddingVertical="10dp"
                 style="@style/button"
-                />
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableStart="@drawable/add_icon"
+                android:drawablePadding="10dp"
+                android:paddingVertical="10dp"
+                android:text="Add a new dish" />
         </RelativeLayout>
 </LinearLayout>
