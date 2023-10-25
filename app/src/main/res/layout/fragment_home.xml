@@ -232,7 +232,7 @@
                         android:background="@drawable/delete_button"
                         android:padding="9dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/add_icon" />
+                        android:src="@drawable/add_icon_2" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -297,7 +297,7 @@
                         android:background="@drawable/delete_button"
                         android:padding="9dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/add_icon" />
+                        android:src="@drawable/add_icon_2" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -362,7 +362,7 @@
                         android:background="@drawable/delete_button"
                         android:padding="9dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/add_icon" />
+                        android:src="@drawable/add_icon_2" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 

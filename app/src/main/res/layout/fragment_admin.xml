@@ -83,7 +83,7 @@
                 android:drawablePadding="10dp"
                 android:layout_centerInParent="true"
                 android:id="@+id/cartCheckoutBtn"
-                android:drawableStart="@drawable/add_icon"
+                android:drawableStart="@drawable/add_icon_2"
                 android:text="Add a new dish"
                 android:paddingVertical="10dp"
                 style="@style/button"

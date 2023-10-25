@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.activities.CreateProductActivity;
 import com.man293.food_ordering_spoon.activities.OrderDetailAdminActivity;
+import com.man293.food_ordering_spoon.activities.StatisticalData;
 import com.man293.food_ordering_spoon.activities.UpdateProductActivity;
 
 public class AdminFragment extends Fragment {
@@ -31,7 +32,7 @@ public class AdminFragment extends Fragment {
         btnAddNew = view.findViewById(R.id.rlAddNew);
 
         tvStatistics.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), UpdateProductActivity.class));
+            startActivity(new Intent(getContext(), StatisticalData.class));
         });
 
         tvFoods.setOnClickListener(v-> {

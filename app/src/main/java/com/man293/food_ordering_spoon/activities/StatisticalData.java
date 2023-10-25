@@ -2,10 +2,12 @@ package com.man293.food_ordering_spoon.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.man293.food_ordering_spoon.R;
@@ -16,11 +18,13 @@ import java.util.List;
 public class StatisticalData extends AppCompatActivity {
     private Spinner spn_Month;
     private Spinner spn_Year;
+
+    private RelativeLayout bill;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistical_data);
-
+        bill = findViewById(R.id.bill);
         spn_Month = findViewById(R.id.spinner_month);
         spn_Year = findViewById(R.id.spinner_year);
 
@@ -79,6 +83,12 @@ public class StatisticalData extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // Xử lý khi không có mục nào được chọn
+            }
+        });
+        bill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StatisticalData.this, OrderDetailAdminActivity.class));
             }
         });
     }

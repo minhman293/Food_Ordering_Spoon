@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="October 2023"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textColor="@color/jungle_green">
 
                 </TextView>
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="2023"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textColor="@color/jungle_green">
 
                 </TextView>
