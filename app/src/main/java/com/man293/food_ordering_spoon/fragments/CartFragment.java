@@ -65,6 +65,9 @@ public class CartFragment extends Fragment {
             public void onItemChanged(int position) {
 //                Toast.makeText(getContext(),"UPDATED", Toast.LENGTH_SHORT).show();
                 prepareCheckout();
+                if(listViewProduct != null){
+                    listViewProduct.setFullHeight();
+                }
             }
         });
 

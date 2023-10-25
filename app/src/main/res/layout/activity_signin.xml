@@ -192,12 +192,13 @@
             <LinearLayout
                 android:id="@+id/buttonsignin"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="20dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="370dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="15dp"
