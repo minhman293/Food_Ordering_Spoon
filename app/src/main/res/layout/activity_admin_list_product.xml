@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".activities.AdminProductActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/goBackButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingStart="8dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/back_black" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Foods"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_2xl" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(24 Dishes)"
+                android:textAlignment="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_large" />
+
+            <EditText
+                android:id="@+id/search_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bounder_input"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="15dp"
+                android:hint="Search...."
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                android:paddingStart="20dp"
+                android:textSize="@dimen/text_large" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner_category"
+                    android:layout_width="147dp"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="129dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Select all"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_large" />
+
+                <CheckBox
+                    android:button="@android:color/transparent"
+                    android:background="@drawable/custom_checkbox"
+                    android:id="@+id/checkBox"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+
+                     />
+
+            </LinearLayout>
+            <com.man293.food_ordering_spoon.components.ListViewComponent
+                android:id="@+id/ad_list_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="5dp"
+                android:layout_marginBottom="30dp"
+                android:nestedScrollingEnabled="true">
+            </com.man293.food_ordering_spoon.components.ListViewComponent>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_remove"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_remove"
+            android:drawableLeft="@drawable/delete"
+            android:padding="12dp"
+            android:text="Remove"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large"
+            android:textStyle="italic|bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_addNew"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_add_cart"
+            android:drawableLeft="@drawable/ic_add"
+            android:paddingHorizontal="20dp"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

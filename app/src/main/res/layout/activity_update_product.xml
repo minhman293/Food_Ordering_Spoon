@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.UpdateProductActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="15dp">
+
+            <ImageButton
+                android:id="@+id/btnBackInUpdateProduct"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/back_button"
+                android:background="@color/white"/>
+
+            <TextView
+                android:text="Update a dish"
+                style="@style/heading1"
+                android:layout_gravity="center"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imgUpdateFood"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="100dp">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/product_5"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click to select image"
+                android:layout_gravity="center"
+                app:fontFamily="@font/poppins_regular"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:layout_marginTop="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bounder_input">
+
+<!--                category items for spinner in strings.xml-->
+                <Spinner
+                    android:id="@+id/spinner_update_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:entries="@array/category_update_product"
+                    android:padding="15dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dish's name"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:layout_marginTop="15dp" />
+
+                <EditText
+                    android:id="@+id/updateDishName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bounder_input"
+                    android:text="Chicken rice"
+                    android:padding="15dp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:layout_marginTop="15dp" />
+
+                <EditText
+                    android:id="@+id/updateDishPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bounder_input"
+                    android:text="5.00"
+                    android:padding="15dp"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@drawable/ic_money_24"
+                    android:drawablePadding="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:layout_marginTop="15dp" />
+
+                <EditText
+                    android:id="@+id/updateDishDescr"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/bounder_input"
+                    android:text="Rice with fried chicken. This is a traditional dish of Vietnam."
+                    android:padding="15dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="top"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUpdateDish"
+                    style="@style/button"
+                    android:text="Update"
+                    android:background="@drawable/background_green_round"
+                    android:layout_marginTop="30dp"
+                    app:fontFamily="@font/_poppins_bold"
+                    android:layout_marginBottom="30dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
