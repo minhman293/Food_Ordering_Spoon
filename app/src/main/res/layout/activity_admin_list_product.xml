@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".activities.AdminProductActivity">
+    tools:context=".views.activities.AdminProductActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -102,7 +102,7 @@
                      />
 
             </LinearLayout>
-            <com.man293.food_ordering_spoon.components.ListViewComponent
+            <com.man293.food_ordering_spoon.views.components.ListViewComponent
                 android:id="@+id/ad_list_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -110,7 +110,7 @@
                 android:dividerHeight="5dp"
                 android:layout_marginBottom="30dp"
                 android:nestedScrollingEnabled="true">
-            </com.man293.food_ordering_spoon.components.ListViewComponent>
+            </com.man293.food_ordering_spoon.views.components.ListViewComponent>
         </LinearLayout>
     </ScrollView>
     <LinearLayout

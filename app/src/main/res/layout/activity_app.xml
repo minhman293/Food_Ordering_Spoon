@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.AppActivity">
+    tools:context=".views.activities.AppActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/App"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.man293.food_ordering_spoon.fragments.HomeFragment"
+        android:name="com.man293.food_ordering_spoon.views.fragments.HomeFragment"
         android:layout_weight="1"
         tools:layout="@layout/fragment_cart"
         />

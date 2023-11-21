@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.man293.food_ordering_spoon">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application xmlns:tools="http://schemas.android.com/tools"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,35 +14,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_Ordering_Spoon">
         <activity
-            android:name=".activities.UpdateProductActivity"
+            android:name=".views.activities.UpdateProductActivity"
             android:exported="false"/>
         <activity
-            android:name=".activities.OrderDetailAdminActivity"
+            android:name=".views.activities.OrderDetailAdminActivity"
             android:exported="false"/>
         <activity
-            android:name=".activities.CreateProductActivity"
+            android:name=".views.activities.CreateProductActivity"
             android:exported="true"/>
-        <activity  android:name=".activities.StatisticalData"
+        <activity  android:name=".views.activities.StatisticalData"
             android:exported="false"/>
         <activity
-            android:name=".activities.ViewHistory"
+            android:name=".views.activities.ViewHistory"
             android:exported="false" />
         <activity
-            android:name=".activities.PaymentActivity"
+            android:name=".views.activities.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.SignInActivity"
+            android:name=".views.activities.SignInActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".views.activities.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.Intro2Activity"
+            android:name=".views.activities.Intro2Activity"
             android:exported="false" />
         <activity
-            android:name=".activities.Intro1Activity"
+            android:name=".views.activities.Intro1Activity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -48,19 +51,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.EditProfile"
+            android:name=".views.activities.EditProfile"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".views.activities.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.AppActivity"
+            android:name=".views.activities.AppActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.ProductActivity"
+            android:name=".views.activities.ProductActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AdminProductActivity"
+            android:name=".views.activities.AdminProductActivity"
             android:exported="false"/>
         <meta-data
             android:name="preloaded_fonts"

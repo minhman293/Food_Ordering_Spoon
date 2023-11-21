@@ -1,17 +1,17 @@
 package com.man293.food_ordering_spoon.models;
 
 public class Product {
-    private int id;
+    private String id;
     private String imageSrc;
     private String name;
     private String desc;
     private double price;
-    private int categoryId;
+    private String categoryId;
 
     public Product() {
     }
 
-    public Product(int id, String imageSrc, String name, String desc, double price, int categoryId) {
+    public Product(String id, String imageSrc, String name, String desc, double price, String categoryId) {
         this.id = id;
         this.imageSrc = imageSrc;
         this.name = name;
@@ -20,11 +20,11 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -60,11 +60,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 }

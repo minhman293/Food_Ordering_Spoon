@@ -6,7 +6,7 @@
     android:layout_width="363dp"
     android:layout_height="wrap_content"
 
-    tools:context=".activities.ProductActivity"
+    tools:context=".views.activities.ProductActivity"
     android:orientation="horizontal"
     android:background="@drawable/rectangle_toast"
     android:layout_marginStart="15dp"

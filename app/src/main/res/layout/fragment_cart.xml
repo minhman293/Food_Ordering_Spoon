@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.CartFragment">
+    tools:context=".views.fragments.CartFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 />
 
             <!-- PRODUCTS -->
-            <com.man293.food_ordering_spoon.components.ListViewComponent
+            <com.man293.food_ordering_spoon.views.components.ListViewComponent
                 android:id="@+id/cartItems"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -114,7 +114,7 @@
                     android:text="$78.00"
                     />
             </LinearLayout>
-            <com.man293.food_ordering_spoon.components.ButtonComponent
+            <com.man293.food_ordering_spoon.views.components.ButtonComponent
                 android:id="@+id/cartCheckoutBtn"
                 android:text="Checkout"
                 style="@style/button"

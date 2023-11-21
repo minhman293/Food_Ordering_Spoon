@@ -6,7 +6,7 @@
     android:layout_width="363dp"
     android:layout_height="wrap_content"
 
-    tools:context=".activities.CreateProductActivity"
+    tools:context=".views.activities.CreateProductActivity"
     android:orientation="horizontal"
     android:background="@drawable/rectangle_toast"
     android:layout_marginStart="15dp"
@@ -22,7 +22,7 @@
         android:id="@+id/txt_add_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add this dish successfully"
+        android:text="Add this dish successfully!"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20dp"
