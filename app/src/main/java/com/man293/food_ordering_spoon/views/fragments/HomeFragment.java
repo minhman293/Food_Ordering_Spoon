@@ -20,8 +20,6 @@ import android.widget.TextView;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.views.activities.ProductActivity;
 
-/**TODO: TRUONG MINH MAN & LE NGOC HAO  */
-
 public class HomeFragment extends Fragment {
 
     AppCompatButton btnCatAll, btnCatBeef, btnCatPizza, btnCatNoodle;

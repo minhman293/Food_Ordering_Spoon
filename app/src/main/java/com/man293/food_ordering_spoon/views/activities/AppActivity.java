@@ -14,8 +14,6 @@ import com.man293.food_ordering_spoon.views.fragments.HomeFragment;
 import com.man293.food_ordering_spoon.views.fragments.ProfileFragment;
 import com.man293.food_ordering_spoon.models.User;
 
-/**TODO: DIEP VAN TY */
-
 public class AppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

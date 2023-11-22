@@ -1,6 +1,11 @@
 package com.man293.food_ordering_spoon.models;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+
 public class CartItem extends Product {
+
     private int quantity;
     public CartItem() {
         super();

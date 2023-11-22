@@ -12,8 +12,6 @@ import android.widget.ImageView;
 
 import com.man293.food_ordering_spoon.R;
 
-/**TODO: TRUONG MINH MAN */
-
 public class Intro1Activity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN_TIME = 5000;

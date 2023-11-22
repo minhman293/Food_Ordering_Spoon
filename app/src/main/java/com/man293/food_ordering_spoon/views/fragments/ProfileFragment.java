@@ -18,8 +18,6 @@ import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.views.activities.EditProfile;
 import com.man293.food_ordering_spoon.views.activities.LoginActivity;
 
-
-/**TODO: LE KIM NAM */
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {  }
 

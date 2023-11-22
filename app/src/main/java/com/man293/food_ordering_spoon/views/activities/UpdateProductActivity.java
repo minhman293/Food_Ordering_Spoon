@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.man293.food_ordering_spoon.R;
 
-/** todo: truong minh man*/
 
 public class UpdateProductActivity extends AppCompatActivity {
 

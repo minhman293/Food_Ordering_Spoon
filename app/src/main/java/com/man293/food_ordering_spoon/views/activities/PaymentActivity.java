@@ -16,8 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**TODO: DIEP VAN TY */
-
 public class PaymentActivity extends AppCompatActivity {
     private String paymentSelected;
     private TextView priceTextView, orderDateTextView;

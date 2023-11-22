@@ -65,12 +65,12 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Selected items (2)"
+                    android:text="Selected items (0)"
                     />
                 <TextView
                     android:id="@+id/totalPrice"
                     style="@style/text_bold_black"
-                    android:text="$78.00"
+                    android:text="$0.00"
                     />
             </LinearLayout>
             <LinearLayout
@@ -111,7 +111,7 @@
                 <TextView
                     android:id="@+id/subtotalPrice"
                     style="@style/text_bold_green"
-                    android:text="$78.00"
+                    android:text="$0.00"
                     />
             </LinearLayout>
             <com.man293.food_ordering_spoon.views.components.ButtonComponent

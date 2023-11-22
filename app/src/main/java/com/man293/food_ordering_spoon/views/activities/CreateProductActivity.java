@@ -24,8 +24,6 @@ import com.man293.food_ordering_spoon.utils.FileUtils;
 
 import java.io.File;
 
-/** todo: truong minh man*/
-
 public class CreateProductActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -39,7 +37,7 @@ public class CreateProductActivity extends AppCompatActivity {
         btnAddProduct = (Button) findViewById(R.id.btnAddNewDish);
         ImageButton selectImageButton = findViewById(R.id.imgAddFood);
 
-        //todo: @all --> lấy đường dẫn file từ thiết bị
+        // lấy đường dẫn file từ thiết bị
         selectImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +55,6 @@ public class CreateProductActivity extends AppCompatActivity {
                     // todo: @all --> id và imageSrc sẽ được thay đổi trên server nên chỉ cần cung cấp để dầy đủ đối số cho constructor
                     new Product("1", "filename.png", "Noodles", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 3, "1")
             );
-            //todo: @all --> cập nhật UI thông qua interface
             createProductTask.setOnProductCreated(product -> {
                 if(product != null) {
                     showMessage("Add this dish successfully!");
@@ -65,13 +62,13 @@ public class CreateProductActivity extends AppCompatActivity {
                     showMessage("Something went wrong!");
                 }
             });
-            //todo: @all -->   lấy từ file string.xml không dùng trực tiếp
-            createProductTask.execute( getString(R.string.BASE_URL) + getString(R.string.API_CREATE_PRODUCT__POST));
+            // lấy từ file string.xml không dùng trực tiếp
+            createProductTask.execute( getString(R.string.BASE_URL) + getString(R.string.API_CREATE_PRODUCT__POST ));
         });
     }
 
 
-    //todo: @all --> tạo lấy file sau khi có đường dẫn
+    //tạo lấy file sau khi có đường dẫn
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

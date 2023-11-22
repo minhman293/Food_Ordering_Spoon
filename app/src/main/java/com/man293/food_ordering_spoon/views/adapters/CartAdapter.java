@@ -7,10 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.CartInteractiveTasks;
 import com.man293.food_ordering_spoon.views.components.DialogComponent;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.utils.CurrencyUtils;
@@ -27,7 +31,6 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
     private ListViewComponent parent;
     private ArrayList<CartItem> cartItems;
 
-
     public CartAdapter(@NonNull Context context, @NonNull ArrayList<CartItem> items) {
         super(context, R.layout.cart_item, items);
         this.cartItems = items;
@@ -38,31 +41,47 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         this.parent = (ListViewComponent) parent;
+        ViewHolder holder;
         CartItem product = getItem(position);
          if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.cart_item, parent,false);
+            holder = new ViewHolder();
+            holder.imageView = convertView.findViewById(R.id.productImageSrc);
+            holder.nameView = convertView.findViewById(R.id.productName);
+            holder.descView = convertView.findViewById(R.id.productDesc);
+            holder.quantityView = convertView.findViewById(R.id.quantity);
+            holder.priceView = convertView.findViewById(R.id.productPrice);
+            holder.btnDelete = convertView.findViewById(R.id.delete_button);
+            holder.btnDec = convertView.findViewById(R.id.decButton);
+            holder.btnInc =convertView.findViewById(R.id.incButton);
+            convertView.setTag(holder);
+         } else  {
+             holder = (ViewHolder) convertView.getTag();
          }
+         Context context = getContext();
+         String imgUrl = context.getString(R.string.BASE_URL) + context.getString(R.string.PUBLIC_IMAGES, product.getImageSrc());
+         Glide.with(context).load(imgUrl).into(holder.imageView);
 
-        ((ShapeableImageView) convertView.findViewById(R.id.productImageSrc)).setImageResource(
-                getContext().getResources().getIdentifier(product.getImageSrc(), "drawable", getContext().getPackageName())
-        );
-        ((TextView) convertView.findViewById(R.id.productName)).setText(product.getName());
-        ((TextView) convertView.findViewById(R.id.productDesc)).setText(product.getDesc());
-        ((TextView) convertView.findViewById(R.id.quantity)).setText(String.valueOf(product.getQuantity()));
-        ((TextView) convertView.findViewById(R.id.productPrice)).setText(CurrencyUtils.format(product.getPrice()));
-
-        convertView.findViewById(R.id.delete_button).setOnClickListener(v -> {
-            confirmDelete(position);
-        });
-
-        convertView.findViewById(R.id.decButton).setOnClickListener(v -> {
-            changeQuantity(position, -1);
-        });
-
-        convertView.findViewById(R.id.incButton).setOnClickListener(v -> {
-            changeQuantity(position, 1);
-        });
+//        holder.imageView.setImageResource(
+//                getContext().getResources().getIdentifier(product.getImageSrc(), "drawable", getContext().getPackageName())
+//        );
+        holder.nameView.setText(product.getName());
+        holder.descView.setText(product.getDesc());
+        holder.quantityView.setText(String.valueOf(product.getQuantity()));
+        holder.priceView.setText(CurrencyUtils.format(product.getPrice()));
+        holder.btnDelete.setOnClickListener(v -> {confirmDelete(position);});
+        holder.btnDec.setOnClickListener(v -> { changeQuantity(position, -1);  });
+        holder.btnInc.setOnClickListener(v -> { changeQuantity(position, 1); });
         return convertView;
+    }
+
+    private class ViewHolder {
+        ShapeableImageView imageView;
+        TextView nameView, descView, quantityView, priceView,btnDec, btnInc;
+        ImageButton btnDelete;
+
+        public ViewHolder(){}
+
     }
 
     @Override
@@ -104,11 +123,22 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
         );
 
         deleteDialog.setOnConfirmListener(() -> {
-            remove(getItem(position));
-            /** for update ui in cart fragment */
-            if(onItemChangedListener != null) {
-                onItemChangedListener.onItemChanged(position);
-            }
+            CartInteractiveTasks.RemoveTask removeTask = new CartInteractiveTasks.RemoveTask(getItem(position).getId(), 0);
+            removeTask.setOnRemoveListener(isRemove -> {
+                if(isRemove) {
+                    remove(getItem(position));
+                    /** for update ui in cart fragment */
+                    if(onItemChangedListener != null) {
+                        onItemChangedListener.onItemChanged(position);
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                }
+            });
+            Context context = getContext();
+            // TODO : REPLACE USER ID
+            final String userId = "655a3582cd47699385f49e81";
+            removeTask.execute(context.getString(R.string.BASE_URL) + context.getString(R.string.API_ADD_TO_CART__POST, userId ));
         });
         deleteDialog.show();
     }
