@@ -1,32 +1,23 @@
 package com.man293.food_ordering_spoon.views.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.views.activities.ProductActivity;
-import com.man293.food_ordering_spoon.adapters.HomeProductAdapter;
+import com.man293.food_ordering_spoon.views.adapters.HomeProductAdapter;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.models.HomeProduct;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**TODO: TRUONG MINH MAN */

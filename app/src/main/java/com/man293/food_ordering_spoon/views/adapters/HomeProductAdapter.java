@@ -1,4 +1,4 @@
-package com.man293.food_ordering_spoon.adapters;
+package com.man293.food_ordering_spoon.views.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.imageview.ShapeableImageView;
-import com.man293.food_ordering_spoon.activities.ProductActivity;
+import com.man293.food_ordering_spoon.views.activities.ProductActivity;
 import com.man293.food_ordering_spoon.models.HomeProduct;
 import com.man293.food_ordering_spoon.R;
 
