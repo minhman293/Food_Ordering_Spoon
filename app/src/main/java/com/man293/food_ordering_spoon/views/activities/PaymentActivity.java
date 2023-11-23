@@ -3,7 +3,10 @@ package com.man293.food_ordering_spoon.views.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -11,6 +14,8 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.CartInteractiveTasks;
+import com.man293.food_ordering_spoon.utils.CurrencyUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,8 +24,10 @@ import java.util.Date;
 public class PaymentActivity extends AppCompatActivity {
     private String paymentSelected;
     private TextView priceTextView, orderDateTextView;
+    private EditText addressEdit;
     private ArrayList<RadioButton> paymentRadioButtons ;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +35,14 @@ public class PaymentActivity extends AppCompatActivity {
 
         priceTextView = findViewById(R.id.totalPrice);
         orderDateTextView = findViewById(R.id.orderDate);
+        addressEdit = findViewById(R.id.address_edit);
         paymentRadioButtons = new ArrayList<>();
         paymentRadioButtons.add(findViewById(R.id.visaRadioButton));
         paymentRadioButtons.add(findViewById(R.id.mastercardRadioButton));
         paymentRadioButtons.add(findViewById(R.id.paypalRadioButton));
         paymentRadioButtons.add(findViewById(R.id.deliveryRadioButton));
 
-        /** TOTAL PRICE */
-        priceTextView.setText(getIntent().getStringExtra("TOTAL_PRICE"));
+        priceTextView.setText( CurrencyUtils.format(getIntent().getDoubleExtra("TOTAL_PRICE",0)) );
 
         /** ORDER DATE */
         SimpleDateFormat dfm = new SimpleDateFormat("dd-MM-yyyy");
@@ -55,13 +62,25 @@ public class PaymentActivity extends AppCompatActivity {
         /** BUY  */
         AppCompatButton buyNowButton =  findViewById(R.id.buyNowButton);
         buyNowButton.setOnClickListener( v -> {
-            BottomSheetDialog dialog = new BottomSheetDialog(PaymentActivity.this, R.style.bottom_sheet_dialog_theme);
-            dialog.setContentView(R.layout.dialog_thanks);
-            dialog.show();
 
-            dialog.findViewById(R.id.close_dialog_button).setOnClickListener(view -> {
-                dialog.hide();
-            });
+            // TODO : REPLACE USER ID
+            final String userId = "655a3582cd47699385f49e81";
+            // TODO: REPLACE DEFAULT ADDRESS
+            final String address = addressEdit.getText().toString().trim().isEmpty() ? "Default Address" : addressEdit.getText().toString().trim();
+
+            final double price = getIntent().getDoubleExtra("TOTAL_PRICE",0);
+            final String itemIds = getIntent().getStringExtra("CART_ITEM_IDS");
+
+            String url = getString(R.string.BASE_URL) + getString(R.string.API_CREATE_BILL__POST, userId);
+            new CartInteractiveTasks.CreateBillTask(itemIds, price, address ).setOnBillCreated(isCreated -> {
+                BottomSheetDialog dialog = new BottomSheetDialog(PaymentActivity.this, R.style.bottom_sheet_dialog_theme);
+                dialog.setContentView(R.layout.dialog_thanks);
+                dialog.show();
+
+                dialog.findViewById(R.id.close_dialog_button).setOnClickListener(view -> {
+                    dialog.hide();
+                });
+            }).execute(url);
         });
     }
 

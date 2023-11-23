@@ -10,10 +10,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -70,15 +68,15 @@ public class CartInteractiveTasks {
 
     }
 
-    public static class RemoveTask extends AsyncTask<String, Integer, Boolean> {
+    public static class AddTask extends AsyncTask<String, Integer, Boolean> {
         private WeakReference<ICallback<Boolean>> callback;
         private String productId;
         private int quantity;
-        public void setOnRemoveListener (ICallback<Boolean> callback) {
+        public void setOnAddedListener(ICallback<Boolean> callback) {
             this.callback = new WeakReference<>(callback);
         }
 
-        public RemoveTask(String productId, int quantity) {
+        public AddTask(String productId, int quantity) {
             this.productId = productId;
             this.quantity = quantity;
         }
@@ -113,11 +111,60 @@ public class CartInteractiveTasks {
         }
 
         @Override
-        protected void onPostExecute(Boolean isRemoved) {
-            super.onPostExecute(isRemoved);
+        protected void onPostExecute(Boolean isAdded) {
+            super.onPostExecute(isAdded);
             ICallback<Boolean> cb = callback.get();
             if(cb != null) {
-                cb.execute(isRemoved);
+                cb.execute(isAdded);
+            }
+        }
+    }
+
+    public static class CreateBillTask extends AsyncTask<String, Integer, Boolean> {
+        private String address, productIds; // [123457,12345] <-- ArrayList.toString()
+        private Double price;
+        private WeakReference<ICallback<Boolean>> callback;
+        public CreateBillTask(String productIds, Double price, String address) {
+            this.productIds = productIds;
+            this.price = price;
+            this.address = address;
+        }
+        public CreateBillTask setOnBillCreated(ICallback<Boolean> callback) {
+            this.callback = new WeakReference<>(callback);
+            return  this;
+        }
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            try {
+                OkHttpClient client = new OkHttpClient();
+                HashMap<String,Object> data = new HashMap<>();
+                data.put("productIds", productIds);
+                data.put("address", address);
+                data.put("price", price);
+                String json = new Gson().toJson(data) ;
+                Log.d("CREATE_BILL", json);
+                RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
+                Request req = new Request.Builder()
+                        .url(strings[0])
+                        .post(body)
+                        .build();
+                Response res = client.newCall(req).execute();
+                if(!res.isSuccessful()) {
+                    throw new Exception("Unexpected code " + res);
+                }
+                return  true;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean isCreated) {
+            super.onPostExecute(isCreated);
+            ICallback<Boolean> cb = callback.get();
+            if(cb != null) {
+                cb.execute(isCreated);
             }
         }
     }

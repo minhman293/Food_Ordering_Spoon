@@ -103,14 +103,24 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
         try {
             int currentQuantity = getItem(position).getQuantity();
             currentQuantity = currentQuantity + n > 0 ? currentQuantity + n : 1;
-            getItem(position).setQuantity(currentQuantity);
-
-            /** for update ui in cart fragment */
-            if(onItemChangedListener != null) {
-                onItemChangedListener.onItemChanged(position);
-            }
-
-            notifyDataSetChanged();
+            if(currentQuantity == 1) return;
+            CartInteractiveTasks.AddTask addTask = new CartInteractiveTasks.AddTask(getItem(position).getId(), currentQuantity);
+            int finalCurrentQuantity = currentQuantity;
+            addTask.setOnAddedListener(isAdded -> {
+                if(isAdded) {
+                    getItem(position).setQuantity(finalCurrentQuantity);
+                    /* for update ui in cart fragment */
+                    if(onItemChangedListener != null) {
+                        onItemChangedListener.onItemChanged(position);
+                    }
+                    notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                }
+            });
+            // TODO : REPLACE USER ID
+            final String userId = "655a3582cd47699385f49e81";
+            addTask.execute(getContext().getString(R.string.BASE_URL)+ getContext().getString(R.string.API_ADD_TO_CART__POST, userId));
         } catch (Exception ex) {
             Log.d("CHANGE QUANTITY", ex.getMessage());
         };
@@ -123,8 +133,9 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
         );
 
         deleteDialog.setOnConfirmListener(() -> {
-            CartInteractiveTasks.RemoveTask removeTask = new CartInteractiveTasks.RemoveTask(getItem(position).getId(), 0);
-            removeTask.setOnRemoveListener(isRemove -> {
+            // add 0 === remove
+            CartInteractiveTasks.AddTask removeTask = new CartInteractiveTasks.AddTask(getItem(position).getId(), 0);
+            removeTask.setOnAddedListener(isRemove -> {
                 if(isRemove) {
                     remove(getItem(position));
                     /** for update ui in cart fragment */

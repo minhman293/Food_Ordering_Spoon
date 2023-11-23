@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import com.man293.food_ordering_spoon.views.components.ButtonComponent;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.models.CartItem;
 import com.man293.food_ordering_spoon.utils.CurrencyUtils;
+
+import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
     private ListViewComponent listViewProduct;
@@ -87,12 +90,23 @@ public class CartFragment extends Fragment {
         deliveryFeeTextView.setText(CurrencyUtils.format(deliveryFee));
         totalPriceTextView.setText(CurrencyUtils.format(totalPrice));
         subtotalPriceTextView.setText(CurrencyUtils.format(deliveryFee + totalPrice));
+        subtotalPriceTextView.setTag( deliveryFee + totalPrice);
     }
     private void changeToPayment() {
         checkoutButton.setOnClickListener(v -> {
-            Intent paymentIntent = new Intent(getContext(), PaymentActivity.class);
-            paymentIntent.putExtra("TOTAL_PRICE", subtotalPriceTextView.getText().toString());
-            startActivity(paymentIntent);
+            try {
+                if(cartAdapter == null || cartAdapter.getCartItems().size() == 0) return;
+                ArrayList<String> ids  = new ArrayList<>();
+                for(CartItem item: cartAdapter.getCartItems()) {
+                    ids.add(item.getId());
+                }
+                Intent paymentIntent = new Intent(getContext(), PaymentActivity.class);
+                paymentIntent.putExtra("TOTAL_PRICE", Double.parseDouble(String.valueOf(subtotalPriceTextView.getTag())));
+                paymentIntent.putExtra("CART_ITEM_IDS", ids.toString());
+                startActivity(paymentIntent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 }
