@@ -6,14 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.imageview.ShapeableImageView;
 import com.man293.food_ordering_spoon.views.activities.ProductActivity;
 import com.man293.food_ordering_spoon.models.HomeProduct;
 import com.man293.food_ordering_spoon.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ public class HomeProductAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private ArrayList<HomeProduct> homeProducts;
+    ViewHolder holder;
 
     public HomeProductAdapter(Context context, int layout, ArrayList<HomeProduct> homeProducts) {
         this.context = context;
@@ -53,8 +53,6 @@ public class HomeProductAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder holder;
-
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
@@ -73,8 +71,20 @@ public class HomeProductAdapter extends BaseAdapter {
         HomeProduct homeProduct = homeProducts.get(position);
         holder.name.setText(homeProduct.getHomeProductName());
         holder.description.setText(homeProduct.getHomeProductDescription());
-        holder.price.setText(Double.toString(homeProduct.getHomeProductPrice()));
-        holder.img.setImageResource(homeProduct.getHomeProductImg());
+        holder.price.setText("$" + Double.toString(homeProduct.getHomeProductPrice()));
+
+        String imgName = homeProduct.getHomeProductImg();
+        String imgPath = context.getString(R.string.PUBLIC_IMAGES, imgName);
+        String baseUrl = context.getString(R.string.BASE_URL);
+
+        baseUrl = baseUrl.replaceAll("/$", ""); // Remove trailing slash from the base URL
+        imgPath = imgPath.replaceAll("^/", ""); // Remove leading slash from the image path
+
+
+        // Concatenate base URL with image path
+        String fullImageUrl = baseUrl + "/" + imgPath;
+
+        Picasso.get().load(fullImageUrl).into(holder.img);
 
         convertView.findViewById(R.id.layoutHomeProductItem).setOnClickListener(new View.OnClickListener() {
             @Override

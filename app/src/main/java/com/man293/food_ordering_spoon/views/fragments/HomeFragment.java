@@ -1,5 +1,6 @@
 package com.man293.food_ordering_spoon.views.fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.GetHomeProductJSON;
 import com.man293.food_ordering_spoon.views.adapters.HomeProductAdapter;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.models.HomeProduct;
@@ -26,9 +28,10 @@ public class HomeFragment extends Fragment {
 
     AppCompatButton btnCatAll, btnCatBeef, btnCatPizza, btnCatNoodle;
     TextView txtDetail;
-    ListViewComponent lvHomeProduct;
-    ArrayList<HomeProduct> arrHomeProduct;
-    HomeProductAdapter homeProductAdapter;
+    public ListViewComponent lvHomeProduct;
+    public ArrayList<HomeProduct> arrHomeProduct;
+    public HomeProductAdapter homeProductAdapter;
+
     View view;
     public HomeFragment() { }
 
@@ -40,35 +43,28 @@ public class HomeFragment extends Fragment {
         // initialize
         initialize();
 
-        // add data to array product
-        arrHomeProduct.add(new HomeProduct("Spaghetti", "It is a established fact a established that a..", 24, R.drawable.product_1));
-        arrHomeProduct.add(new HomeProduct("Spaghetti", "It is a established fact a established that a..", 24, R.drawable.product_2));
-        arrHomeProduct.add(new HomeProduct("Spaghetti", "It is a established fact a established that a..", 24, R.drawable.product_3));
-        arrHomeProduct.add(new HomeProduct("Spaghetti", "It is a established fact a established that a..", 24, R.drawable.product_4));
-
-        // set adapter for listview
-        lvHomeProduct.setAdapter(homeProductAdapter);
-        lvHomeProduct.setFullHeight();
-
         // handle category button click
         handleAllCategoryClick();
+
+        // new GetProductJson().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,getString(R.string.BASE_URL) + getString(R.string.API_GET_PRODUCTS__GET));
+        new GetHomeProductJSON(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_PRODUCTS__GET));
 
         return view;
     }
 
     private void initialize() {
         lvHomeProduct = (ListViewComponent) view.findViewById(R.id.lvHomeProduct);
+        // array to contain list product
+        arrHomeProduct = new ArrayList<>();
+
+        // Create the adapter
+        homeProductAdapter = new HomeProductAdapter(getContext(), R.layout.single_home_product, arrHomeProduct);
 
         btnCatAll = view.findViewById(R.id.btn_category_all);
         btnCatBeef = view.findViewById(R.id.btn_category_beef);
         btnCatNoodle = view.findViewById(R.id.btn_category_noodles);
         btnCatPizza = view.findViewById(R.id.btn_category_pizza);
 
-        // array to contain list product
-        arrHomeProduct = new ArrayList<>();
-
-        // set adapter for list view product
-        homeProductAdapter = new HomeProductAdapter(getContext(), R.layout.single_home_product, arrHomeProduct);
     }
 
     private void handleAllCategoryClick() {
@@ -138,3 +134,5 @@ public class HomeFragment extends Fragment {
         btn.setBackground(getResources().getDrawable(R.drawable.bounder_btn_category_hover));
     };
 }
+
+

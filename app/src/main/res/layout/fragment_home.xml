@@ -169,7 +169,7 @@
                 android:textSize="20sp"
                 app:fontFamily="@font/poppins_bold" />
 
-            <com.man293.food_ordering_spoon.components.ListViewComponent
+            <com.man293.food_ordering_spoon.views.components.ListViewComponent
                 android:id="@+id/lvHomeProduct"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

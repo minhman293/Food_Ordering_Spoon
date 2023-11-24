@@ -3,11 +3,10 @@ package com.man293.food_ordering_spoon.models;
 import java.io.Serializable;
 
 public class HomeProduct implements Serializable {
-    private String homeProductName, homeProductDescription;
+    private String homeProductName, homeProductDescription, homeProductImg;
     private double homeProductPrice;
-    private int homeProductImg;
 
-    public HomeProduct(String homeProductName, String homeProductDescription, double homeProductPrice, int homeProductImg) {
+    public HomeProduct(String homeProductName, String homeProductDescription, double homeProductPrice, String homeProductImg) {
         this.homeProductName = homeProductName;
         this.homeProductDescription = homeProductDescription;
         this.homeProductPrice = homeProductPrice;
@@ -38,11 +37,9 @@ public class HomeProduct implements Serializable {
         this.homeProductPrice = homeProductPrice;
     }
 
-    public int getHomeProductImg() {
-        return homeProductImg;
-    }
+    public String getHomeProductImg() { return homeProductImg; }
 
-    public void setHomeProductImg(int homeProductImg) {
+    public void setHomeProductImg(String homeProductImg) {
         this.homeProductImg = homeProductImg;
     }
 }

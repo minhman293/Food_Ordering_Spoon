@@ -66,7 +66,7 @@ public class CreateProductActivity extends AppCompatActivity {
                 }
             });
             //todo: @all -->   lấy từ file string.xml không dùng trực tiếp
-            createProductTask.execute( getString(R.string.BASE_URL) + getString(R.string.API_CREATE_PRODUCT__POST));
+            createProductTask.execute(getString(R.string.BASE_URL) + getString(R.string.API_CREATE_PRODUCT__POST));
         });
     }
 
