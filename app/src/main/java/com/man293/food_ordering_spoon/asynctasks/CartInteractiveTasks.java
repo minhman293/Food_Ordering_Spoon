@@ -121,13 +121,15 @@ public class CartInteractiveTasks {
     }
 
     public static class CreateBillTask extends AsyncTask<String, Integer, Boolean> {
-        private String address, productIds; // [123457,12345] <-- ArrayList.toString()
+        private String address, productIds, notificationTitle, notificationBody; // [123457,12345] <-- ArrayList.toString()
         private Double price;
         private WeakReference<ICallback<Boolean>> callback;
-        public CreateBillTask(String productIds, Double price, String address) {
+        public CreateBillTask(String productIds, Double price, String address,String notificationTitle, String notificationBody) {
             this.productIds = productIds;
             this.price = price;
             this.address = address;
+            this.notificationTitle = notificationTitle;
+            this.notificationBody = notificationBody;
         }
         public CreateBillTask setOnBillCreated(ICallback<Boolean> callback) {
             this.callback = new WeakReference<>(callback);
@@ -141,6 +143,8 @@ public class CartInteractiveTasks {
                 data.put("productIds", productIds);
                 data.put("address", address);
                 data.put("price", price);
+                data.put("notificationTitle", notificationTitle);
+                data.put("notificationBody", notificationBody);
                 String json = new Gson().toJson(data) ;
                 Log.d("CREATE_BILL", json);
                 RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);

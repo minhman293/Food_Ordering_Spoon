@@ -29,6 +29,7 @@
 
     <string name="API_REGISTER__POST">/auth/register</string>
     <string name="API_LOGIN__POST">/auth/login</string>
+    <string name="API_SEND_TOKEN__POST">/auth/%s/fcm-token</string>
 
     <!--  %s => userId   -->
     <string name="API_ADD_TO_CART__POST">/user/%s/addToCart</string>
@@ -36,6 +37,7 @@
 
     <string name="API_CREATE_BILL__POST">/user/%s/create-bill</string>
     <string name="API_GET_BILLS_BY_USER__GET">/user/%s/get-bill</string>
+
 
     <!-- %s => image-name  -->
     <string name="PUBLIC_IMAGES">/images/%s</string>

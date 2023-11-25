@@ -21,11 +21,11 @@ public class FakeData {
     public static User login(User user) throws Exception {
 
         Hashtable<String, User> accounts = new Hashtable<String, User>();
-        accounts.put("0123456781", new User(1, "Minh Man", "Truong", "0123456781", "Da Nang", "12345" ,1));
-        accounts.put("0123456782", new User(2, "Ngoc Hao", "Le", "0123456782", "Quang Nam", "12345" ,0));
-        accounts.put("0123456783", new User(3, "Kim Nam", "Le", "0123456783", "Da Nang", "12345" ,0));
-        accounts.put("0123456784", new User(4, "Ha Binh", "Le", "0123456784", "Da Nang", "12345" ,0));
-        accounts.put("0123456785", new User(5, "Van Ty", "Diep", "0123456785", "Phu Yen", "12345" ,0));
+        accounts.put("0123456781", new User("655a3582cd47699385f49e81", "Minh Man", "Truong", "0123456781", "Da Nang", "12345" ,1));
+        accounts.put("0123456782", new User("2", "Ngoc Hao", "Le", "0123456782", "Quang Nam", "12345" ,0));
+        accounts.put("0123456783", new User("3", "Kim Nam", "Le", "0123456783", "Da Nang", "12345" ,0));
+        accounts.put("0123456784", new User("4", "Ha Binh", "Le", "0123456784", "Da Nang", "12345" ,0));
+        accounts.put("0123456785", new User("5", "Van Ty", "Diep", "0123456785", "Phu Yen", "12345" ,0));
         try {
             if(!accounts.containsKey(user.getPhoneNum()))
                 throw new Exception("User does not exist!");

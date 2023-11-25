@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.man293.food_ordering_spoon">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application xmlns:tools="http://schemas.android.com/tools"
         android:allowBackup="true"
@@ -15,15 +13,17 @@
         android:theme="@style/Theme.Food_Ordering_Spoon">
         <activity
             android:name=".views.activities.UpdateProductActivity"
-            android:exported="false"/>
+            android:exported="false" />
+
         <activity
             android:name=".views.activities.OrderDetailAdminActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".views.activities.CreateProductActivity"
-            android:exported="true"/>
-        <activity  android:name=".views.activities.StatisticalData"
-            android:exported="false"/>
+            android:exported="true" />
+        <activity
+            android:name=".views.activities.StatisticalData"
+            android:exported="false" />
         <activity
             android:name=".views.activities.ViewHistory"
             android:exported="false" />
@@ -44,9 +44,10 @@
         <activity
             android:name=".views.activities.Intro1Activity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" >
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -64,10 +65,22 @@
             android:exported="false" />
         <activity
             android:name=".views.activities.AdminProductActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".services.NewOrderNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
 </manifest>

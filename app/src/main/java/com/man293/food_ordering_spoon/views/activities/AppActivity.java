@@ -1,29 +1,73 @@
 package com.man293.food_ordering_spoon.views.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.SendTokenToServerTask;
 import com.man293.food_ordering_spoon.views.fragments.AdminFragment;
 import com.man293.food_ordering_spoon.views.fragments.CartFragment;
 import com.man293.food_ordering_spoon.views.fragments.HomeFragment;
 import com.man293.food_ordering_spoon.views.fragments.ProfileFragment;
 import com.man293.food_ordering_spoon.models.User;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AppActivity extends AppCompatActivity {
+    private User currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("auth_info", MODE_PRIVATE );
+        String userJson = sharedPreferences.getString("current_user", null );
+        if(userJson != null) {
+            Gson gson = new Gson();
+            this.currentUser = gson.fromJson(userJson, User.class);
+        }
         // INIT BOTTOM NAVIGATION
         initBottomNavigation();
-    }
 
+
+        /* FIREBASE TOKEN */ //TODO: MOVE THIS CODE TO FIRST ACTIVITY AND SAVE TOKEN TO SHARE PREFERENCE THEN POST WITH LOGIN INFO
+        /* TODO: MUST  NOT DELETE THIS COMMENT
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w("REGIS_TOKEN_FAILED", "Fetching FCM registration token failed", task.getException());
+                        return;
+                    }
+                    String token = task.getResult();
+                    Log.d("_TOKEN", token);
+                    sendRegistrationToServer(token);
+                    Toast.makeText(AppActivity.this, token, Toast.LENGTH_SHORT).show();
+                });
+         */
+    }
+    private void sendRegistrationToServer(String token) {
+        if(currentUser != null && currentUser.isAdmin()) {
+            //todo:change phone number
+            Map<String, Object> payload = new HashMap<>();
+            payload.put("_token", token);
+            String json = new Gson().toJson(payload);
+            // todo : change user id ?
+            String userId = currentUser.getId();
+            String url = getString(R.string.BASE_URL) + getString(R.string.API_SEND_TOKEN__POST, userId);
+            new SendTokenToServerTask(json).execute(url);
+        }
+    }
     private void initBottomNavigation() {
 
         final int HOME = 1;
@@ -36,17 +80,8 @@ public class AppActivity extends AppCompatActivity {
         navigation.add(new MeowBottomNavigation.Model(HOME, R.drawable.bottom_nav_home_icon));
         navigation.add(new MeowBottomNavigation.Model(CART, R.drawable.bottom_nav__shopping_cart_icon));
         navigation.add(new MeowBottomNavigation.Model(PROFILE, R.drawable.bottom_nav_persion_icon));
-
-        /** Check is an administrator */
-        SharedPreferences sharedPreferences = getSharedPreferences("auth_info", MODE_PRIVATE );
-        String userJson = sharedPreferences.getString("current_user", null );
-
-        if(userJson != null) {
-            Gson gson = new Gson();
-            User currentUser = gson.fromJson(userJson, User.class);
-            if(currentUser != null && currentUser.isAdmin()) {
-                navigation.add(new MeowBottomNavigation.Model(ADMIN, R.drawable.bottom_nav_admin_icon));
-            }
+        if(currentUser != null && currentUser.isAdmin()) {
+            navigation.add(new MeowBottomNavigation.Model(ADMIN, R.drawable.bottom_nav_admin_icon));
         }
 
         navigation.setOnClickMenuListener(item -> { });

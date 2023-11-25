@@ -5,7 +5,6 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -72,15 +71,17 @@ public class PaymentActivity extends AppCompatActivity {
             final String itemIds = getIntent().getStringExtra("CART_ITEM_IDS");
 
             String url = getString(R.string.BASE_URL) + getString(R.string.API_CREATE_BILL__POST, userId);
-            new CartInteractiveTasks.CreateBillTask(itemIds, price, address ).setOnBillCreated(isCreated -> {
+            new CartInteractiveTasks.CreateBillTask(itemIds, price, address, "New Order", "1 pizza" ).setOnBillCreated(isCreated -> {
                 BottomSheetDialog dialog = new BottomSheetDialog(PaymentActivity.this, R.style.bottom_sheet_dialog_theme);
                 dialog.setContentView(R.layout.dialog_thanks);
                 dialog.show();
 
                 dialog.findViewById(R.id.close_dialog_button).setOnClickListener(view -> {
-                    dialog.hide();
+                    dialog.dismiss();
                 });
             }).execute(url);
+
+
         });
     }
 

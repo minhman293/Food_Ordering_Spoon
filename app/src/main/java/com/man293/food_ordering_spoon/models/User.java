@@ -1,7 +1,7 @@
 package com.man293.food_ordering_spoon.models;
 
 public class User {
-    private int id;
+    private String id;
     private String firstName;
     private String lastName;
     private String phoneNum;
@@ -17,7 +17,7 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String firstName, String lastName, String phoneNum, String address, int role) {
+    public User(String id, String firstName, String lastName, String phoneNum, String address, int role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,7 +26,7 @@ public class User {
         this.role = role;
     }
 
-    public User(int id, String firstName, String lastName, String phoneNum, String address, String password, int role) {
+    public User(String id, String firstName, String lastName, String phoneNum, String address, String password, int role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,11 +40,11 @@ public class User {
         return this.role == 1;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
