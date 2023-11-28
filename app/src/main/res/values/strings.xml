@@ -16,8 +16,9 @@
     <string name="select_product">Select a product</string>
 
     <!-- API KEY -->
-    <string name="BASE_URL">http://192.168.0.104:5000</string>
 
+    <string name="BASE_URL">http://192.168.1.6:5000</string>
+<!--    <string name="BASE_URL">http://192.168.2.187:5000</string>-->
     <string name="API_CREATE_PRODUCT__POST">/product/create</string>
     <string name="API_CREATE_CATEGORY__POST">/category</string>
 

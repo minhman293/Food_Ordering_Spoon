@@ -1,5 +1,6 @@
 package com.man293.food_ordering_spoon.views.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class CategoryAdapter extends ArrayAdapter<Categories> {
         super(context, resource, objects);
     }
 
+    @SuppressLint("ViewHolder")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

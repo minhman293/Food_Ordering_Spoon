@@ -68,7 +68,7 @@ public class CreateProductTask extends AsyncTask<String, Integer, Product> {
             return new Product();
 
         } catch ( IOException e) {
-            Log.e(TAG, "Error during upload", e);
+            e.printStackTrace();
             return null;
         }
     }
