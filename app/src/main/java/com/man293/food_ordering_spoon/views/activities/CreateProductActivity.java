@@ -61,7 +61,6 @@ public class CreateProductActivity extends AppCompatActivity {
                     showMessage("Something went wrong!");
                 }
             });
-            // lấy từ file string.xml không dùng trực tiếp
             createProductTask.execute( getString(R.string.BASE_URL) + getString(R.string.API_CREATE_PRODUCT__POST ));
         });
     }
