@@ -3,6 +3,7 @@
     package="com.man293.food_ordering_spoon">
 
     <application xmlns:tools="http://schemas.android.com/tools"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,7 +18,9 @@
 
         <activity
             android:name=".views.activities.OrderDetailAdminActivity"
-            android:exported="false" />
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"/>
         <activity
             android:name=".views.activities.CreateProductActivity"
             android:exported="true" />
@@ -71,7 +74,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <service
-            android:name=".services.NewOrderNotificationService"
+            android:name=".services.SpoonFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

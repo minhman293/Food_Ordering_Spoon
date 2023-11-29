@@ -13,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.models.User;
 import com.man293.food_ordering_spoon.views.activities.EditProfile;
 import com.man293.food_ordering_spoon.views.activities.LoginActivity;
 
@@ -34,12 +36,12 @@ public class ProfileFragment extends Fragment {
 
         /** Logout */
         view.findViewById(R.id.button_logout).setOnClickListener(view1 -> {
-            SharedPreferences sharedPreferences = getContext().getSharedPreferences("auth_info", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.remove("current_user");
-            editor.apply();
-            Log.i("CURRENT_USER", sharedPreferences.getString("current_user", "Nothing!"));
-            startActivity(new Intent(getContext(), LoginActivity.class));
+            if(User.removeCurrentUser(getContext())) {
+                Toast.makeText(getContext(), "logged out!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+            } else  {
+                Toast.makeText(getContext(), "Error when logout!", Toast.LENGTH_SHORT).show();
+            }
         });
         return  view;
     }

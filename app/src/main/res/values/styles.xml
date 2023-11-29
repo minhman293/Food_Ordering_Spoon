@@ -51,8 +51,6 @@
     <style name="bottom_sheet_dialog_theme" parent="Theme.AppCompat.Light">
         <item name="android:colorBackground">@color/lightgray_75</item>
     </style>
-
-
     <style name="heading">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>

@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.asynctasks.CartInteractiveTasks;
+import com.man293.food_ordering_spoon.models.User;
+import com.man293.food_ordering_spoon.views.activities.PaymentActivity;
 import com.man293.food_ordering_spoon.views.components.DialogComponent;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.utils.CurrencyUtils;
@@ -118,9 +120,12 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
                     Toast.makeText(getContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
             });
-            // TODO : REPLACE USER ID
-            final String userId = "655a3582cd47699385f49e81";
-            addTask.execute(getContext().getString(R.string.BASE_URL)+ getContext().getString(R.string.API_ADD_TO_CART__POST, userId));
+            User currentUser = User.getCurrentUser(getContext());
+            if(currentUser == null) {
+                    Toast.makeText(getContext(), "LOGIN REQUIRED!", Toast.LENGTH_SHORT).show();
+                    return;
+            }
+            addTask.execute(getContext().getString(R.string.BASE_URL)+ getContext().getString(R.string.API_ADD_TO_CART__POST, currentUser.getId()));
         } catch (Exception ex) {
             Log.d("CHANGE QUANTITY", ex.getMessage());
         };
@@ -147,9 +152,12 @@ public class CartAdapter extends ArrayAdapter<CartItem> {
                 }
             });
             Context context = getContext();
-            // TODO : REPLACE USER ID
-            final String userId = "655a3582cd47699385f49e81";
-            removeTask.execute(context.getString(R.string.BASE_URL) + context.getString(R.string.API_ADD_TO_CART__POST, userId ));
+            User currentUser = User.getCurrentUser(context);
+            if(currentUser == null) {
+                Toast.makeText(getContext(), "LOGIN REQUIRED!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            removeTask.execute(context.getString(R.string.BASE_URL) + context.getString(R.string.API_ADD_TO_CART__POST, currentUser.getId() ));
         });
         deleteDialog.show();
     }

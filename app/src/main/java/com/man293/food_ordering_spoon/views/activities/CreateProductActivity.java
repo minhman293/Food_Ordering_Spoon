@@ -52,7 +52,6 @@ public class CreateProductActivity extends AppCompatActivity {
                 return;
             }
             CreateProductTask createProductTask =  new CreateProductTask(CreateProductActivity.this, selectedFile,
-                    // todo: @all --> id và imageSrc sẽ được thay đổi trên server nên chỉ cần cung cấp để dầy đủ đối số cho constructor
                     new Product("1", "filename.png", "Noodles", "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC", 3, "1")
             );
             createProductTask.setOnProductCreated(product -> {

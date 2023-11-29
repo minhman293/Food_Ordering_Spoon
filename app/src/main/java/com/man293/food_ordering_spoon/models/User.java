@@ -1,5 +1,11 @@
 package com.man293.food_ordering_spoon.models;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.google.gson.Gson;
+
 public class User {
     private String id;
     private String firstName;
@@ -34,6 +40,31 @@ public class User {
         this.address = address;
         this.password = password;
         this.role = role;
+    }
+
+    public static User getCurrentUser(Context context) {
+        if(context == null) return  null;
+        SharedPreferences sharedPreferences = context.getSharedPreferences("auth_info", Context.MODE_PRIVATE);
+        String userJson = sharedPreferences.getString("current_user", null );
+        if(userJson != null) {
+            Gson gson = new Gson();
+            return gson.fromJson(userJson, User.class);
+        }
+        return  null;
+    }
+
+    public static boolean removeCurrentUser(Context context) {
+        try {
+            SharedPreferences sharedPreferences = context.getSharedPreferences("auth_info", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("current_user");
+            editor.apply();
+            Log.i("AFTER_LOGOUT", "CURRENT_USER: " + sharedPreferences.getString("current_user", "Nothing!"));
+            return true;
+        }catch (Exception ex) {
+            Log.e("LOGOUT", ex.getMessage());
+            return false;
+        }
     }
 
     public boolean isAdmin() {

@@ -10,10 +10,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.asynctasks.CartInteractiveTasks;
+import com.man293.food_ordering_spoon.models.User;
 import com.man293.food_ordering_spoon.utils.CurrencyUtils;
 
 import java.text.SimpleDateFormat;
@@ -62,16 +64,19 @@ public class PaymentActivity extends AppCompatActivity {
         AppCompatButton buyNowButton =  findViewById(R.id.buyNowButton);
         buyNowButton.setOnClickListener( v -> {
 
-            // TODO : REPLACE USER ID
-            final String userId = "655a3582cd47699385f49e81";
-            // TODO: REPLACE DEFAULT ADDRESS
-            final String address = addressEdit.getText().toString().trim().isEmpty() ? "Default Address" : addressEdit.getText().toString().trim();
+            User currentUser = User.getCurrentUser(PaymentActivity.this);
+            if(currentUser == null) {
+                Toast.makeText(PaymentActivity.this, "LOGIN REQUIRED!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+//            final String userId = "655a3582cd47699385f49e81";
+            final String address = addressEdit.getText().toString().trim().isEmpty() ? currentUser.getAddress() : addressEdit.getText().toString().trim();
 
             final double price = getIntent().getDoubleExtra("TOTAL_PRICE",0);
             final String itemIds = getIntent().getStringExtra("CART_ITEM_IDS");
 
-            String url = getString(R.string.BASE_URL) + getString(R.string.API_CREATE_BILL__POST, userId);
-            new CartInteractiveTasks.CreateBillTask(itemIds, price, address, "New Order", "1 pizza" ).setOnBillCreated(isCreated -> {
+            String url = getString(R.string.BASE_URL) + getString(R.string.API_CREATE_BILL__POST, currentUser.getId());
+            new CartInteractiveTasks.CreateBillTask(itemIds, price, address, "A new order", "A new order needs to be delivered to " + address ).setOnBillCreated(isCreated -> {
                 BottomSheetDialog dialog = new BottomSheetDialog(PaymentActivity.this, R.style.bottom_sheet_dialog_theme);
                 dialog.setContentView(R.layout.dialog_thanks);
                 dialog.show();

@@ -38,7 +38,7 @@
     <string name="API_CREATE_BILL__POST">/user/%s/create-bill</string>
     <string name="API_GET_BILLS_BY_USER__GET">/user/%s/get-bill</string>
 
-
+    <string name="API_GET_ORDERS__POST">/order</string>
     <!-- %s => image-name  -->
     <string name="PUBLIC_IMAGES">/images/%s</string>
 </resources>

@@ -5,18 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.activities.StatisticalData">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/background_statictical_green"
         >
     </RelativeLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <RelativeLayout
             android:id="@+id/spinner_frame"
             android:layout_width="match_parent"
@@ -128,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/month_statictical"
-                    android:text="$6,000.00"
+                    android:text="Loading..."
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     >
@@ -161,431 +158,26 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/year_statictical"
-                    android:text="$100,000.00"
+                    android:text="Loading..."
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     >
-
                 </TextView>
             </RelativeLayout>
         </LinearLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ListView
+            android:id="@+id/order_list_view"
             android:layout_below="@id/day_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/order_item"
+            android:dividerHeight="10dp"
+            android:paddingVertical="20dp"
+            android:background="@color/white"
+            android:divider="@android:color/transparent"
             >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RelativeLayout
-                    android:id="@+id/bill"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow_component_statictical"
-                    >
-
-                    <ImageView
-                        android:id="@+id/icon_money_bill"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/money_bill_icon"
-                        android:background="@drawable/background_money_icon"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp">
-                    </ImageView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/icon_money_bill"
-                        android:layout_marginRight="5dp">
-
-                        <TextView
-                            android:id="@+id/title_message_bill"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Get money from Le Ngoc Hao"
-                            android:textColor="@color/black"
-                            android:textSize="20sp">
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/time_message_bill"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/title_message_bill"
-                            android:text="21:34 - 20/10/2023"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/code_message_bill"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/time_message_bill"
-                            android:text="code: 1234567890"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:text="+ 24.00$"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/bill1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/bill"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow_component_statictical"
-                    >
-
-                    <ImageView
-                        android:id="@+id/icon_money_bill1"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/money_bill_icon"
-                        android:background="@drawable/background_money_icon"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp">
-                    </ImageView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/icon_money_bill1"
-                        android:layout_marginRight="5dp">
-
-                        <TextView
-                            android:id="@+id/title_message_bill1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Get money from Le Ngoc Hao"
-                            android:textColor="@color/black"
-                            android:textSize="20sp">
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/time_message_bill1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/title_message_bill1"
-                            android:text="21:34 - 20/10/2023"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/code_message_bill1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/time_message_bill1"
-                            android:text="code: 1234567891"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:text="+ 24.00$"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-                    </RelativeLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/bill2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/bill1"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow_component_statictical"
-                    >
-
-                    <ImageView
-                        android:id="@+id/icon_money_bill2"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/money_bill_icon"
-                        android:background="@drawable/background_money_icon"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp">
-                    </ImageView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/icon_money_bill2"
-                        android:layout_marginRight="5dp">
-
-                        <TextView
-                            android:id="@+id/title_message_bill2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Get money from Le Ngoc Hao"
-                            android:textColor="@color/black"
-                            android:textSize="20sp">
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/time_message_bill2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/title_message_bill2"
-                            android:text="21:34 - 20/10/2023"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/code_message_bill2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/time_message_bill2"
-                            android:text="code: 1234567892"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:text="+ 24.00$"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-                    </RelativeLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/bill3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/bill2"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow_component_statictical"
-                    >
-
-                    <ImageView
-                        android:id="@+id/icon_money_bill3"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/money_bill_icon"
-                        android:background="@drawable/background_money_icon"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp">
-                    </ImageView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/icon_money_bill3"
-                        android:layout_marginRight="5dp">
-
-                        <TextView
-                            android:id="@+id/title_message_bill3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Get money from Le Ngoc Hao"
-                            android:textColor="@color/black"
-                            android:textSize="20sp">
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/time_message_bill3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/title_message_bill3"
-                            android:text="21:34 - 20/10/2023"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/code_message_bill3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/time_message_bill3"
-                            android:text="code: 1234567893"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:text="+ 24.00$"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-                    </RelativeLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/bill4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/bill3"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow_component_statictical"
-                    >
-
-                    <ImageView
-                        android:id="@+id/icon_money_bill4"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/money_bill_icon"
-                        android:background="@drawable/background_money_icon"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp">
-                    </ImageView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/icon_money_bill4"
-                        android:layout_marginRight="5dp">
-
-                        <TextView
-                            android:id="@+id/title_message_bill4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Get money from Le Ngoc Hao"
-                            android:textColor="@color/black"
-                            android:textSize="20sp">
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/time_message_bill4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/title_message_bill4"
-                            android:text="21:34 - 20/10/2023"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/code_message_bill4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/time_message_bill4"
-                            android:text="code: 1234567894"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:text="+ 24.00$"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-                    </RelativeLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/bill5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/bill4"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow_component_statictical"
-                    >
-
-                    <ImageView
-                        android:id="@+id/icon_money_bill5"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/money_bill_icon"
-                        android:background="@drawable/background_money_icon"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp">
-                    </ImageView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/icon_money_bill5"
-                        android:layout_marginRight="5dp">
-
-                        <TextView
-                            android:id="@+id/title_message_bill5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Get money from Le Ngoc Hao"
-                            android:textColor="@color/black"
-                            android:textSize="20sp">
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/time_message_bill5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/title_message_bill5"
-                            android:text="21:34 - 20/10/2023"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:id="@+id/code_message_bill5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/time_message_bill5"
-                            android:text="code: 1234567895"
-                            >
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:text="+ 24.00$"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-                    </RelativeLayout>
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-        </ScrollView>
+        </ListView>
 
     </RelativeLayout>
 

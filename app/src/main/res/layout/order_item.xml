@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    >
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:id="@+id/bill"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/shadow_component_statictical"
+        >
+        <ImageView
+            android:id="@+id/icon_money_bill"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/money_bill_icon"
+            android:background="@drawable/background_money_icon"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            tools:ignore="ContentDescription"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/icon_money_bill"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:id="@+id/title_message_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From Le Ngoc Hao"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/time_message_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_message_bill"
+                android:text="21:34 - 20/10/2023"
+                />
+
+            <TextView
+                android:id="@+id/code_message_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time_message_bill"
+                android:text="code: 1234567890"
+                />
+
+            <TextView
+                android:id="@+id/price_message_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:text="+ 24.00$"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

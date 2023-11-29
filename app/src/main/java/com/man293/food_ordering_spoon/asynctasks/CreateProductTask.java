@@ -64,7 +64,6 @@ public class CreateProductTask extends AsyncTask<String, Integer, Product> {
 
             // Lấy phản hồi từ máy chủ
              Log.d(TAG, String.valueOf(response.body()));
-            // todo: @all --> đọc và tạo đối tượng Product với dữ liệu json đc trả về từ server
             return new Product();
 
         } catch ( IOException e) {

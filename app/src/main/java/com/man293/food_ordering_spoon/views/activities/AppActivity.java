@@ -30,19 +30,12 @@ public class AppActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
-
-        SharedPreferences sharedPreferences = getSharedPreferences("auth_info", MODE_PRIVATE );
-        String userJson = sharedPreferences.getString("current_user", null );
-        if(userJson != null) {
-            Gson gson = new Gson();
-            this.currentUser = gson.fromJson(userJson, User.class);
-        }
+        this.currentUser = User.getCurrentUser(AppActivity.this);
         // INIT BOTTOM NAVIGATION
         initBottomNavigation();
 
-
         /* FIREBASE TOKEN */ //TODO: MOVE THIS CODE TO FIRST ACTIVITY AND SAVE TOKEN TO SHARE PREFERENCE THEN POST WITH LOGIN INFO
-        /* TODO: MUST  NOT DELETE THIS COMMENT
+        /* TODO: MUST  NOT DELETE THIS COMMENT */
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
                     if (!task.isSuccessful()) {
@@ -54,15 +47,13 @@ public class AppActivity extends AppCompatActivity {
                     sendRegistrationToServer(token);
                     Toast.makeText(AppActivity.this, token, Toast.LENGTH_SHORT).show();
                 });
-         */
+
     }
     private void sendRegistrationToServer(String token) {
         if(currentUser != null && currentUser.isAdmin()) {
-            //todo:change phone number
             Map<String, Object> payload = new HashMap<>();
             payload.put("_token", token);
             String json = new Gson().toJson(payload);
-            // todo : change user id ?
             String userId = currentUser.getId();
             String url = getString(R.string.BASE_URL) + getString(R.string.API_SEND_TOKEN__POST, userId);
             new SendTokenToServerTask(json).execute(url);
