@@ -47,7 +47,7 @@ public class CreateProductTask extends AsyncTask<String, Integer, Product> {
                     .addFormDataPart("desc", product.getDesc())
                     .addFormDataPart("cost", String.valueOf(product.getPrice()))
                     .addFormDataPart("categoryId", product.getCategoryId())
-                    .addFormDataPart("image", product.getImageSrc(), RequestBody.create(MediaType.parse("image/*"), imageFile))
+                    .addFormDataPart("image", product   .getImageSrc(), RequestBody.create(MediaType.parse("image/*"), imageFile))
                     .build();
 
             Request request = new Request.Builder()
@@ -67,7 +67,7 @@ public class CreateProductTask extends AsyncTask<String, Integer, Product> {
             return new Product();
 
         } catch ( IOException e) {
-            Log.e(TAG, "Error during upload", e);
+            e.printStackTrace();
             return null;
         }
     }

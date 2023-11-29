@@ -83,6 +83,7 @@
 
                 <TextView
                     android:id="@+id/textView6"
+                    android:visibility="invisible"
                     android:layout_width="129dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -92,9 +93,10 @@
                     android:textSize="@dimen/text_large" />
 
                 <CheckBox
+                    android:visibility="invisible"
                     android:button="@android:color/transparent"
                     android:background="@drawable/custom_checkbox"
-                    android:id="@+id/checkBox"
+                    android:id="@+id/checkBoxAll"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"

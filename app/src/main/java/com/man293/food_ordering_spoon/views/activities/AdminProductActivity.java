@@ -2,6 +2,7 @@ package com.man293.food_ordering_spoon.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -10,25 +11,33 @@ import android.widget.Toast;
 
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.AdminCategoryJSON;
+import com.man293.food_ordering_spoon.asynctasks.AdminProductJSON;
+import com.man293.food_ordering_spoon.asynctasks.DeleteProductTask;
+import com.man293.food_ordering_spoon.models.Category;
+import com.man293.food_ordering_spoon.models.Product;
 import com.man293.food_ordering_spoon.views.adapters.CategoryAdapter;
 import com.man293.food_ordering_spoon.views.adapters.ManageAdapter;
 import com.man293.food_ordering_spoon.views.components.DialogComponent;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
-import com.man293.food_ordering_spoon.data.FakeData;
-import com.man293.food_ordering_spoon.models.Categories;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
+
 public class AdminProductActivity extends AppCompatActivity {
     private Spinner spncategory;
-    private CategoryAdapter categoryAdapter;
-    private ListViewComponent listView;
-    private ManageAdapter manageAdapter;
+    public CategoryAdapter categoryAdapter;
+    public ListViewComponent listView;
+    public ArrayList<Product> arrayProduct;
+    public ManageAdapter manageAdapter;
     private Button btnAdd, btnRemove ;
+    public ArrayList <Category> categories;
+    private ArrayList<String> productIds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,25 +46,28 @@ public class AdminProductActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.btn_addNew);
         btnRemove = findViewById(R.id.btn_remove);
         listView = findViewById(R.id.ad_list_item);
+        productIds = new ArrayList<>();
+        categories = new ArrayList<>();
+
+        getlistcategory();
+//        loadData(getString(R.string.API_GET_PRODUCTS__GET));
 
         // Spinner
-        categoryAdapter = new CategoryAdapter(AdminProductActivity.this,R.layout.item_category_selected,getlistcategory());
-        spncategory.setAdapter(categoryAdapter);
         spncategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(AdminProductActivity.this,categoryAdapter.getItem(position).getNamecategory(),Toast.LENGTH_SHORT).show();
-
+                String categoryId = categoryAdapter.getItem(position).getId();
+                if(categoryId.equals("ALL")) {
+                    Log.d("GET_ALL", "True");
+                    loadData(getString(R.string.API_GET_PRODUCTS__GET));
+                } else {
+                    loadData(getString(R.string.API_GET_PRODUCT_BY_CATEGORY__GET, categoryId));
+                }
+                Toast.makeText(AdminProductActivity.this,categoryAdapter.getItem(position).getId(),Toast.LENGTH_SHORT).show();
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
-        //ListViewComponent
-        initListView();
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,25 +84,58 @@ public class AdminProductActivity extends AppCompatActivity {
                         R.style.bottom_sheet_dialog_theme,
                         "Are you sure you want to delete selected items?"
                 );
+                dialog.setOnConfirmListener(() -> {
+                    DeleteProductTask deleteTask = new DeleteProductTask(productIds);
 
+                    deleteTask.execute(getString(R.string.BASE_URL) + getString(R.string.API_DELETE_PRODUCT__POST));
+                    deleteTask.setOnDeleteListener(isDeleted -> {
+
+
+                        for (Product c: new ArrayList<>(arrayProduct)) {
+                            if(productIds.contains(c.getId())) {
+                                arrayProduct.remove(c);
+                                Log.d("REMOVE", c.getId());
+                            } else {
+                                Log.d("NO REMOVE", c.getId());
+                            }
+                        }
+                        manageAdapter.notifyDataSetChanged();
+                        listView.setAdapter(manageAdapter);
+                    });
+
+                });
                 dialog.show();
+
             }
         });
 
     }
 
-    private List<Categories> getlistcategory() {
-        List<Categories> list = new ArrayList<>();
-        list.add(new Categories("All"));
-        list.add(new Categories("Pizza"));
-        list.add(new Categories("Noodles"));
-        list.add(new Categories("Beef"));
-        return list;
+
+    public void getlistcategory()  {
+//        categories = new ArrayList<>();
+        categories.add( new Category("ALL", "All"));
+        categoryAdapter = new CategoryAdapter(
+                AdminProductActivity.this,
+                R.layout.item_category_selected,
+                categories);
+        spncategory.setAdapter(categoryAdapter);
+        new AdminCategoryJSON(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
 
     }
-    private void initListView() {
-        manageAdapter = new ManageAdapter(AdminProductActivity.this, FakeData.getProductItems());
-        listView.setAdapter(manageAdapter);
-        listView.setFullHeight();
+    private void loadData(String url) {
+        arrayProduct = new ArrayList<>();
+        manageAdapter = new ManageAdapter(AdminProductActivity.this,arrayProduct);
+        manageAdapter.setOnCheckListener((isChecked, id) -> {
+            if(isChecked) {
+                productIds.add(id);
+            } else {
+                productIds.remove(id);
+            }
+            Log.d("PRODUCT_IDS", productIds.toString());
+        });
+//        listView.setAdapter(manageAdapter);
+//        listView.setFullHeight();
+        new AdminProductJSON(this).execute(getString(R.string.BASE_URL) + url);
     }
 }
