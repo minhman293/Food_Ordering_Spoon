@@ -1,9 +1,8 @@
 package com.man293.food_ordering_spoon.asynctasks;
 
-import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 
-import com.man293.food_ordering_spoon.models.Categories;
+import com.man293.food_ordering_spoon.models.Category;
 import com.man293.food_ordering_spoon.views.activities.AdminProductActivity;
 
 import org.json.JSONArray;
@@ -53,9 +52,9 @@ public class AdminCategoryJSON extends AsyncTask<String,Void,String> {
 
             for (int i = 0 ; i < array.length() ; i++){
                 JSONObject object_Cate = array.getJSONObject(i);
-                String object_Cate_ID = object_Cate.getString("_id");
-                String object_Cate_name = object_Cate.getString("name");
-                adminProductActivity.arrayCategory.add(new Categories(object_Cate_name));
+                String id = object_Cate.getString("_id");
+                String name = object_Cate.getString("name");
+                adminProductActivity.categories.add(new Category(id, name));
             }
 
         } catch (JSONException e) {

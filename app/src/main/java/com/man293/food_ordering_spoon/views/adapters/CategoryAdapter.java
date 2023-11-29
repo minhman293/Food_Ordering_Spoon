@@ -12,13 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.models.Categories;
+import com.man293.food_ordering_spoon.models.Category;
 
 import java.util.List;
 
-public class CategoryAdapter extends ArrayAdapter<Categories> {
+public class CategoryAdapter extends ArrayAdapter<Category> {
 
-    public CategoryAdapter(@NonNull Context context, int resource, @NonNull List<Categories> objects) {
+    public CategoryAdapter(@NonNull Context context, int resource, @NonNull List<Category> objects) {
         super(context, resource, objects);
     }
 
@@ -29,10 +29,10 @@ public class CategoryAdapter extends ArrayAdapter<Categories> {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category_selected,parent,false);
         TextView tvselected = convertView.findViewById(R.id.tv_selected);
 
-        Categories categories = this.getItem(position);
+        Category categories = this.getItem(position);
         if(categories != null)
         {
-            tvselected.setText(categories.getNamecategory());
+            tvselected.setText(categories.getName());
         }
         return convertView;
 
@@ -43,10 +43,10 @@ public class CategoryAdapter extends ArrayAdapter<Categories> {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category,parent,false);
         TextView tvcategory = convertView.findViewById(R.id.tv_category);
 
-        Categories categories = this.getItem(position);
+        Category categories = this.getItem(position);
         if(categories != null)
         {
-            tvcategory.setText(categories.getNamecategory());
+            tvcategory.setText(categories.getName());
         }
         return convertView;
     }

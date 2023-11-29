@@ -12,16 +12,15 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AdminProductJSON extends AsyncTask <String,Void,String> {
     private AdminProductActivity adminProductActivity;
-
     public AdminProductJSON(AdminProductActivity adminProductActivity) {
         this.adminProductActivity = adminProductActivity;
     }
-
 
     @Override
     protected String doInBackground(String... strings) {
@@ -64,6 +63,7 @@ public class AdminProductJSON extends AsyncTask <String,Void,String> {
             }
                 adminProductActivity.listView.setAdapter(adminProductActivity.manageAdapter);
                 adminProductActivity.listView.setFullHeight();
+                adminProductActivity.manageAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
