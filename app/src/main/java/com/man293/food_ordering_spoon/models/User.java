@@ -67,6 +67,16 @@ public class User {
         }
     }
 
+    public static User saveCurrentUser( Context context ,User user) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("auth_info", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String userJson = gson.toJson(user);
+        editor.putString("current_user", userJson);
+        editor.apply();
+        return user;
+    }
+
     public boolean isAdmin() {
         return this.role == 1;
     }
@@ -121,5 +131,18 @@ public class User {
 
     public int getRole() {
         return role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
     }
 }

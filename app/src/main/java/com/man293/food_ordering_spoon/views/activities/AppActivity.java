@@ -31,6 +31,7 @@ public class AppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
         this.currentUser = User.getCurrentUser(AppActivity.this);
+        Log.d("CURRENT_USER", currentUser.toString());
         // INIT BOTTOM NAVIGATION
         initBottomNavigation();
 
