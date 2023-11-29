@@ -6,31 +6,49 @@ import android.os.Bundle;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.GetHomeCategoryJSON;
 import com.man293.food_ordering_spoon.asynctasks.GetHomeProductJSON;
+import com.man293.food_ordering_spoon.models.HomeCategory;
+import com.man293.food_ordering_spoon.views.adapters.HomeCategoryAdapter;
 import com.man293.food_ordering_spoon.views.adapters.HomeProductAdapter;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.models.HomeProduct;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**TODO: TRUONG MINH MAN */
 
 public class HomeFragment extends Fragment {
 
-    AppCompatButton btnCatAll, btnCatBeef, btnCatPizza, btnCatNoodle;
     TextView txtDetail;
     public ListViewComponent lvHomeProduct;
-    public ArrayList<HomeProduct> arrHomeProduct;
+    public RecyclerView rvHomeCategory;
+    public ArrayList<HomeProduct> arrHomeProduct, originalArrHomeProduct;
+    public ArrayList<HomeCategory> arrHomeCategory;
     public HomeProductAdapter homeProductAdapter;
+    public HomeCategoryAdapter homeCategoryAdapter;
 
     View view;
     public HomeFragment() { }
@@ -44,95 +62,71 @@ public class HomeFragment extends Fragment {
         initialize();
 
         // handle category button click
-        handleAllCategoryClick();
+        homeCategoryAdapter.setOnItemClickListener(new HomeCategoryAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                handleCategoryClick(position);
+            }
+        });
 
-        // new GetProductJson().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,getString(R.string.BASE_URL) + getString(R.string.API_GET_PRODUCTS__GET));
         new GetHomeProductJSON(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_PRODUCTS__GET));
+        new GetHomeCategoryJSON(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
 
         return view;
     }
 
     private void initialize() {
         lvHomeProduct = (ListViewComponent) view.findViewById(R.id.lvHomeProduct);
+        rvHomeCategory = (RecyclerView) view.findViewById(R.id.rvHomeCategory);
+        rvHomeCategory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         // array to contain list product
         arrHomeProduct = new ArrayList<>();
+        originalArrHomeProduct = new ArrayList<>();
+        arrHomeCategory = new ArrayList<>();
 
         // Create the adapter
         homeProductAdapter = new HomeProductAdapter(getContext(), R.layout.single_home_product, arrHomeProduct);
-
-        btnCatAll = view.findViewById(R.id.btn_category_all);
-        btnCatBeef = view.findViewById(R.id.btn_category_beef);
-        btnCatNoodle = view.findViewById(R.id.btn_category_noodles);
-        btnCatPizza = view.findViewById(R.id.btn_category_pizza);
+        homeCategoryAdapter = new HomeCategoryAdapter(getContext(), arrHomeCategory);
 
     }
 
-    private void handleAllCategoryClick() {
-        btnCatAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClickCategory(v);
+    private void handleCategoryClick(int position) {
+        HomeCategory selectedCategory = arrHomeCategory.get(position);
 
-                Unclick(btnCatBeef);
-                Unclick(btnCatNoodle);
-                Unclick(btnCatPizza);
-            }
-        });
+        // Reset all categories
+        for (int i = 0; i < arrHomeCategory.size(); i++) {
+            arrHomeCategory.get(i).setSelected(false);
+        }
 
-        btnCatPizza.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClickCategory(v);
-                txtDetail = view.findViewById(R.id.txt_detail);
-                txtDetail.setText("Results for pizza");
+        // Set the selected category
+        selectedCategory.setSelected(true);
 
-                Unclick(btnCatBeef);
-                Unclick(btnCatAll);
-                Unclick(btnCatNoodle);
-            }
-        });
+        // Notify the adapter that the data has changed
+        homeCategoryAdapter.notifyDataSetChanged();
 
-        btnCatBeef.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClickCategory(v);
-                txtDetail = view.findViewById(R.id.txt_detail);
-                txtDetail.setText("Results for beef");
+        // Update the detail text based on the selected category
+        updateDetailText(selectedCategory.getName());
 
-                Unclick(btnCatPizza);
-                Unclick(btnCatAll);
-                Unclick(btnCatNoodle);
-            }
-        });
-
-        btnCatNoodle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClickCategory(v);
-                txtDetail = view.findViewById(R.id.txt_detail);
-                txtDetail.setText("Results for noodle");
-
-                Unclick(btnCatBeef);
-                Unclick(btnCatAll);
-                Unclick(btnCatPizza);
-            }
-
-        });
+        // update product when click category
+        filterProductsByCategory(selectedCategory.getId());
     }
 
-    public void Unclick(View v){
-        Button btn = (Button) v;
-        int textColor = ContextCompat.getColor(v.getContext(), R.color.jungle_green);
-        btn.setTextColor(textColor);
-        btn.setBackground(getResources().getDrawable(R.drawable.bounder_btn_green));
+    private void filterProductsByCategory(String categoryId) {
+        ArrayList<HomeProduct> filteredProducts = new ArrayList<>();
+        for (HomeProduct product : originalArrHomeProduct) {
+            if (product.getHomeProductCateId().equals(categoryId)) {
+                filteredProducts.add(product);
+            }
+        }
+        // Update the product adapter with the filtered products
+        homeProductAdapter.updateData(filteredProducts);
     }
 
-    public void handleClickCategory(View v){
-        Button btn = (Button) v;
-        int textColor = ContextCompat.getColor(v.getContext(), R.color.white);
-        btn.setTextColor(textColor);
-        btn.setBackground(getResources().getDrawable(R.drawable.bounder_btn_category_hover));
-    };
+    private void updateDetailText(String category) {
+        txtDetail = view.findViewById(R.id.txt_detail);
+        txtDetail.setText("Results for " + category);
+    }
+
 }
 
 

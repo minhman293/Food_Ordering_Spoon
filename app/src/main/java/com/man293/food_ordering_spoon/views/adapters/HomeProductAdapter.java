@@ -97,4 +97,10 @@ public class HomeProductAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+    public void updateData(ArrayList<HomeProduct> newData) {
+        homeProducts.clear();
+        homeProducts.addAll(newData);
+        notifyDataSetChanged();
+    }
 }

@@ -59,11 +59,14 @@ public class GetHomeProductJSON extends AsyncTask<String, Void, String> {
 
             for (int i = 0; i < productJsonArr.length(); i++) {
                 JSONObject home_product = productJsonArr.getJSONObject(i);
+                String home_prod_id = home_product.getString("_id");
                 String home_prod_title = home_product.getString("title");
                 String home_prod_desc = home_product.getString("desc");
                 double home_prod_price = home_product.getDouble("cost");
                 String home_prod_img = home_product.getString("images");
-                homeFragment.arrHomeProduct.add(new HomeProduct(home_prod_title, home_prod_desc, home_prod_price, home_prod_img));
+                String home_prod_cate_id = home_product.getString("categoryId");
+                homeFragment.arrHomeProduct.add(new HomeProduct(home_prod_id, home_prod_title, home_prod_desc, home_prod_price, home_prod_img, home_prod_cate_id));
+                homeFragment.originalArrHomeProduct.add(new HomeProduct(home_prod_id, home_prod_title, home_prod_desc, home_prod_price, home_prod_img, home_prod_cate_id));
             }
 
             // Notify the adapter that the data has changed
@@ -71,7 +74,7 @@ public class GetHomeProductJSON extends AsyncTask<String, Void, String> {
 
             // set adapter for listview
             homeFragment.lvHomeProduct.setAdapter(homeFragment.homeProductAdapter);
-            homeFragment.lvHomeProduct.setFullHeight();
+            homeFragment.lvHomeProduct.setFullHeight2();
 
         } catch (JSONException e) {
             e.printStackTrace();

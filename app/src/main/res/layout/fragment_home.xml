@@ -98,67 +98,18 @@
 
             <!--slide button-->
 
-            <HorizontalScrollView
+            // version2: recyclelistview
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHomeCategory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:divider="@android:color/transparent"
+                android:padding="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/single_home_category" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_category_all"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/bounder_btn_green"
-                        android:text="All"
-                        android:textAllCaps="false"
-                        android:textColor="@color/jungle_green"
-                        android:textSize="20sp"
-                        app:fontFamily="@font/poppins_bold" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_category_pizza"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/bounder_btn_green"
-                        android:text="Pizza"
-                        android:textAllCaps="false"
-                        android:textColor="@color/jungle_green"
-                        android:textSize="20sp"
-                        app:fontFamily="@font/poppins_bold" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_category_noodles"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/bounder_btn_green"
-                        android:text="Noodles"
-                        android:textAllCaps="false"
-                        android:textColor="@color/jungle_green"
-                        android:textSize="20sp"
-                        app:fontFamily="@font/poppins_bold" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_category_beef"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/bounder_btn_green"
-                        android:text="Beef"
-                        android:textAllCaps="false"
-                        android:textColor="@color/jungle_green"
-                        android:textSize="20sp"
-                        app:fontFamily="@font/poppins_bold" />
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
+            <!--product list-->
             <TextView
                 android:id="@+id/txt_detail"
                 android:layout_width="match_parent"
@@ -172,7 +123,7 @@
             <com.man293.food_ordering_spoon.views.components.ListViewComponent
                 android:id="@+id/lvHomeProduct"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="true"
                 android:dividerHeight="10dp"
                 android:divider="@android:color/transparent"/>
