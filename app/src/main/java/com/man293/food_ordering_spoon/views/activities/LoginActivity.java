@@ -1,21 +1,40 @@
 package com.man293.food_ordering_spoon.views.activities;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.data.FakeData;
 import com.man293.food_ordering_spoon.models.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import kotlin.contracts.Returns;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private AppCompatButton nutlogin;
@@ -37,26 +56,16 @@ public class LoginActivity extends AppCompatActivity {
                     usernameEditText = findViewById(R.id.phoneNumberin);
                     passwordEditText = findViewById(R.id.etPassword);
 
-                    String userName =  String.valueOf(usernameEditText.getText()).trim();
+                    String phoneNumber =  String.valueOf(usernameEditText.getText()).trim();
                     String password =  String.valueOf(passwordEditText.getText()).trim();
-                    if(userName.isEmpty() || password.isEmpty()) {
+                    if(phoneNumber.isEmpty() || password.isEmpty()) {
                         throw new Exception("Enter information before confirming!");
                     }
 
-                    User currentUser = FakeData.login(new User(userName, password));
-                    if(currentUser != null) {
-                        SharedPreferences sharedPreferences = getSharedPreferences("auth_info", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        Gson gson = new Gson();
-
-                        String userJson = gson.toJson(currentUser);
-                        editor.putString("current_user", userJson);
-                        editor.apply();
-                        Log.i("CURRENT_USER", userJson);
-
-                        errorMessage.setVisibility(View.INVISIBLE);
-                        startActivity(new  Intent(LoginActivity.this, AppActivity.class));
-                    }
+                    String url = getString(R.string.BASE_URL) + getString(R.string.API_LOGIN__POST);
+                    LoginTask task = new LoginTask(phoneNumber, password, "_token");
+                    task.execute(url);
+                    errorMessage.setVisibility(View.INVISIBLE);
                 } catch (Exception ex) {
                     errorMessage.setText(ex.getMessage());
                     errorMessage.setVisibility(View.VISIBLE);
@@ -66,6 +75,23 @@ public class LoginActivity extends AppCompatActivity {
 
         configureNextButton();
     }
+
+    private void onLoggedIn(User user) {
+        if (user != null) {
+            User.saveCurrentUser(LoginActivity.this, user);
+            startActivity(new Intent(LoginActivity.this, AppActivity.class));
+        } else {
+            Log.e(TAG, "User object is null");
+            // Hiển thị thông báo lỗi
+            showErrorToast("Đăng nhập thất bại. Kiểm tra lại số điện thoại và mật khẩu.");
+        }
+    }
+
+    private void showErrorToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+
     private void configureNextButton() {
         Button nextButton = (Button) findViewById(R.id.changeToSignIn);
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -74,5 +100,67 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity( new Intent(LoginActivity.this, SignInActivity.class));
             }
         });
+    }
+    private class LoginTask extends AsyncTask<String, Integer,User> {
+        private String phoneNumber, password, token;
+
+        public LoginTask(String phoneNumber, String password, String token) {
+            this.phoneNumber = phoneNumber;
+            this.password = password;
+            this.token = token;
+        }
+        @Override
+        protected User doInBackground(String... strings) {
+            try {
+                OkHttpClient client = new OkHttpClient();
+                Map<String, Object> data = new HashMap<>();
+                data.put("phone", this.phoneNumber);
+                data.put("password", this.password);
+                data.put("token", this.token);
+
+                String json = new Gson().toJson(data);
+                RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
+
+                Request req = new Request.Builder()
+                        .url(strings[0])
+                        .post(body)
+                        .build();
+                Response res = client.newCall(req).execute();
+
+                // Kiểm tra giá trị trước khi xử lý phản hồi từ server
+                if (res.body() != null && res.isSuccessful()) {
+                    try {
+                        JSONObject userJson = new JSONObject(res.body().string());
+                        User user = new User(
+                                userJson.getString("_id"),
+                                userJson.getString("firstName"),
+                                userJson.getString("lastName"),
+                                userJson.getString("phone"),
+                                userJson.getString("address"),
+                                userJson.getInt("role")
+                        );
+                        return user;
+                    } catch (JSONException e) {
+                        // Xử lý ngoại lệ khi có lỗi trong quá trình đọc JSON
+                        e.printStackTrace();
+                        return null;
+                    }
+                } else {
+                    // Trả về null khi có lỗi xảy ra trong quá trình kiểm tra dữ liệu
+                    return null;
+                }
+            } catch (Exception e) {
+                // Xử lý ngoại lệ khi có lỗi trong quá trình gửi yêu cầu
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+
+        @Override
+        protected void onPostExecute(User user) {
+            super.onPostExecute(user);
+            onLoggedIn(user);
+        }
     }
 }
