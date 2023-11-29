@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.asynctasks.AdminCategoryJSON;
 import com.man293.food_ordering_spoon.asynctasks.AdminProductJSON;
+import com.man293.food_ordering_spoon.asynctasks.DeleteProductTask;
 import com.man293.food_ordering_spoon.models.Category;
 import com.man293.food_ordering_spoon.models.Product;
 import com.man293.food_ordering_spoon.views.adapters.CategoryAdapter;
@@ -20,9 +21,11 @@ import com.man293.food_ordering_spoon.views.adapters.ManageAdapter;
 import com.man293.food_ordering_spoon.views.components.DialogComponent;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 
 
 public class AdminProductActivity extends AppCompatActivity {
@@ -44,7 +47,7 @@ public class AdminProductActivity extends AppCompatActivity {
         btnRemove = findViewById(R.id.btn_remove);
         listView = findViewById(R.id.ad_list_item);
         productIds = new ArrayList<>();
-
+        categories = new ArrayList<>();
 
         getlistcategory();
 //        loadData(getString(R.string.API_GET_PRODUCTS__GET));
@@ -81,8 +84,28 @@ public class AdminProductActivity extends AppCompatActivity {
                         R.style.bottom_sheet_dialog_theme,
                         "Are you sure you want to delete selected items?"
                 );
+                dialog.setOnConfirmListener(() -> {
+                    DeleteProductTask deleteTask = new DeleteProductTask(productIds);
 
+                    deleteTask.execute(getString(R.string.BASE_URL) + getString(R.string.API_DELETE_PRODUCT__POST));
+                    deleteTask.setOnDeleteListener(isDeleted -> {
+
+
+                        for (Product c: new ArrayList<>(arrayProduct)) {
+                            if(productIds.contains(c.getId())) {
+                                arrayProduct.remove(c);
+                                Log.d("REMOVE", c.getId());
+                            } else {
+                                Log.d("NO REMOVE", c.getId());
+                            }
+                        }
+                        manageAdapter.notifyDataSetChanged();
+                        listView.setAdapter(manageAdapter);
+                    });
+
+                });
                 dialog.show();
+
             }
         });
 
@@ -90,7 +113,7 @@ public class AdminProductActivity extends AppCompatActivity {
 
 
     public void getlistcategory()  {
-        categories = new ArrayList<>();
+//        categories = new ArrayList<>();
         categories.add( new Category("ALL", "All"));
         categoryAdapter = new CategoryAdapter(
                 AdminProductActivity.this,
