@@ -31,6 +31,7 @@
     <string name="API_REGISTER__POST">/auth/register</string>
     <string name="API_LOGIN__POST">/auth/login</string>
     <string name="API_SEND_TOKEN__POST">/auth/%s/fcm-token</string>
+    <string name="API_REMOVE_TOKEN__POST">/auth/%s/rm-fcm-token</string>
 
     <!--  %s => userId   -->
     <string name="API_ADD_TO_CART__POST">/user/%s/addToCart</string>

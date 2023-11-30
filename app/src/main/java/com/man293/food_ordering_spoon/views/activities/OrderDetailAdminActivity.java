@@ -11,9 +11,11 @@ public class OrderDetailAdminActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_detail_admin);
+        findViewById(R.id.BackButton).setOnClickListener(v-> super.onBackPressed());
 
         final String ORDER_ID = getIntent().getStringExtra("ORDER_ID");
-        Log.d("ORDER_ID", ORDER_ID);
         Toast.makeText(OrderDetailAdminActivity.this, "ORDER_ID: " + ORDER_ID, Toast.LENGTH_SHORT).show();
+
+        //todo: get data buy ORDER_ID
     }
 }

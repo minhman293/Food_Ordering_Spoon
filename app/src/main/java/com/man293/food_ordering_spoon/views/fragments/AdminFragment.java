@@ -54,7 +54,6 @@ public class AdminFragment extends Fragment {
                 Toast.makeText(getContext(), "Error when logout!", Toast.LENGTH_SHORT).show();
             }
         });
-
         return view ;
     }
 }

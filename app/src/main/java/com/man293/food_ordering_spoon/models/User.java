@@ -5,6 +5,11 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.SendTokenToServerTask;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private String id;
@@ -55,11 +60,25 @@ public class User {
 
     public static boolean removeCurrentUser(Context context) {
         try {
-            SharedPreferences sharedPreferences = context.getSharedPreferences("auth_info", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.remove("current_user");
-            editor.apply();
-            Log.i("AFTER_LOGOUT", "CURRENT_USER: " + sharedPreferences.getString("current_user", "Nothing!"));
+            if(context == null) return false;
+            SharedPreferences fbTokenShare = context.getSharedPreferences("firebase_token", Context.MODE_PRIVATE);
+            String token = fbTokenShare.getString("fb_token", null);
+            User currentUser= User.getCurrentUser(context);
+            if(currentUser != null ) {
+                if(currentUser.isAdmin()  && token != null) {
+                    Map<String, Object> payload = new HashMap<>();
+                    payload.put("_token", token);
+                    String json = new Gson().toJson(payload);
+                    String userId = currentUser.getId();
+                    String url = context.getString(R.string.BASE_URL) + context.getString(R.string.API_REMOVE_TOKEN__POST, userId);
+                    new SendTokenToServerTask(json).execute(url);
+                }
+                SharedPreferences sharedPreferences = context.getSharedPreferences("auth_info", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("current_user");
+                editor.apply();
+                Log.i("AFTER_LOGOUT", "CURRENT_USER: " + sharedPreferences.getString("current_user", "Nothing!"));
+            }
             return true;
         }catch (Exception ex) {
             Log.e("LOGOUT", ex.getMessage());

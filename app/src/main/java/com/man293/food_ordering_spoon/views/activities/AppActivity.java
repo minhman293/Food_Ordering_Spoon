@@ -3,6 +3,7 @@ package com.man293.food_ordering_spoon.views.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,9 +36,9 @@ public class AppActivity extends AppCompatActivity {
         // INIT BOTTOM NAVIGATION
         initBottomNavigation();
 
-        /* FIREBASE TOKEN */ //TODO: MOVE THIS CODE TO FIRST ACTIVITY AND SAVE TOKEN TO SHARE PREFERENCE THEN POST WITH LOGIN INFO
-        /* TODO: MUST  NOT DELETE THIS COMMENT */
-        FirebaseMessaging.getInstance().getToken()
+        /* FIREBASE TOKEN */
+        if(currentUser != null && currentUser.isAdmin()) {
+            FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
                     if (!task.isSuccessful()) {
                         Log.w("REGIS_TOKEN_FAILED", "Fetching FCM registration token failed", task.getException());
@@ -47,18 +48,21 @@ public class AppActivity extends AppCompatActivity {
                     Log.d("_TOKEN", token);
                     sendRegistrationToServer(token);
                     Toast.makeText(AppActivity.this, token, Toast.LENGTH_SHORT).show();
-                });
 
+                    SharedPreferences sharedPreferences = getSharedPreferences("firebase_token", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("fb_token", token);
+                    editor.apply();
+                });
+        }
     }
     private void sendRegistrationToServer(String token) {
-        if(currentUser != null && currentUser.isAdmin()) {
             Map<String, Object> payload = new HashMap<>();
             payload.put("_token", token);
             String json = new Gson().toJson(payload);
             String userId = currentUser.getId();
             String url = getString(R.string.BASE_URL) + getString(R.string.API_SEND_TOKEN__POST, userId);
             new SendTokenToServerTask(json).execute(url);
-        }
     }
     private void initBottomNavigation() {
 
