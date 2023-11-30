@@ -18,12 +18,16 @@ public class LoaderComponent {
     public void start() {
         if(loader != null) {
             loader.setVisibility(View.VISIBLE);
-            loader.playAnimation();
+            if(!loader.isAnimating()) {
+                loader.playAnimation();
+            }
         }
     }
     public void end() {
         if(loader != null) {
-            loader.pauseAnimation();
+            if(loader.isAnimating()) {
+                loader.pauseAnimation();
+            }
             loader.setVisibility(View.GONE);
         }
     }

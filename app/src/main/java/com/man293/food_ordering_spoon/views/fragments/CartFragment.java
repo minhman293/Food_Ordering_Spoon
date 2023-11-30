@@ -1,5 +1,6 @@
 package com.man293.food_ordering_spoon.views.fragments;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -65,8 +66,9 @@ public class CartFragment extends Fragment {
         }
         CartInteractiveTasks.GetTask task = new CartInteractiveTasks.GetTask();
         task.setOnCartLoadedListener((cart) -> {
-            if(cart != null) {
-                cartAdapter = new CartAdapter(getContext(), cart);
+            Context context = getContext();
+            if(cart != null && context != null) {
+                cartAdapter = new CartAdapter(context, cart);
                 listViewProduct.setAdapter(cartAdapter);
                 cartAdapter.notifyDataSetChanged();
                 listViewProduct.setFullHeight();

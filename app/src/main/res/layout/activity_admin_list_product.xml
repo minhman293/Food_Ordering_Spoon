@@ -104,6 +104,7 @@
                      />
 
             </LinearLayout>
+            <include layout="@layout/loader"/>
             <com.man293.food_ordering_spoon.views.components.ListViewComponent
                 android:id="@+id/ad_list_item"
                 android:layout_width="match_parent"

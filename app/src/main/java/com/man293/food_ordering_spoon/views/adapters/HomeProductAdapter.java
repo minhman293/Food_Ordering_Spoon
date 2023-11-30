@@ -2,13 +2,19 @@ package com.man293.food_ordering_spoon.views.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.imageview.ShapeableImageView;
+import com.man293.food_ordering_spoon.asynctasks.CartInteractiveTasks;
+import com.man293.food_ordering_spoon.models.User;
 import com.man293.food_ordering_spoon.views.activities.ProductActivity;
 import com.man293.food_ordering_spoon.models.HomeProduct;
 import com.man293.food_ordering_spoon.R;
@@ -48,6 +54,10 @@ public class HomeProductAdapter extends BaseAdapter {
     private class ViewHolder {
         ShapeableImageView img;
         TextView name, description, price;
+        ImageButton addToCartBtn;
+
+        public ViewHolder() {
+        }
     }
 
     @Override
@@ -62,7 +72,7 @@ public class HomeProductAdapter extends BaseAdapter {
             holder.description = (TextView) convertView.findViewById(R.id.tv_home_single_product_desc);
             holder.price = (TextView) convertView.findViewById(R.id.tv_home_single_product_price);
             holder.img = (ShapeableImageView) convertView.findViewById(R.id.img_home_single_product);
-
+            holder.addToCartBtn = convertView.findViewById(R.id.btn_add_home_single_product);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -86,6 +96,20 @@ public class HomeProductAdapter extends BaseAdapter {
 
         Picasso.get().load(fullImageUrl).into(holder.img);
 
+        holder.addToCartBtn.setOnClickListener(v -> {
+            User currentUser = User.getCurrentUser(context);
+            if(currentUser == null) {
+                Toast.makeText(context, "Login required!", Toast.LENGTH_SHORT).show();
+                return;
+            };
+            CartInteractiveTasks.AddTask task = new CartInteractiveTasks.AddTask(homeProduct.getHomeProductId(), 1);
+            task.setOnAddedListener((isAdded) -> {
+                if(isAdded) showToastMessage(context);
+                else Toast.makeText(context, "Something went wrong!", Toast.LENGTH_SHORT).show();
+            });
+            task.execute(context.getString(R.string.BASE_URL) + context.getString(R.string.API_ADD_TO_CART__POST, currentUser.getId()));
+        });
+
         convertView.findViewById(R.id.layoutHomeProductItem).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +120,21 @@ public class HomeProductAdapter extends BaseAdapter {
         });
 
         return convertView;
+    }
+
+    public void showToastMessage(Context context) {
+        if(context == null) {
+            Log.d("ADD_TO_CART", "FAIL");
+            return;
+        }
+        View view = LayoutInflater.from(context).inflate(R.layout.custom_toast, null);
+//        TextView text = view.findViewById(R.id.text);
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP |Gravity.FILL_HORIZONTAL,0,20);
+        toast.setView(view);
+        toast.show();
+        Log.d("ADD_TO_CART", "SUCCESS");
     }
 
     public void updateData(ArrayList<HomeProduct> newData) {

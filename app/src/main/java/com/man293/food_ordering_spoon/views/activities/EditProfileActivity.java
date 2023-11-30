@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 
 import com.man293.food_ordering_spoon.R;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

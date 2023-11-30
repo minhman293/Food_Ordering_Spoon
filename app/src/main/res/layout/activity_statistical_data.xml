@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.activities.StatisticalData">
+    tools:context=".views.activities.StatisticalActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -165,10 +165,17 @@
                 </TextView>
             </RelativeLayout>
         </LinearLayout>
-
+        <LinearLayout
+            android:id="@+id/loader_wrapper"
+            android:layout_below="@id/day_frame"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+            <include layout="@layout/loader"  />
+        </LinearLayout>
         <ListView
             android:id="@+id/order_list_view"
-            android:layout_below="@id/day_frame"
+            android:layout_below="@id/loader_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/order_item"

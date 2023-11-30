@@ -15,11 +15,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class AdminCategoryJSON extends AsyncTask<String,Void,String> {
+public class GetAdminCategoryTask extends AsyncTask<String,Void,String> {
 
 
     AdminProductActivity adminProductActivity;
-    public AdminCategoryJSON(AdminProductActivity adminProductActivity) {
+    public GetAdminCategoryTask(AdminProductActivity adminProductActivity) {
         this.adminProductActivity = adminProductActivity;
     }
 

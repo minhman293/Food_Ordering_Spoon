@@ -30,7 +30,7 @@
             android:name=".views.activities.CreateProductActivity"
             android:exported="true" />
         <activity
-            android:name=".views.activities.StatisticalData"
+            android:name=".views.activities.StatisticalActivity"
             android:exported="false" />
         <activity
             android:name=".views.activities.ViewHistory"
@@ -60,7 +60,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activities.EditProfile"
+            android:name=".views.activities.EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".views.activities.MainActivity"

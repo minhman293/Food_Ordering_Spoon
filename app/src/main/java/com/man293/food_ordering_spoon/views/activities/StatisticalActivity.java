@@ -19,6 +19,7 @@ import com.man293.food_ordering_spoon.asynctasks.GetOrderItemTask;
 import com.man293.food_ordering_spoon.models.OrderItem;
 import com.man293.food_ordering_spoon.utils.CurrencyUtils;
 import com.man293.food_ordering_spoon.views.adapters.OrderAdapter;
+import com.man293.food_ordering_spoon.views.components.LoaderComponent;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,7 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StatisticalData extends AppCompatActivity {
+public class StatisticalActivity extends AppCompatActivity {
     private Spinner spn_Month;
     private Spinner spn_Year;
     private ListView orderListView;
@@ -35,6 +36,7 @@ public class StatisticalData extends AppCompatActivity {
     private TextView revenueYear, revenueMonth, monthStatistical, yearStatistical ;
     private boolean isFirstLoad = true;
     private Map<String, Integer> months;
+    private LoaderComponent loader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,10 @@ public class StatisticalData extends AppCompatActivity {
         revenueYear = findViewById(R.id.money_year_statictical);
         monthStatistical = findViewById(R.id.month_statictical);
         yearStatistical  = findViewById(R.id.year_statictical);
+        loader = new LoaderComponent(this);
+        loader.start();
+
+        findViewById(R.id.button_back).setOnClickListener(v -> onBackPressed());
 
         months = new LinkedHashMap<>();
         String[] monthNames = { "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"  };
@@ -58,11 +64,11 @@ public class StatisticalData extends AppCompatActivity {
 
         orderListView.setOnItemClickListener((adapterView, view, i, l) -> {
             try {
-                Intent intent = new Intent(StatisticalData.this, OrderDetailAdminActivity.class);
+                Intent intent = new Intent(StatisticalActivity.this, OrderDetailAdminActivity.class);
                 intent.putExtra("ORDER_ID", ((OrderItem)adapterView.getItemAtPosition(i)).getId());
                 startActivity(intent);
             } catch (Exception ex) {
-                Toast.makeText(StatisticalData.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StatisticalActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -84,7 +90,8 @@ public class StatisticalData extends AppCompatActivity {
                 int selectedYear = (int) parentView.getItemAtPosition(position);
                 yearStatistical.setText(String.valueOf(selectedYear));
                 if(!isFirstLoad) {
-                    loadOrderData(StatisticalData.this, months.get(spn_Month.getSelectedItem()), selectedYear);
+                    loader.start();
+                    loadOrderData(StatisticalActivity.this, months.get(spn_Month.getSelectedItem()), selectedYear);
 //                    Toast.makeText(StatisticalData.this, "LOAD DATA FOR " + selectedYear, Toast.LENGTH_LONG).show();
                 }
             }
@@ -108,7 +115,8 @@ public class StatisticalData extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 String selectedItem = (String) parentView.getItemAtPosition(position);
                 monthStatistical.setText( selectedItem);
-                loadOrderData(StatisticalData.this, months.get(selectedItem), (int) spn_Year.getSelectedItem());
+                loader.start();
+                loadOrderData(StatisticalActivity.this, months.get(selectedItem), (int) spn_Year.getSelectedItem());
 //                Toast.makeText(StatisticalData.this, "LOAD DATA FOR " + months.get(selectedItem), Toast.LENGTH_SHORT).show();
             }
             @Override
@@ -125,7 +133,7 @@ public class StatisticalData extends AppCompatActivity {
             try {
                 this.isFirstLoad = false;
                 this.items = (ArrayList<OrderItem>) data.get("orders");
-                // todo : change to use this.orderAdapter.notifyDataSetChanged();
+                this.loader.end();
                 this.orderAdapter = new OrderAdapter(context, this.items);
                 this.orderListView.setAdapter(this.orderAdapter);
             } catch (Exception ex) {

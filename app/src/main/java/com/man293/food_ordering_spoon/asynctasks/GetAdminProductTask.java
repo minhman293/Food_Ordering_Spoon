@@ -12,13 +12,12 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class AdminProductJSON extends AsyncTask <String,Void,String> {
+public class GetAdminProductTask extends AsyncTask <String,Void,String> {
     private AdminProductActivity adminProductActivity;
-    public AdminProductJSON(AdminProductActivity adminProductActivity) {
+    public GetAdminProductTask(AdminProductActivity adminProductActivity) {
         this.adminProductActivity = adminProductActivity;
     }
 
@@ -61,6 +60,7 @@ public class AdminProductJSON extends AsyncTask <String,Void,String> {
                 String Pro_Category = objectPro.getString("categoryId");
                 adminProductActivity.arrayProduct.add(new Product(Pro_ID,Pro_Image,Pro_Title,Pro_Desc,Pro_Cost,Pro_Category));
             }
+                adminProductActivity.loader.end();
                 adminProductActivity.listView.setAdapter(adminProductActivity.manageAdapter);
                 adminProductActivity.listView.setFullHeight();
                 adminProductActivity.manageAdapter.notifyDataSetChanged();

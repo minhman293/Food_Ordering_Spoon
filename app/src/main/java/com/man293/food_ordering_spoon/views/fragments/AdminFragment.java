@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.models.User;
 import com.man293.food_ordering_spoon.views.activities.AdminProductActivity;
 import com.man293.food_ordering_spoon.views.activities.CreateProductActivity;
-import com.man293.food_ordering_spoon.views.activities.StatisticalData;
+import com.man293.food_ordering_spoon.views.activities.LoginActivity;
+import com.man293.food_ordering_spoon.views.activities.StatisticalActivity;
 
 public class AdminFragment extends Fragment {
     private TextView tvStatistics, tvFoods;
@@ -31,7 +34,7 @@ public class AdminFragment extends Fragment {
         btnAddNew = view.findViewById(R.id.rlAddNew);
 
         tvStatistics.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), StatisticalData.class));
+            startActivity(new Intent(getContext(), StatisticalActivity.class));
         });
 
         tvFoods.setOnClickListener(v-> {
@@ -40,6 +43,16 @@ public class AdminFragment extends Fragment {
 
         btnAddNew.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), CreateProductActivity.class));
+        });
+
+        /** Logout */
+        view.findViewById(R.id.button_logout).setOnClickListener(view1 -> {
+            if(User.removeCurrentUser(getContext())) {
+                Toast.makeText(getContext(), "logged out!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+            } else  {
+                Toast.makeText(getContext(), "Error when logout!", Toast.LENGTH_SHORT).show();
+            }
         });
 
         return view ;

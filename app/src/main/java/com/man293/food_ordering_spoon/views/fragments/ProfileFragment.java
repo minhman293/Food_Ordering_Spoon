@@ -1,13 +1,9 @@
 package com.man293.food_ordering_spoon.views.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +13,7 @@ import android.widget.Toast;
 
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.models.User;
-import com.man293.food_ordering_spoon.views.activities.EditProfile;
+import com.man293.food_ordering_spoon.views.activities.EditProfileActivity;
 import com.man293.food_ordering_spoon.views.activities.LoginActivity;
 
 public class ProfileFragment extends Fragment {
@@ -31,7 +27,7 @@ public class ProfileFragment extends Fragment {
 
         Button bt_edit = view.findViewById(R.id.button_edit);
         bt_edit.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), EditProfile.class));
+            startActivity(new Intent(getContext(), EditProfileActivity.class));
         });
 
         /** Logout */

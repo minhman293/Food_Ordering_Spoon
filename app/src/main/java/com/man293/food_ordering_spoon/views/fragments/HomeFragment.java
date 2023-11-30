@@ -1,31 +1,27 @@
 package com.man293.food_ordering_spoon.views.fragments;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.asynctasks.GetHomeCategoryJSON;
-import com.man293.food_ordering_spoon.asynctasks.GetHomeProductJSON;
+import com.man293.food_ordering_spoon.asynctasks.GetHomeCategoryTask;
+import com.man293.food_ordering_spoon.asynctasks.GetHomeProductTask;
 import com.man293.food_ordering_spoon.models.HomeCategory;
 import com.man293.food_ordering_spoon.views.adapters.HomeCategoryAdapter;
 import com.man293.food_ordering_spoon.views.adapters.HomeProductAdapter;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.models.HomeProduct;
+import com.man293.food_ordering_spoon.views.components.LoaderComponent;
+
 import java.util.ArrayList;
 
 /**TODO: TRUONG MINH MAN */
@@ -38,6 +34,8 @@ public class HomeFragment extends Fragment {
     public ArrayList<HomeCategory> arrHomeCategory;
     public HomeProductAdapter homeProductAdapter;
     public HomeCategoryAdapter homeCategoryAdapter;
+
+    public LoaderComponent loader;
 
     View view;
     public HomeFragment() { }
@@ -58,8 +56,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        new GetHomeProductJSON(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_PRODUCTS__GET));
-        new GetHomeCategoryJSON(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
+        new GetHomeProductTask(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_PRODUCTS__GET));
+        new GetHomeCategoryTask(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
 
         return view;
     }
@@ -72,6 +70,8 @@ public class HomeFragment extends Fragment {
         arrHomeProduct = new ArrayList<>();
         originalArrHomeProduct = new ArrayList<>();
         arrHomeCategory = new ArrayList<>();
+        loader = new LoaderComponent(view);
+        loader.start();
 
         // Create the adapter
         homeProductAdapter = new HomeProductAdapter(getContext(), R.layout.single_home_product, arrHomeProduct);
@@ -109,6 +109,7 @@ public class HomeFragment extends Fragment {
         }
         // Update the product adapter with the filtered products
         homeProductAdapter.updateData(filteredProducts);
+        lvHomeProduct.setFullHeight();
     }
 
     private void updateDetailText(String category) {

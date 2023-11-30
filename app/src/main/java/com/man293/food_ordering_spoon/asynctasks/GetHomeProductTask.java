@@ -15,11 +15,11 @@ import java.net.URL;
 import com.man293.food_ordering_spoon.models.HomeProduct;
 import com.man293.food_ordering_spoon.views.fragments.HomeFragment;
 
-public class GetHomeProductJSON extends AsyncTask<String, Void, String> {
+public class GetHomeProductTask extends AsyncTask<String, Void, String> {
 
     private HomeFragment homeFragment;
 
-    public GetHomeProductJSON(HomeFragment homeFragment) {
+    public GetHomeProductTask(HomeFragment homeFragment) {
         this.homeFragment = homeFragment;
     }
 
@@ -72,9 +72,11 @@ public class GetHomeProductJSON extends AsyncTask<String, Void, String> {
             // Notify the adapter that the data has changed
             homeFragment.homeProductAdapter.notifyDataSetChanged();
 
+            homeFragment.loader.end();
+
             // set adapter for listview
             homeFragment.lvHomeProduct.setAdapter(homeFragment.homeProductAdapter);
-            homeFragment.lvHomeProduct.setFullHeight2();
+            homeFragment.lvHomeProduct.setFullHeight();
 
         } catch (JSONException e) {
             e.printStackTrace();

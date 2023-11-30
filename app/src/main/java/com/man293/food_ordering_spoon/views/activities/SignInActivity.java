@@ -63,7 +63,7 @@ public class SignInActivity extends AppCompatActivity {
                         throw new Exception("Enter information before confirming!");
                     }
 
-                    String url = getString(R.string.BASE_URL) + getString(R.string.API_LOGIN__POST);
+                    String url = getString(R.string.BASE_URL) + getString(R.string.API_REGISTER__POST);
                     SignInActivity.SigninTask task = new SignInActivity.SigninTask(firstName,lastName, phoneNumber,address, password,"token");
                     task.execute(url);
                     errorMessage.setVisibility(View.INVISIBLE);
@@ -159,7 +159,7 @@ public class SignInActivity extends AppCompatActivity {
         } else {
             Log.e(TAG, "User object is null");
             // Hiển thị thông báo lỗi
-            showErrorToast("Đăng nhập thất bại. Kiểm tra lại số điện thoại và mật khẩu.");
+            showErrorToast("Đăng ký thất bại. Kiểm tra lại số điện thoại và mật khẩu.");
         }
     }
 

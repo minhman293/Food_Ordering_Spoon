@@ -84,7 +84,7 @@ public class ProductActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProductActivity.this, HomeFragment.class));
+                onBackPressed();
             }
         });
     }

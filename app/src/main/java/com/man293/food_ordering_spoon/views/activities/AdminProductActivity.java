@@ -6,13 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.asynctasks.AdminCategoryJSON;
-import com.man293.food_ordering_spoon.asynctasks.AdminProductJSON;
+import com.man293.food_ordering_spoon.asynctasks.GetAdminCategoryTask;
+import com.man293.food_ordering_spoon.asynctasks.GetAdminProductTask;
 import com.man293.food_ordering_spoon.asynctasks.DeleteProductTask;
 import com.man293.food_ordering_spoon.models.Category;
 import com.man293.food_ordering_spoon.models.Product;
@@ -20,8 +20,8 @@ import com.man293.food_ordering_spoon.views.adapters.CategoryAdapter;
 import com.man293.food_ordering_spoon.views.adapters.ManageAdapter;
 import com.man293.food_ordering_spoon.views.components.DialogComponent;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
+import com.man293.food_ordering_spoon.views.components.LoaderComponent;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,8 +35,10 @@ public class AdminProductActivity extends AppCompatActivity {
     public ArrayList<Product> arrayProduct;
     public ManageAdapter manageAdapter;
     private Button btnAdd, btnRemove ;
+    private ImageButton goBackButton;
     public ArrayList <Category> categories;
     private ArrayList<String> productIds;
+    public LoaderComponent loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +48,21 @@ public class AdminProductActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.btn_addNew);
         btnRemove = findViewById(R.id.btn_remove);
         listView = findViewById(R.id.ad_list_item);
+        goBackButton = findViewById(R.id.goBackButton);
+        loader = new LoaderComponent(this);
         productIds = new ArrayList<>();
         categories = new ArrayList<>();
 
         getlistcategory();
 //        loadData(getString(R.string.API_GET_PRODUCTS__GET));
 
+        goBackButton.setOnClickListener(v-> onBackPressed());
+
         // Spinner
         spncategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                loader.start();
                 String categoryId = categoryAdapter.getItem(position).getId();
                 if(categoryId.equals("ALL")) {
                     Log.d("GET_ALL", "True");
@@ -63,7 +70,7 @@ public class AdminProductActivity extends AppCompatActivity {
                 } else {
                     loadData(getString(R.string.API_GET_PRODUCT_BY_CATEGORY__GET, categoryId));
                 }
-                Toast.makeText(AdminProductActivity.this,categoryAdapter.getItem(position).getId(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(AdminProductActivity.this,categoryAdapter.getItem(position).getId(),Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -120,7 +127,7 @@ public class AdminProductActivity extends AppCompatActivity {
                 R.layout.item_category_selected,
                 categories);
         spncategory.setAdapter(categoryAdapter);
-        new AdminCategoryJSON(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
+        new GetAdminCategoryTask(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
 
     }
     private void loadData(String url) {
@@ -136,6 +143,6 @@ public class AdminProductActivity extends AppCompatActivity {
         });
 //        listView.setAdapter(manageAdapter);
 //        listView.setFullHeight();
-        new AdminProductJSON(this).execute(getString(R.string.BASE_URL) + url);
+        new GetAdminProductTask(this).execute(getString(R.string.BASE_URL) + url);
     }
 }

@@ -16,11 +16,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class GetHomeCategoryJSON extends AsyncTask<String, Void, String> {
+public class GetHomeCategoryTask extends AsyncTask<String, Void, String> {
 
     private HomeFragment homeFragment;
 
-    public GetHomeCategoryJSON(HomeFragment homeFragment){this.homeFragment = homeFragment;}
+    public GetHomeCategoryTask(HomeFragment homeFragment){this.homeFragment = homeFragment;}
 
     @Override
     protected String doInBackground(String... strings) {
@@ -67,6 +67,7 @@ public class GetHomeCategoryJSON extends AsyncTask<String, Void, String> {
 
             // set adapter
             homeFragment.rvHomeCategory.setAdapter(homeFragment.homeCategoryAdapter);
+            homeFragment.lvHomeProduct.setFullHeight();
 
         } catch (JSONException e) {
             e.printStackTrace();
