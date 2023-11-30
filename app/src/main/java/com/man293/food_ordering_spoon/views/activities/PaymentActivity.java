@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -83,6 +85,10 @@ public class PaymentActivity extends AppCompatActivity {
 
                 dialog.findViewById(R.id.close_dialog_button).setOnClickListener(view -> {
                     dialog.dismiss();
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("isPaid", true);
+                    setResult(Activity.RESULT_OK, resultIntent);
+                    finish();
                 });
             }).execute(url);
 

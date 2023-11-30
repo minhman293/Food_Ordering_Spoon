@@ -1,8 +1,11 @@
 package com.man293.food_ordering_spoon.views.fragments;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -114,10 +117,23 @@ public class CartFragment extends Fragment {
                 Intent paymentIntent = new Intent(getContext(), PaymentActivity.class);
                 paymentIntent.putExtra("TOTAL_PRICE", Double.parseDouble(String.valueOf(subtotalPriceTextView.getTag())));
                 paymentIntent.putExtra("CART_ITEM_IDS", ids.toString());
-                startActivity(paymentIntent);
+                startActivityForResult(paymentIntent, 1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            if (data != null && data.getBooleanExtra("isPaid", false)) {
+                cartAdapter.clear();
+                cartAdapter.notifyDataSetChanged();
+                listViewProduct.setFullHeight();
+                prepareCheckout();
+            }
+        }
     }
 }
