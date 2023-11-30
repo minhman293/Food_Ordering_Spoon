@@ -29,6 +29,7 @@ import com.man293.food_ordering_spoon.models.Category;
 import com.man293.food_ordering_spoon.models.Product;
 import com.man293.food_ordering_spoon.utils.FileUtils;
 import com.man293.food_ordering_spoon.views.components.LoaderComponent;
+import com.man293.food_ordering_spoon.views.fragments.AdminFragment;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class CreateProductActivity extends AppCompatActivity {
     private ShapeableImageView selectImageButton;
     private Spinner spinnerCategory;
     private EditText  editName, editPrice, editDesc;
+    private ImageButton btnBackInCreateProduct;
 
     private ArrayAdapter<Category> categoryAdapter;
 
@@ -54,6 +56,14 @@ public class CreateProductActivity extends AppCompatActivity {
         editName = findViewById(R.id.inputDishName);
         editPrice = findViewById(R.id.inputDishPrice);
         editDesc = findViewById(R.id.inputDishDescr);
+        btnBackInCreateProduct = findViewById(R.id.btnBackInCreateProduct);
+
+        btnBackInCreateProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         initSpinnerCategory();
         selectImageButton.setOnClickListener(new View.OnClickListener() {

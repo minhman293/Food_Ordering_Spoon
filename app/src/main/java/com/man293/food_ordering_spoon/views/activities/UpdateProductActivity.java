@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,12 +18,22 @@ import com.man293.food_ordering_spoon.R;
 public class UpdateProductActivity extends AppCompatActivity {
 
     Button btnUpdateProduct;
+    ImageButton btnBackInUpdateProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_product);
         btnUpdateProduct = (Button) findViewById(R.id.btnUpdateDish);
+        btnBackInUpdateProduct = (ImageButton) findViewById(R.id.btnBackInUpdateProduct);
+
+        btnBackInUpdateProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         btnUpdateProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
