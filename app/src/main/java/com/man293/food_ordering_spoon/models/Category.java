@@ -28,11 +28,8 @@ public class Category {
         this.name = name;
     }
 
-    @Override
+    @Override // override for spinner
     public String toString() {
-        return "Categories{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return this.name;
     }
 }

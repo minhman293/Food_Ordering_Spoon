@@ -1,11 +1,15 @@
 package com.man293.food_ordering_spoon.utils;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 
 import java.io.File;
+import java.io.InputStream;
 
 public class FileUtils {
 
@@ -33,5 +37,19 @@ public class FileUtils {
             e.printStackTrace();
         }
         return null;
+    }
+    public static Bitmap getBitmapFromFile(Context context, Uri fileUri) {
+        try {
+            ContentResolver resolver = context.getContentResolver();
+            InputStream inputStream = resolver.openInputStream(fileUri);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            if (inputStream != null) {
+                inputStream.close();
+            }
+            return bitmap;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -108,6 +108,7 @@ public class AdminProductActivity extends AppCompatActivity {
                         }
                         manageAdapter.notifyDataSetChanged();
                         listView.setAdapter(manageAdapter);
+                        listView.setFullHeight();
                     });
 
                 });

@@ -28,21 +28,16 @@
                 style="@style/heading1"
                 android:layout_gravity="center"/>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/image_rounded"
                 android:id="@+id/imgUpdateFood"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/product_5"
+                android:background="@color/white"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="100dp">
-
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/product_5"/>
-
-            </androidx.cardview.widget.CardView>
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
