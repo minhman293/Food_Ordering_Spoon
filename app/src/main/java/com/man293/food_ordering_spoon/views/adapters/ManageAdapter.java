@@ -21,6 +21,7 @@ import com.man293.food_ordering_spoon.views.activities.UpdateProductActivity;
 import com.man293.food_ordering_spoon.utils.CurrencyUtils;
 import com.man293.food_ordering_spoon.models.Product;
 
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
@@ -78,7 +79,10 @@ public class ManageAdapter extends ArrayAdapter<Product> {
          convertView.findViewById(R.id.edit_button).setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 getContext().startActivity(new Intent(getContext(), UpdateProductActivity.class));
+                 //getContext().startActivity(new Intent(getContext(), UpdateProductActivity.class));
+                 Intent intent = new Intent(context,UpdateProductActivity.class);
+                 intent.putExtra("product",(Serializable) product);
+                 context.startActivity(intent);
              }
          });
         return convertView;
