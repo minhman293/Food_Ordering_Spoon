@@ -19,6 +19,7 @@
 <!--    <string name="BASE_URL">http://192.168.0.104:5000</string>-->
     <string name="BASE_URL">https://spoon-app-service.onrender.com</string>
     <string name="API_CREATE_PRODUCT__POST">/product/create</string>
+    <string name="API_UPDATE_PRODUCT__POST">/product/update/%s</string> <!-- update product: Hào -->
     <string name="API_DELETE_PRODUCT__POST">/product/delete</string>
     <string name="API_CREATE_CATEGORY__POST">/category</string>
 
@@ -30,6 +31,7 @@
 
     <string name="API_REGISTER__POST">/auth/register</string>
     <string name="API_LOGIN__POST">/auth/login</string>
+    <string name="API_USER_UPDATE__POST">/user/%s/update</string> <!-- edit profile: Bình -->
     <string name="API_SEND_TOKEN__POST">/auth/%s/fcm-token</string>
     <string name="API_REMOVE_TOKEN__POST">/auth/%s/rm-fcm-token</string>
 
@@ -38,9 +40,10 @@
     <string name="API_GET_CART_BY_USER__GET">/user/%s/cart</string>
 
     <string name="API_CREATE_BILL__POST">/user/%s/create-bill</string>
-    <string name="API_GET_BILLS_BY_USER__GET">/user/%s/get-bill</string>
+    <string name="API_GET_BILLS_BY_USER__GET">/user/%s/get-bill</string> <!-- Lịch sử đặt hàng: Nam -->
 
     <string name="API_GET_ORDERS__POST">/order</string>
+    <string name="API_GET_ORDER_BY_ID__GET">/order/%s</string> <!-- historical details (admin): Nam -->
     <!-- %s => image-name  -->
     <string name="PUBLIC_IMAGES">/images/%s</string>
 </resources>
