@@ -2,6 +2,7 @@ package com.man293.food_ordering_spoon.views.activities;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -15,12 +16,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInApi;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.data.FakeData;
+import com.man293.food_ordering_spoon.asynctasks.AuthTask;
 import com.man293.food_ordering_spoon.models.User;
+import com.man293.food_ordering_spoon.utils.GoogleSignManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,11 +47,15 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private AppCompatButton nutlogin;
+    private final  int GOOGLE_AUTH_REQUEST_CODE = 2106;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        initGoogleAuth();
 
         // change to home screen
         nutlogin = findViewById(R.id.nutlogin);
@@ -76,14 +89,15 @@ public class LoginActivity extends AppCompatActivity {
         configureNextButton();
     }
 
+
+
     private void onLoggedIn(User user) {
         if (user != null) {
             User.saveCurrentUser(LoginActivity.this, user);
             startActivity(new Intent(LoginActivity.this, AppActivity.class));
         } else {
             Log.e(TAG, "User object is null");
-            // Hiển thị thông báo lỗi
-            showErrorToast("Đăng nhập thất bại. Kiểm tra lại số điện thoại và mật khẩu.");
+            showErrorToast("Something went wrong!.");
         }
     }
 
@@ -137,7 +151,8 @@ public class LoginActivity extends AppCompatActivity {
                                 userJson.getString("lastName"),
                                 userJson.getString("phone"),
                                 userJson.getString("address"),
-                                userJson.getInt("role")
+                                userJson.getInt("role"),
+                                userJson.getString("picture")
                         );
                         return user;
                     } catch (JSONException e) {
@@ -163,4 +178,41 @@ public class LoginActivity extends AppCompatActivity {
             onLoggedIn(user);
         }
     }
+
+    private void initGoogleAuth() {
+        Intent intent = GoogleSignManager
+                .getInstance(this)
+                .setClient(this)
+                .getClient()
+                .getSignInIntent();
+
+        findViewById(R.id.google_auth_btn).setOnClickListener( v -> {
+            startActivityForResult(intent, GOOGLE_AUTH_REQUEST_CODE);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == GOOGLE_AUTH_REQUEST_CODE && data != null) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                if(account != null) {
+                    Log.d("GOOGLE_TOKEN", account.getIdToken());
+                    sendTokenToServer(account.getIdToken());
+                }
+            }catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private void sendTokenToServer(String idToken) {
+        AuthTask task =  new AuthTask(idToken);
+        task.setOnAuthenticated(this::onLoggedIn);
+        task.execute(getString(R.string.BASE_URL)+ getString(R.string.API_GOOGLE_AUTH));
+    }
 }
+
+//todo: sign out, check again when login, display in profile page

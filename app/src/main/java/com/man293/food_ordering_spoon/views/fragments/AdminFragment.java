@@ -12,8 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.man293.food_ordering_spoon.R;
 import com.man293.food_ordering_spoon.models.User;
+import com.man293.food_ordering_spoon.utils.GoogleSignManager;
 import com.man293.food_ordering_spoon.views.activities.AdminProductActivity;
 import com.man293.food_ordering_spoon.views.activities.CreateProductActivity;
 import com.man293.food_ordering_spoon.views.activities.LoginActivity;
@@ -48,6 +50,10 @@ public class AdminFragment extends Fragment {
         /** Logout */
         view.findViewById(R.id.button_logout).setOnClickListener(view1 -> {
             if(User.removeCurrentUser(getContext())) {
+                GoogleSignInClient client=  GoogleSignManager.getInstance(getContext()).getClient();
+                if(client != null) {
+                    client.signOut();
+                }
                 Toast.makeText(getContext(), "logged out!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), LoginActivity.class));
             } else  {
