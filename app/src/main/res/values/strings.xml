@@ -49,4 +49,6 @@
 
     <string name="SERVER_CLIENT_ID">796462595112-dh0v9p6nkpgk6rvh1a2euahirjp4qmll.apps.googleusercontent.com</string>
     <string name="API_GOOGLE_AUTH">/auth/google-auth</string>
+    <string name="API_FACEBOOK_AUTH">/auth/facebook-auth</string>
+    <string name="facebook_app_id">2617365861801173</string>
 </resources>

@@ -16,6 +16,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInApi;
@@ -35,6 +43,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         initGoogleAuth();
+        initFacebookAuth();
 
         // change to home screen
         nutlogin = findViewById(R.id.nutlogin);
@@ -200,7 +210,7 @@ public class LoginActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 if(account != null) {
                     Log.d("GOOGLE_TOKEN", account.getIdToken());
-                    sendTokenToServer(account.getIdToken());
+                    sendTokenToServer(account.getIdToken(), getString(R.string.API_GOOGLE_AUTH));
                 }
             }catch (Exception ex) {
                 ex.printStackTrace();
@@ -208,10 +218,31 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void sendTokenToServer(String idToken) {
+    public void initFacebookAuth() {
+        CallbackManager callbackManager = CallbackManager.Factory.create();
+        FacebookSdk.setApplicationId(getString(R.string.facebook_app_id));
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        findViewById(R.id.facebook_auth_btn).setOnClickListener(v -> {
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email", "user_phone_number"));
+        });
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                AccessToken accessToken = loginResult.getAccessToken();
+//                sendTokenToServer(accessToken.getToken(), getString(R.string.API_FACEBOOK_AUTH));
+                Toast.makeText(LoginActivity.this, accessToken.getToken(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCancel() {  }
+            @Override
+            public void onError(FacebookException error) {  }
+        });
+    }
+    private void sendTokenToServer(String idToken, String path) {
         AuthTask task =  new AuthTask(idToken);
         task.setOnAuthenticated(this::onLoggedIn);
-        task.execute(getString(R.string.BASE_URL)+ getString(R.string.API_GOOGLE_AUTH));
+        task.execute(getString(R.string.BASE_URL)+ path);
     }
 }
 
