@@ -1,9 +1,13 @@
 package com.man293.food_ordering_spoon.views.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,11 +23,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.asynctasks.CreateProductTask;
 import com.man293.food_ordering_spoon.asynctasks.GetCategoryTask;
+import com.man293.food_ordering_spoon.asynctasks.UpdateProductTask;
 import com.man293.food_ordering_spoon.models.Category;
 import com.man293.food_ordering_spoon.models.Product;
+import com.man293.food_ordering_spoon.utils.FileUtils;
 import com.man293.food_ordering_spoon.views.components.LoaderComponent;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 
 public class UpdateProductActivity extends AppCompatActivity {
@@ -38,6 +47,8 @@ public class UpdateProductActivity extends AppCompatActivity {
     ArrayAdapter<Category> categoryAdapter;
     LoaderComponent loader;
     Product product;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private File selectedFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,26 +93,74 @@ public class UpdateProductActivity extends AppCompatActivity {
             }
         });
 
-        btnUpdateProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Creating the LayoutInflater instance
-                LayoutInflater li = getLayoutInflater();
-                //Getting the View object as defined in the update_product_toast.xml
-                // toastUpdateProduct: id of LinearLayout in update_product_toast.xml
-                View layout = li.inflate(R.layout.update_product_toast,(ViewGroup) findViewById(R.id.toastUpdateProduct));
+        // choose image
+        imageView.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        });
 
-                //set a textview at runtime to the custom toast textview
-                TextView text =(TextView)layout.findViewById(R.id.txt_update_product);
+        // update product
+        btnUpdateProduct.setOnClickListener(v -> {
+            try {
+                String productName = $(editTextProName);
+                double productPrice = Double.parseDouble($(editTextProPrice));
+                String productDesc = $(editTextProDes);
+                String categoryId = ((Category) spinnerCategory.getSelectedItem()).getId();
+                if(product.getName().isEmpty() || product.getDesc().isEmpty()) {
+                    Toast.makeText(UpdateProductActivity.this,"Enter name and description", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                //Creating the Toast object
-                Toast toast = new Toast(getApplicationContext());
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.TOP |Gravity.FILL_HORIZONTAL,0,20);
-                toast.setView(layout);
-                toast.show();
+                UpdateProductTask updateProductTask =  new UpdateProductTask(UpdateProductActivity.this, selectedFile,
+                        new Product(product.getId(), product.getImageSrc(), productName, productDesc, productPrice, categoryId )
+                );
+                updateProductTask.setOnProductUpdated(product -> {
+                    if(product != null) {
+                        showMessage();
+                    } else {
+                        Toast.makeText(UpdateProductActivity.this,"Something went wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                updateProductTask.execute( getString(R.string.BASE_URL) + getString(R.string.API_UPDATE_PRODUCT__POST, product.getId() ));
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                Toast.makeText(UpdateProductActivity.this, "Price must be a number!", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(UpdateProductActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private String $(EditText editText) {
+        String text = String.valueOf(editText.getText()).trim();
+        return text.equals("null") ? "" : text;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            selectedFile = FileUtils.uriToFile(UpdateProductActivity.this,selectedImageUri);
+            imageView.setImageBitmap(FileUtils.getBitmapFromFile(UpdateProductActivity.this, selectedImageUri));
+        }
+    }
+    private void showMessage() {
+        //Creating the LayoutInflater instance
+        LayoutInflater li = getLayoutInflater();
+        //Getting the View object as defined in the update_product_toast.xml
+        // toastUpdateProduct: id of LinearLayout in update_product_toast.xml
+        View layout = li.inflate(R.layout.update_product_toast,(ViewGroup) findViewById(R.id.toastUpdateProduct));
+
+        //set a textview at runtime to the custom toast textview
+        TextView text =(TextView)layout.findViewById(R.id.txt_update_product);
+
+        //Creating the Toast object
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP |Gravity.FILL_HORIZONTAL,0,20);
+        toast.setView(layout);
+        toast.show();
     }
     private void initialize(){
         imageView = (ImageView) findViewById(R.id.imgUpdateFood);

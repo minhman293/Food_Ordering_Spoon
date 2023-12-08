@@ -47,7 +47,7 @@ public class AppActivity extends AppCompatActivity {
                     String token = task.getResult();
                     Log.d("_TOKEN", token);
                     sendRegistrationToServer(token);
-                    Toast.makeText(AppActivity.this, token, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(AppActivity.this, token, Toast.LENGTH_SHORT).show();
 
                     SharedPreferences sharedPreferences = getSharedPreferences("firebase_token", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
