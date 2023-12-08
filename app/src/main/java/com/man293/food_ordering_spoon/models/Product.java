@@ -1,6 +1,8 @@
 package com.man293.food_ordering_spoon.models;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String id;
     private String imageSrc;
     private String name;
