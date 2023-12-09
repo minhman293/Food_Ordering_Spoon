@@ -48,7 +48,7 @@ public class SpoonFirebaseMessagingService extends FirebaseMessagingService {
         Uri soundUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.audio);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setSmallIcon(R.mipmap.ic_launcher_v2)
                         .setContentTitle(title)
                         .setContentText(messageBody)
                         .setAutoCancel(true)
