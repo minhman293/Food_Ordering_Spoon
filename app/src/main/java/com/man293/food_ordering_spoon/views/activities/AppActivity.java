@@ -1,11 +1,18 @@
 package com.man293.food_ordering_spoon.views.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -55,7 +62,42 @@ public class AppActivity extends AppCompatActivity {
                     editor.apply();
                 });
         }
+        checkNotificationPermission(AppActivity.this);
     }
+
+    private void checkNotificationPermission(AppActivity appActivity) {
+        if(!NotificationManagerCompat.from(AppActivity.this).areNotificationsEnabled()) {
+            showDialogNotificationPermission();
+        }
+    }
+
+    private void openSettings() {
+        Intent intent;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                    .putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+        } else {
+            intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    .setData(Uri.parse("package:" + getPackageName()));
+        }
+        startActivity(intent);
+    }
+
+    private void showDialogNotificationPermission() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AppActivity.this);
+        builder
+                .setTitle("Notification permission")
+                .setMessage("The app needs notification permission. Please turn on notifications in settings.")
+                .setPositiveButton("Setting", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                    openSettings();
+                })
+                .setNegativeButton("Cancel", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                } )
+                .show();
+    }
+
     private void sendRegistrationToServer(String token) {
             Map<String, Object> payload = new HashMap<>();
             payload.put("_token", token);
