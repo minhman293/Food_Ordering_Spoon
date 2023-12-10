@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.activities.ViewHistory">
+    tools:context=".views.activities.ViewHistoryDetails">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,22 +35,22 @@
                 android:textSize="30sp"
                 app:fontFamily="@font/poppins_bold"
                 android:textColor="@color/black"
-                android:text="History"
+                android:text="History Details"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
         <include layout="@layout/loader"/>
         <com.man293.food_ordering_spoon.views.components.ListViewComponent
-            android:id="@+id/list_history"
+            android:id="@+id/list_historyItems"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:layout_below="@+id/header_history"
             android:divider="@android:color/transparent"
             android:dividerHeight="5dp"
-            android:layout_marginBottom="30dp"
             android:nestedScrollingEnabled="true">
         </com.man293.food_ordering_spoon.views.components.ListViewComponent>
+
     </RelativeLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,16 @@ package com.man293.food_ordering_spoon.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.man293.food_ordering_spoon.R;
+import com.man293.food_ordering_spoon.views.components.ListViewComponent;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 public class OrderDetailAdminActivity extends AppCompatActivity {
+
+    public ListViewComponent listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
