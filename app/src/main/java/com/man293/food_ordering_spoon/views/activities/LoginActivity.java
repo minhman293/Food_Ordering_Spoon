@@ -19,7 +19,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.data.FakeData;
 import com.man293.food_ordering_spoon.models.User;
 
 import org.json.JSONException;
@@ -137,7 +136,8 @@ public class LoginActivity extends AppCompatActivity {
                                 userJson.getString("lastName"),
                                 userJson.getString("phone"),
                                 userJson.getString("address"),
-                                userJson.getInt("role")
+                                userJson.getInt("role"),
+                                userJson.getString("picture")
                         );
                         return user;
                     } catch (JSONException e) {

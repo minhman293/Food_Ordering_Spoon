@@ -126,7 +126,8 @@ public class SignInActivity extends AppCompatActivity {
                                 userJson.getString("lastName"),
                                 userJson.getString("phone"),
                                 userJson.getString("address"),
-                                userJson.getInt("role")
+                                userJson.getInt("role"),
+                                userJson.getString("picture")
                         );
                         return user;
                     } catch (JSONException e) {

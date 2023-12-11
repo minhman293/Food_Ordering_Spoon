@@ -1,8 +1,10 @@
 package com.man293.food_ordering_spoon.views.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import com.man293.food_ordering_spoon.views.activities.EditProfileActivity;
 import com.man293.food_ordering_spoon.views.activities.LoginActivity;
 
 public class ProfileFragment extends Fragment {
+    private final int REQUEST_UPDATE_USER_CODE = 0;
     public ProfileFragment() {  }
 
     private Button bt_edit_profile;
@@ -27,7 +30,7 @@ public class ProfileFragment extends Fragment {
 
         Button bt_edit = view.findViewById(R.id.button_edit);
         bt_edit.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), EditProfileActivity.class));
+            startActivityForResult(new Intent(getContext(), EditProfileActivity.class),REQUEST_UPDATE_USER_CODE);
         });
 
         /** Logout */
@@ -40,5 +43,13 @@ public class ProfileFragment extends Fragment {
             }
         });
         return  view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_UPDATE_USER_CODE && resultCode == Activity.RESULT_OK) {
+
+        }
     }
 }

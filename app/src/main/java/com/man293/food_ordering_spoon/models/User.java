@@ -18,6 +18,7 @@ public class User {
     private String phoneNum;
     private String address;
     private String password;
+    private String picture;
     private int role = 0;
 
     public User() {
@@ -28,16 +29,17 @@ public class User {
         this.password = password;
     }
 
-    public User(String id, String firstName, String lastName, String phoneNum, String address, int role) {
+    public User(String id, String firstName, String lastName, String phoneNum, String address, int role, String picture) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
         this.address = address;
         this.role = role;
+        this.picture = picture;
     }
 
-    public User(String id, String firstName, String lastName, String phoneNum, String address, String password, int role) {
+    public User(String id, String firstName, String lastName, String phoneNum, String address, String password, int role, String picture) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,8 +47,8 @@ public class User {
         this.address = address;
         this.password = password;
         this.role = role;
+        this.picture = picture;
     }
-
     public static User getCurrentUser(Context context) {
         if(context == null) return  null;
         SharedPreferences sharedPreferences = context.getSharedPreferences("auth_info", Context.MODE_PRIVATE);
@@ -152,6 +154,14 @@ public class User {
         return role;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -161,6 +171,7 @@ public class User {
                 ", phoneNum='" + phoneNum + '\'' +
                 ", address='" + address + '\'' +
                 ", password='" + password + '\'' +
+                ", picture='" + picture + '\'' +
                 ", role=" + role +
                 '}';
     }
