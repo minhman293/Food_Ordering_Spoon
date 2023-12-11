@@ -60,6 +60,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/name_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -69,6 +70,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
                 <TextView
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+24.00$"
@@ -117,6 +119,7 @@
                         android:textColor="@color/gray"
                         android:textSize="18sp" />
                     <TextView
+                        android:id="@+id/order_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="21:34 - 20/10/2023"
@@ -139,6 +142,7 @@
                         android:textColor="@color/gray"
                         android:textSize="18sp" />
                     <TextView
+                        android:id="@+id/order_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="213420102023"
@@ -157,14 +161,14 @@
                 android:layout_below="@+id/header_history"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="5dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:nestedScrollingEnabled="true">
             </com.man293.food_ordering_spoon.views.components.ListViewComponent>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="5dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/botron"
                 android:orientation="vertical"
                 android:layout_marginLeft="20dp"
@@ -186,6 +190,7 @@
                         android:textColor="@color/gray"
                         android:textSize="18sp" />
                     <TextView
+                        android:id="@+id/phoneNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0788589842"
@@ -207,6 +212,7 @@
                         android:textColor="@color/gray"
                         android:textSize="18sp"/>
                     <TextView
+                        android:id="@+id/address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"

@@ -16,7 +16,7 @@
     <string name="select_product">Select a product</string>
 
     <!-- API KEY -->
-    <string name="BASE_URL">http://192.168.1.12:5000</string>
+    <string name="BASE_URL">http://192.168.1.9:5000</string>
     <!--    <string name="BASE_URL">https://spoon-app-service.onrender.com</string>-->
     <string name="API_CREATE_PRODUCT__POST">/product/create</string>
     <string name="API_UPDATE_PRODUCT__POST">/product/update/%s</string> <!-- update product: Hào -->
