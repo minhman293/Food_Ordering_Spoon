@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.man293.food_ordering_spoon">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application xmlns:tools="http://schemas.android.com/tools"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,17 +17,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Food_Ordering_Spoon" >
-
+        android:theme="@style/Theme.Food_Ordering_Spoon"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".views.activities.ViewHistoryDetails"
+            android:exported="false" />
         <activity
             android:name=".views.activities.UpdateProductActivity"
             android:exported="false" />
-
         <activity
             android:name=".views.activities.OrderDetailAdminActivity"
+            android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:taskAffinity=""
-            android:excludeFromRecents="true"/>
+            android:taskAffinity="" />
         <activity
             android:name=".views.activities.CreateProductActivity"
             android:exported="true" />
@@ -76,6 +78,7 @@
         <activity
             android:name=".views.activities.AdminProductActivity"
             android:exported="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -88,6 +91,5 @@
             </intent-filter>
         </service>
     </application>
-
 
 </manifest>
