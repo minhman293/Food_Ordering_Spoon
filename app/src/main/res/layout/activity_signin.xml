@@ -4,11 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,7 +28,7 @@
                     android:background="@drawable/spoon_green">
                 </LinearLayout>
             </LinearLayout>
-            <ScrollView
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="510dp"
                 android:background="@color/white">
@@ -198,7 +198,7 @@
                         android:visibility="invisible"
                         android:textSize="15sp"/>
                 </LinearLayout>
-            </ScrollView>
+            </androidx.core.widget.NestedScrollView>
             <LinearLayout
                 android:id="@+id/buttonsignin"
                 android:layout_gravity="center"
@@ -242,5 +242,5 @@
 
             </LinearLayout>
         </LinearLayout>
-</ScrollView>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

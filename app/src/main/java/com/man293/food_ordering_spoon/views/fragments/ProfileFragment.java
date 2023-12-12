@@ -1,9 +1,11 @@
 package com.man293.food_ordering_spoon.views.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -23,21 +25,23 @@ import com.man293.food_ordering_spoon.views.activities.EditProfileActivity;
 import com.man293.food_ordering_spoon.views.activities.LoginActivity;
 
 public class ProfileFragment extends Fragment {
+    private final int REQUEST_UPDATE_USER_CODE = 0;
     public ProfileFragment() {  }
 
     private Button bt_edit_profile;
     private TextView tvName, tvUsername, tvAddress;
     ShapeableImageView ivPicture;
+    private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+        view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
         initView(view);
 
         Button bt_edit = view.findViewById(R.id.button_edit);
         bt_edit.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), EditProfileActivity.class));
+            startActivityForResult(new Intent(getContext(), EditProfileActivity.class),REQUEST_UPDATE_USER_CODE);
         });
 
         /* Logout */
@@ -63,7 +67,7 @@ public class ProfileFragment extends Fragment {
         ivPicture = view.findViewById(R.id.picture);
 
         User user = User.getCurrentUser(getContext());
-        if(user != null) {
+        if (user != null) {
             tvName.setText(user.getFirstName() + " " + user.getLastName());
             tvUsername.setText(user.getPhoneNum());
             tvAddress.setText(user.getAddress());
@@ -72,6 +76,12 @@ public class ProfileFragment extends Fragment {
                     : getContext().getString(R.string.BASE_URL) + getContext().getString(R.string.PUBLIC_IMAGES, user.getPicture());
             Glide.with(getContext()).load(imageSrc).circleCrop().into(ivPicture);
         }
-
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_UPDATE_USER_CODE && resultCode == Activity.RESULT_OK) {
+            initView(view);
+        }
     }
 }
