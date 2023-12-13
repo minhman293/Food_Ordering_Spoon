@@ -95,7 +95,7 @@ public class CartFragment extends Fragment {
                 selectedItems += item.getQuantity();
                 totalPrice += item.getQuantity() * item.getPrice();
             }
-            deliveryFee = 10;
+            deliveryFee = 1;
             checkoutButton.setEnabled(true);
         } else {
             checkoutButton.setEnabled(false);
