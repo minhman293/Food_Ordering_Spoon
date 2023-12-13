@@ -50,12 +50,14 @@ public class GetAdminCategoryTask extends AsyncTask<String,Void,String> {
             JSONObject object = new JSONObject(s);
             JSONArray array = object.getJSONArray("categories");
 
+            adminProductActivity.categories.add( new Category("ALL", "All"));
             for (int i = 0 ; i < array.length() ; i++){
                 JSONObject object_Cate = array.getJSONObject(i);
                 String id = object_Cate.getString("_id");
                 String name = object_Cate.getString("name");
                 adminProductActivity.categories.add(new Category(id, name));
             }
+            adminProductActivity.categoryAdapter.notifyDataSetChanged();
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

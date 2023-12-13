@@ -1,5 +1,6 @@
 package com.man293.food_ordering_spoon.views.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,14 +23,16 @@ import com.man293.food_ordering_spoon.views.components.DialogComponent;
 import com.man293.food_ordering_spoon.views.components.ListViewComponent;
 import com.man293.food_ordering_spoon.views.components.LoaderComponent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 
 public class AdminProductActivity extends AppCompatActivity {
-    private Spinner spncategory;
+    public Spinner spncategory;
     public CategoryAdapter categoryAdapter;
     public ListViewComponent listView;
     public ArrayList<Product> arrayProduct;
@@ -39,7 +42,6 @@ public class AdminProductActivity extends AppCompatActivity {
     public ArrayList <Category> categories;
     private ArrayList<String> productIds;
     public LoaderComponent loader;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,7 @@ public class AdminProductActivity extends AppCompatActivity {
         productIds = new ArrayList<>();
         categories = new ArrayList<>();
 
-        getlistcategory();
+        getListCategory();
 //        loadData(getString(R.string.API_GET_PRODUCTS__GET));
 
         goBackButton.setOnClickListener(v-> onBackPressed());
@@ -79,7 +81,7 @@ public class AdminProductActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminProductActivity.this, CreateProductActivity.class));
+                startActivityForResult(new Intent(AdminProductActivity.this, CreateProductActivity.class), 0);
             }
         });
 
@@ -118,11 +120,8 @@ public class AdminProductActivity extends AppCompatActivity {
         });
 
     }
-
-
-    public void getlistcategory()  {
+    public void getListCategory()  {
 //        categories = new ArrayList<>();
-        categories.add( new Category("ALL", "All"));
         categoryAdapter = new CategoryAdapter(
                 AdminProductActivity.this,
                 R.layout.item_category_selected,
@@ -142,8 +141,22 @@ public class AdminProductActivity extends AppCompatActivity {
             }
             Log.d("PRODUCT_IDS", productIds.toString());
         });
+        manageAdapter.setOnEditButtonClickListener(product -> {
+            Intent intent = new Intent(AdminProductActivity.this,UpdateProductActivity.class);
+            intent.putExtra("product",(Serializable) product);
+            startActivityForResult(intent, 1);
+        });
 //        listView.setAdapter(manageAdapter);
 //        listView.setFullHeight();
         new GetAdminProductTask(this).execute(getString(R.string.BASE_URL) + url);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK) {
+            Log.d("RESULT_CODE", "RESULT_OK");
+            loadData(getString(R.string.API_GET_PRODUCTS__GET));
+        }
     }
 }

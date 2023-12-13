@@ -117,6 +117,9 @@ public class UpdateProductActivity extends AppCompatActivity {
                 updateProductTask.setOnProductUpdated(product -> {
                     if(product != null) {
                         showMessage();
+                        setResult(Activity.RESULT_OK);
+                        finish();
+
                     } else {
                         Toast.makeText(UpdateProductActivity.this,"Something went wrong!", Toast.LENGTH_SHORT).show();
                     }
@@ -142,7 +145,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImageUri = data.getData();
             selectedFile = FileUtils.uriToFile(UpdateProductActivity.this,selectedImageUri);
-            imageView.setImageBitmap(FileUtils.getBitmapFromFile(UpdateProductActivity.this, selectedImageUri));
+            imageView.setImageURI(selectedImageUri);
         }
     }
     private void showMessage() {

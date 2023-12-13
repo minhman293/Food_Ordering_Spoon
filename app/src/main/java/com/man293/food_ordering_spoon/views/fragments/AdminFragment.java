@@ -44,7 +44,8 @@ public class AdminFragment extends Fragment {
         });
 
         btnAddNew.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), CreateProductActivity.class));
+//            startActivity(new Intent(getContext(), CreateProductActivity.class));
+            startActivityForResult(new Intent(getContext(), CreateProductActivity.class), 0);
         });
 
         /** Logout */

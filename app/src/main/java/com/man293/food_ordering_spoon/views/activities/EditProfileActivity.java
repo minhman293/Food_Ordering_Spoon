@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -66,10 +67,12 @@ public class EditProfileActivity extends AppCompatActivity {
         });
         // choose image
         imageView.setOnClickListener(view -> {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+//            Intent intent = new Intent(Intent.ACTION_GET_CONTENT );
+//            intent.setType("image/*");
+//            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, PICK_IMAGE_REQUEST);
+
         });
 
         currentUser = User.getCurrentUser(EditProfileActivity.this);
@@ -94,9 +97,10 @@ public class EditProfileActivity extends AppCompatActivity {
                     }
 
                     String url = getString(R.string.BASE_URL) + getString(R.string.API_USER_UPDATE__POST, currentUser.getId());
-                    EditProfileActivity.UpdateProfileTask task = new EditProfileActivity.UpdateProfileTask(firstName,lastName, phoneNumber,address,
-                             newPassword,
-                            currentPassword, currentUser.getPicture(),selectedFile);
+                    EditProfileActivity.UpdateProfileTask task = new EditProfileActivity.UpdateProfileTask(
+                            firstName,lastName, phoneNumber,address,
+                             newPassword, currentPassword,
+                            currentUser.getPicture(),selectedFile);
                     task.execute(url);
 
                 } catch (Exception ex) {
@@ -195,7 +199,9 @@ public class EditProfileActivity extends AppCompatActivity {
                         return null;
                     }
                 } else {
-                    Log.e(TAG, "Error Body: " + res.body().string());
+                    if(res.body() != null) {
+                        Log.e(TAG, "Error Body: " + res.body().string());
+                    }
                     return null;
                 }
             } catch (Exception e) {
@@ -226,7 +232,8 @@ public class EditProfileActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImageUri = data.getData();
             selectedFile = FileUtils.uriToFile(EditProfileActivity.this,selectedImageUri);
-            imageView.setImageBitmap(FileUtils.getBitmapFromFile(EditProfileActivity.this, selectedImageUri));
+            Log.d("FILE_SELECTED", String.valueOf(selectedFile));
+            imageView.setImageURI(selectedImageUri);
         }
     }
 

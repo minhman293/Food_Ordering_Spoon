@@ -38,18 +38,4 @@ public class FileUtils {
         }
         return null;
     }
-    public static Bitmap getBitmapFromFile(Context context, Uri fileUri) {
-        try {
-            ContentResolver resolver = context.getContentResolver();
-            InputStream inputStream = resolver.openInputStream(fileUri);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            if (inputStream != null) {
-                inputStream.close();
-            }
-            return bitmap;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

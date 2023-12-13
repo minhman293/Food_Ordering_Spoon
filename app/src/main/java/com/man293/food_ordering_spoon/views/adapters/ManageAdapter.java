@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,8 +29,8 @@ public class ManageAdapter extends ArrayAdapter<Product> {
 
 //    private ListViewComponent parent;
     private ArrayList<Product> product_item;
-    private WeakReference<IOnCheckListener> listener;
-
+    private WeakReference<IOnCheckListener> checkListener;
+    private WeakReference<IOnEditButtonClickListener> editListener;
 
     public ManageAdapter(@NonNull Context context,@NonNull ArrayList<Product> products) {
         super(context, R.layout.ad_product_item,  products);
@@ -39,7 +38,11 @@ public class ManageAdapter extends ArrayAdapter<Product> {
     }
 
     public ManageAdapter setOnCheckListener(IOnCheckListener listener) {
-        this.listener = new WeakReference<>(listener);
+        this.checkListener = new WeakReference<>(listener);
+        return this;
+    }
+    public ManageAdapter setOnEditButtonClickListener(IOnEditButtonClickListener listener) {
+        this.editListener = new WeakReference<>(listener);
         return this;
     }
 
@@ -67,7 +70,7 @@ public class ManageAdapter extends ArrayAdapter<Product> {
         CheckBox checkBox = convertView.findViewById(R.id.checkBox);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             Log.d("CLICKED", getItem(position).getName());
-            IOnCheckListener cb = listener.get();
+            IOnCheckListener cb = checkListener.get();
             if(cb != null) {
                 cb.callback(isChecked, getItem(position).getId());
             } else {
@@ -80,9 +83,10 @@ public class ManageAdapter extends ArrayAdapter<Product> {
              @Override
              public void onClick(View view) {
                  //getContext().startActivity(new Intent(getContext(), UpdateProductActivity.class));
-                 Intent intent = new Intent(context,UpdateProductActivity.class);
-                 intent.putExtra("product",(Serializable) product);
-                 context.startActivity(intent);
+                 IOnEditButtonClickListener cb = editListener.get();
+                 if(cb != null) {
+                     cb.callback(product);
+                 }
              }
          });
         return convertView;
@@ -90,5 +94,8 @@ public class ManageAdapter extends ArrayAdapter<Product> {
 
     public interface IOnCheckListener {
         void callback(boolean isChecked, String id);
+    }
+    public interface IOnEditButtonClickListener {
+        void callback(Product product);
     }
 }

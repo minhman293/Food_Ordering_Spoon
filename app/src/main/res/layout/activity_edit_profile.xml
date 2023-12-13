@@ -78,6 +78,8 @@
                         android:layout_width="195dp"
                         android:layout_height="195dp"
                         android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearanceOverlay="@style/image_rounded"
                         android:src="@drawable/profile_picture">
 
                     </com.google.android.material.imageview.ShapeableImageView>
@@ -197,6 +199,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:inputType="textPassword"
                     android:background="@drawable/edittextlogin"
                     android:drawableRight="@drawable/eye2"
                     >
@@ -222,6 +225,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:inputType="textPassword"
                     android:background="@drawable/edittextlogin"
                     android:drawableRight="@drawable/eye2"
                     >
@@ -248,6 +252,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/edittextlogin"
+                    android:inputType="textPassword"
                     android:drawableRight="@drawable/eye2"
                     >
 

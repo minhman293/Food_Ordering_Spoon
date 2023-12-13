@@ -96,6 +96,8 @@ public class CreateProductActivity extends AppCompatActivity {
                 createProductTask.setOnProductCreated(product -> {
                     if(product != null) {
                         showMessage("Add this dish successfully!");
+                        setResult(Activity.RESULT_OK);
+                        finish();
                     } else {
                         Toast.makeText(CreateProductActivity.this,"Something went wrong!", Toast.LENGTH_SHORT).show();
                     }
@@ -120,7 +122,7 @@ public class CreateProductActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImageUri = data.getData();
             selectedFile = FileUtils.uriToFile(CreateProductActivity.this,selectedImageUri);
-            selectImageButton.setImageBitmap(FileUtils.getBitmapFromFile(CreateProductActivity.this, selectedImageUri));
+            selectImageButton.setImageURI(selectedImageUri);
         }
     }
     private void initSpinnerCategory() {
