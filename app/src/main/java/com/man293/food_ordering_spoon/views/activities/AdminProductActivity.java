@@ -55,36 +55,30 @@ public class AdminProductActivity extends AppCompatActivity {
         productIds = new ArrayList<>();
         categories = new ArrayList<>();
 
-        getListCategory();
-//        loadData(getString(R.string.API_GET_PRODUCTS__GET));
-
         goBackButton.setOnClickListener(v-> onBackPressed());
 
         // Spinner
-        spncategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        getListCategory();
+         spncategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 loader.start();
                 String categoryId = categoryAdapter.getItem(position).getId();
                 if(categoryId.equals("ALL")) {
-                    Log.d("GET_ALL", "True");
-                    loadData(getString(R.string.API_GET_PRODUCTS__GET));
+                    getProducts(getString(R.string.API_GET_PRODUCTS__GET));
                 } else {
-                    loadData(getString(R.string.API_GET_PRODUCT_BY_CATEGORY__GET, categoryId));
+                    getProducts(getString(R.string.API_GET_PRODUCT_BY_CATEGORY__GET, categoryId));
                 }
-//                Toast.makeText(AdminProductActivity.this,categoryAdapter.getItem(position).getId(),Toast.LENGTH_SHORT).show();
-            }
+        }
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
-
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(AdminProductActivity.this, CreateProductActivity.class), 0);
             }
         });
-
         btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +112,6 @@ public class AdminProductActivity extends AppCompatActivity {
 
             }
         });
-
     }
     public void getListCategory()  {
 //        categories = new ArrayList<>();
@@ -130,8 +123,9 @@ public class AdminProductActivity extends AppCompatActivity {
         new GetAdminCategoryTask(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
 
     }
-    private void loadData(String url) {
+    private void getProducts(String url) {
         arrayProduct = new ArrayList<>();
+        productIds.clear();
         manageAdapter = new ManageAdapter(AdminProductActivity.this,arrayProduct);
         manageAdapter.setOnCheckListener((isChecked, id) -> {
             if(isChecked) {
@@ -146,8 +140,7 @@ public class AdminProductActivity extends AppCompatActivity {
             intent.putExtra("product",(Serializable) product);
             startActivityForResult(intent, 1);
         });
-//        listView.setAdapter(manageAdapter);
-//        listView.setFullHeight();
+        listView.setAdapter(manageAdapter);
         new GetAdminProductTask(this).execute(getString(R.string.BASE_URL) + url);
     }
 
@@ -155,8 +148,7 @@ public class AdminProductActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK) {
-            Log.d("RESULT_CODE", "RESULT_OK");
-            loadData(getString(R.string.API_GET_PRODUCTS__GET));
+            getProducts(getString(R.string.API_GET_PRODUCTS__GET));
         }
     }
 }

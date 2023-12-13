@@ -1,7 +1,6 @@
 package com.man293.food_ordering_spoon.views.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,9 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.views.activities.UpdateProductActivity;
 import com.man293.food_ordering_spoon.utils.CurrencyUtils;
 import com.man293.food_ordering_spoon.models.Product;
 
-import java.io.Serializable;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class ManageAdapter extends ArrayAdapter<Product> {
@@ -29,21 +25,19 @@ public class ManageAdapter extends ArrayAdapter<Product> {
 
 //    private ListViewComponent parent;
     private ArrayList<Product> product_item;
-    private WeakReference<IOnCheckListener> checkListener;
-    private WeakReference<IOnEditButtonClickListener> editListener;
+    private IOnCheckListener checkListener;
+    private IOnEditButtonClickListener editListener;
 
     public ManageAdapter(@NonNull Context context,@NonNull ArrayList<Product> products) {
         super(context, R.layout.ad_product_item,  products);
         this.product_item = products;
     }
 
-    public ManageAdapter setOnCheckListener(IOnCheckListener listener) {
-        this.checkListener = new WeakReference<>(listener);
-        return this;
+    public void setOnCheckListener(IOnCheckListener listener) {
+        this.checkListener = listener;
     }
-    public ManageAdapter setOnEditButtonClickListener(IOnEditButtonClickListener listener) {
-        this.editListener = new WeakReference<>(listener);
-        return this;
+    public void setOnEditButtonClickListener(IOnEditButtonClickListener listener) {
+        this.editListener = listener;
     }
 
     @NonNull
@@ -70,9 +64,8 @@ public class ManageAdapter extends ArrayAdapter<Product> {
         CheckBox checkBox = convertView.findViewById(R.id.checkBox);
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             Log.d("CLICKED", getItem(position).getName());
-            IOnCheckListener cb = checkListener.get();
-            if(cb != null) {
-                cb.callback(isChecked, getItem(position).getId());
+            if(checkListener != null) {
+                checkListener.callback(isChecked, getItem(position).getId());
             } else {
                 Log.d("CALLBACK", "NULL");
             }
@@ -83,9 +76,8 @@ public class ManageAdapter extends ArrayAdapter<Product> {
              @Override
              public void onClick(View view) {
                  //getContext().startActivity(new Intent(getContext(), UpdateProductActivity.class));
-                 IOnEditButtonClickListener cb = editListener.get();
-                 if(cb != null) {
-                     cb.callback(product);
+                 if(editListener != null) {
+                     editListener.callback(product);
                  }
              }
          });

@@ -9,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.man293.food_ordering_spoon.R;
-import com.man293.food_ordering_spoon.asynctasks.GetAdminProductTask;
 import com.man293.food_ordering_spoon.asynctasks.GetHistoryDetailTask;
 import com.man293.food_ordering_spoon.asynctasks.GetHistoryProductTask;
 import com.man293.food_ordering_spoon.models.History;

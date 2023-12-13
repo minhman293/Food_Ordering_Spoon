@@ -25,7 +25,6 @@ public class ManageHistoryAdapter extends ArrayAdapter<History> {
     private static final int TYPE_MULTIPLE_PRODUCTS = 1;
 
     private ArrayList<History> historyItems;
-    private WeakReference<IOnCheckListener> listener;
 
     public ManageHistoryAdapter(@NonNull Context context, @NonNull ArrayList<History> histories) {
         super(context, 0, histories);
@@ -112,10 +111,6 @@ public class ManageHistoryAdapter extends ArrayAdapter<History> {
         });
 
         return convertView;
-    }
-
-    public interface IOnCheckListener {
-        void callback(boolean isChecked, String id);
     }
 
     public interface ItemClickListener {

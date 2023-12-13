@@ -34,9 +34,8 @@ public class GetAdminCategoryTask extends AsyncTask<String,Void,String> {
             while ((line = bufferedReader.readLine())!= null){
                 content.append(line);
             }
+            inputStreamReader.close();
             bufferedReader.close();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -58,7 +57,6 @@ public class GetAdminCategoryTask extends AsyncTask<String,Void,String> {
                 adminProductActivity.categories.add(new Category(id, name));
             }
             adminProductActivity.categoryAdapter.notifyDataSetChanged();
-
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

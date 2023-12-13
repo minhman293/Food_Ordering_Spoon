@@ -28,17 +28,11 @@ import java.lang.ref.WeakReference;
 public class OrderDetailAdapter extends ArrayAdapter<OrderDetailItem> {
 
     private ArrayList<OrderDetailItem> product_item;
-    private WeakReference<OrderDetailAdapter.IOnCheckListener> listener;
 
 
     public OrderDetailAdapter(@NonNull Context context,@NonNull ArrayList<OrderDetailItem> products) {
         super(context, R.layout.order_detail_admin_item,  products);
         this.product_item = products;
-    }
-
-    public OrderDetailAdapter setOnCheckListener(OrderDetailAdapter.IOnCheckListener listener) {
-        this.listener = new WeakReference<>(listener);
-        return this;
     }
 
     @NonNull
@@ -56,10 +50,6 @@ public class OrderDetailAdapter extends ArrayAdapter<OrderDetailItem> {
         ((TextView) convertView.findViewById(R.id.total)).setText(CurrencyUtils.format((item.getPrice()) * qtt));
 
         return convertView;
-    }
-
-    public interface IOnCheckListener {
-        void callback(boolean isChecked, String id);
     }
 
     private static String truncateString(String input, int maxLength) {

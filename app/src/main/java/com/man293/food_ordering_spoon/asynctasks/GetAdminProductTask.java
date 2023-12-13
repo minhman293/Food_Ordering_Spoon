@@ -1,6 +1,7 @@
 package com.man293.food_ordering_spoon.asynctasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.man293.food_ordering_spoon.models.Product;
 import com.man293.food_ordering_spoon.views.activities.AdminProductActivity;
@@ -32,6 +33,7 @@ public class GetAdminProductTask extends AsyncTask <String,Void,String> {
                 while ((line = bufferedReader.readLine())!= null){
                     content.append(line);
                 }
+                inputStreamReader.close();
                 bufferedReader.close();
 
         } catch (MalformedURLException e) {
@@ -39,7 +41,6 @@ public class GetAdminProductTask extends AsyncTask <String,Void,String> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         return content.toString();
     }
 
@@ -61,7 +62,7 @@ public class GetAdminProductTask extends AsyncTask <String,Void,String> {
                 adminProductActivity.arrayProduct.add(new Product(Pro_ID,Pro_Image,Pro_Title,Pro_Desc,Pro_Cost,Pro_Category));
             }
                 adminProductActivity.loader.end();
-                adminProductActivity.listView.setAdapter(adminProductActivity.manageAdapter);
+//                adminProductActivity.listView.setAdapter(adminProductActivity.manageAdapter);
                 adminProductActivity.listView.setFullHeight();
                 adminProductActivity.manageAdapter.notifyDataSetChanged();
         } catch (JSONException e) {

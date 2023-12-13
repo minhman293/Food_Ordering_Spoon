@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class OrderDetailAdminActivity extends AppCompatActivity implements UpdateUIListener {
+public class OrderDetailAdminActivity extends AppCompatActivity {
 
     public ListViewComponent listView;
     public ArrayList<OrderDetailItem> arrayOD;
@@ -52,21 +52,21 @@ public class OrderDetailAdminActivity extends AppCompatActivity implements Updat
         ORDER_ID = getIntent().getStringExtra("ORDER_ID");
 
         loadData();
-        Toast.makeText(OrderDetailAdminActivity.this, "ORDER_ID: " + ORDER_ID, Toast.LENGTH_SHORT).show();
+        Log.d("ORDER_ID",ORDER_ID);
     }
 
 
     private void loadData() {
         arrayOD = new ArrayList<>();
         adapter = new OrderDetailAdapter(OrderDetailAdminActivity.this,arrayOD);
-        adapter = new OrderDetailAdapter(OrderDetailAdminActivity.this, arrayOD);
+//        adapter = new OrderDetailAdapter(OrderDetailAdminActivity.this, arrayOD);
         listView.setAdapter(adapter);
 //        listView.setAdapter(manageAdapter);
 //        listView.setFullHeight();
         GetOrderDetailTask getOrderDetailTask = new GetOrderDetailTask(this, ORDER_ID, new UpdateUIListener() {
             @Override
             public void onUpdateUI(String lastName, String firstName, double price, String orderDate, String phoneNum, String address) {
-                // Xử lý cập nhật UI tại đây
+                updateUi(lastName, firstName, price, orderDate, phoneNum, address);
             }
         });
         getOrderDetailTask.execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_ORDER_BY_ID__GET, ORDER_ID));
@@ -74,8 +74,7 @@ public class OrderDetailAdminActivity extends AppCompatActivity implements Updat
 //        new GetHistoryDetailTask(this,orderId).execute("http://192.168.1.211:5000/user/655a3582cd47699385f49e81/get-bill?gidzl=0rRvGjT_Vai4GVf0rsD-JW54_qlCPon15aRzISOrAqOKG_qUnpPz5nKL-aZ0PdfDHXVyGsRZ4BKyqdv_JW");
     }
 
-    @Override
-    public void onUpdateUI(String LastName, String FirstName, double Price, String OrderDate, String PhoneNum, String Address) {
+    public void updateUi(String LastName, String FirstName, double Price, String OrderDate, String PhoneNum, String Address) {
         // Cập nhật TextView trong activity từ dữ liệu nhận được
         nameUser.setText("Get Money from " + LastName + " " + FirstName);
         price.setText(CurrencyUtils.format(Price));

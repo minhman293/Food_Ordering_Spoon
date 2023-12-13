@@ -27,19 +27,10 @@ import java.lang.ref.WeakReference;
 public class ViewHistoryDetailsAdapter extends ArrayAdapter<ProductHistory> {
 
     private ArrayList<ProductHistory> product_item;
-    private WeakReference<ViewHistoryDetailsAdapter.IOnCheckListener> listener;
-
-
     public ViewHistoryDetailsAdapter(@NonNull Context context,@NonNull ArrayList<ProductHistory> products) {
         super(context, R.layout.history_card,  products);
         this.product_item = products;
     }
-
-    public ViewHistoryDetailsAdapter setOnCheckListener(ViewHistoryDetailsAdapter.IOnCheckListener listener) {
-        this.listener = new WeakReference<>(listener);
-        return this;
-    }
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
