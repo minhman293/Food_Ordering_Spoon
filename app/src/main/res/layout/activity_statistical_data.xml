@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.StatisticalActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/background_statictical_green"
+        >
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/spinner_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageButton
+                android:id="@+id/button_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_button_white"
+                android:background="@drawable/nut_logout_green"
+                android:padding="15dp"
+                android:layout_marginLeft="10dp">
+
+            </ImageButton>
+
+            <RelativeLayout
+                android:id="@+id/frame_spinner_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/frame_spinner_year"
+                android:layout_centerVertical="true"
+                android:background="@drawable/background_spinner_day"
+                android:layout_marginRight="10dp"
+                >
+
+                <Spinner
+                    android:id="@+id/spinner_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    >
+
+                </Spinner>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/frame_spinner_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/background_spinner_day"
+                android:layout_marginRight="20dp"
+                >
+
+                <Spinner
+                    android:id="@+id/spinner_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    >
+                </Spinner>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/title_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner_frame"
+            android:padding="25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOTAL REVENUE"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                >
+
+            </TextView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/day_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/title_frame">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:padding="15dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shadow_component_statictical"
+                >
+                <TextView
+                    android:id="@+id/month_statictical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Oct 2023"
+                    android:textSize="20sp"
+                    android:textColor="@color/jungle_green">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/money_month_statictical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/month_statictical"
+                    android:text="Loading..."
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    >
+
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shadow_component_statictical"
+                >
+                <TextView
+                    android:id="@+id/year_statictical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="2023"
+                    android:textSize="20sp"
+                    android:textColor="@color/jungle_green">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/money_year_statictical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/year_statictical"
+                    android:text="Loading..."
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    >
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/loader_wrapper"
+            android:layout_below="@id/day_frame"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+            <include layout="@layout/loader"  />
+        </LinearLayout>
+        <ListView
+            android:id="@+id/order_list_view"
+            android:layout_below="@id/loader_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/order_item"
+            android:dividerHeight="10dp"
+            android:paddingVertical="20dp"
+            android:background="@color/white"
+            android:divider="@android:color/transparent"
+            >
+        </ListView>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

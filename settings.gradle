@@ -10,6 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        jcenter()
+
     }
 }
 rootProject.name = "Food_Ordering_Spoon"

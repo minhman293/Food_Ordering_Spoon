@@ -2,22 +2,99 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.man293.food_ordering_spoon">
 
-    <application
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <application xmlns:tools="http://schemas.android.com/tools"
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:icon="@mipmap/ic_launcher_v2"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Food_Ordering_Spoon">
+        android:theme="@style/Theme.Food_Ordering_Spoon"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".views.activities.ViewHistoryDetails"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.UpdateProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.OrderDetailAdminActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
+        <activity
+            android:name=".views.activities.CreateProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.activities.StatisticalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.ViewHistory"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.SignInActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".views.activities.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".views.activities.Intro2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.Intro1Activity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".views.activities.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.activities.AppActivity"
+            android:exported="true" />
+        <activity
+            android:name=".views.activities.ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.AdminProductActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".services.SpoonFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

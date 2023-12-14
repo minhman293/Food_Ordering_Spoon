@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "787651159754",
+    "project_id": "spoon-955a3",
+    "storage_bucket": "spoon-955a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787651159754:android:852bd2226e3423184f7633",
+        "android_client_info": {
+          "package_name": "com.man293.food_ordering_spoon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT0sLVdkV_1I4W1wBXrUgRkk6VSlg2aj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

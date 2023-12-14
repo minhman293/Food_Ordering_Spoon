@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.ViewHistory">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/header_history"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="vertical"
+            android:layout_gravity="right">
+
+            <ImageButton
+                android:id="@+id/button_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_button"
+                android:background="@drawable/nut_logout"
+                android:padding="15dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                app:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black"
+                android:text="History"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <include layout="@layout/loader"/>
+        <com.man293.food_ordering_spoon.views.components.ListViewComponent
+            android:id="@+id/list_history"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            android:layout_below="@+id/header_history"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5dp"
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="true">
+        </com.man293.food_ordering_spoon.views.components.ListViewComponent>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

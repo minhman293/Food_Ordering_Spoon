@@ -1,3 +1,5 @@
+
+
 @rem
 @rem Copyright 2015 the original author or authors.
 @rem
@@ -86,4 +88,6 @@ exit /b 1
 :mainEnd
 if "%OS%"=="Windows_NT" endlocal
 
+
 :omega
+

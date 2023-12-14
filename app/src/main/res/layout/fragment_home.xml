@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.fragments.HomeFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+
+            <!-- top of home -->
+
+            <RelativeLayout
+                android:id="@+id/top_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title_home"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Good for you. Great for life."
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:fontFamily="@font/poppins_bold" />
+
+                <ImageButton
+                    style="@style/icon_button"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/bell_icon_green" />
+
+            </RelativeLayout>
+
+            <!-- search bar-->
+
+            <EditText
+                android:id="@+id/search_bar_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bounder_input"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:hint="What are you looking for?"
+                android:inputType="textPersonName"
+                android:padding="15dp" />
+
+            <!--slider in home: right-to-left-->
+
+            <ViewFlipper
+                android:id="@+id/slider_home"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="15dp"
+                android:autoStart="true"
+                android:flipInterval="2000"
+                android:inAnimation="@anim/slide_in_right"
+                android:outAnimation="@anim/slide_out_left">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/slide_1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/slide_2" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/slide_3" />
+
+            </ViewFlipper>
+
+
+            <TextView
+                android:id="@+id/txt_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Categories"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:fontFamily="@font/poppins_bold" />
+
+            <!--slide button-->
+
+            // version2: recyclelistview
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHomeCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:divider="@android:color/transparent"
+                android:padding="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/single_home_category" />
+
+            <!--product list-->
+            <TextView
+                android:id="@+id/txt_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Top of the week"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:fontFamily="@font/poppins_bold" />
+
+            <include layout="@layout/loader"/>
+            <com.man293.food_ordering_spoon.views.components.ListViewComponent
+                android:id="@+id/lvHomeProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
+                android:dividerHeight="10dp"
+                android:divider="@android:color/transparent"/>
+
+
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </FrameLayout>
