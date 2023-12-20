@@ -42,11 +42,11 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
         holder.btn.setText(homeCategory.getName());
 
         if (homeCategory.isSelected()) {
-            // Handle selected state
+            // handle selected state
             holder.btn.setTextColor(ContextCompat.getColor(context, R.color.white));
             holder.btn.setBackground(ContextCompat.getDrawable(context, R.drawable.bounder_btn_category_hover));
         } else {
-            // Handle unselected state
+            // handle unselected state
             holder.btn.setTextColor(ContextCompat.getColor(context, R.color.jungle_green));
             holder.btn.setBackground(ContextCompat.getDrawable(context, R.drawable.bounder_btn_green));
         }

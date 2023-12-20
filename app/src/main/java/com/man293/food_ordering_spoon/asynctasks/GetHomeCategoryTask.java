@@ -16,6 +16,14 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/*  STEP TO CREATE CATEGORY LIST IN HOMEFRAGMENT
+    1. create RecyclerView in HomeFragment to contain category list
+    2. create arraylist arrHomeCategory in HomeFragment to push in adapter
+    3. create adapter HomeCategoryAdapter, to set adapter for the recyclerview
+    (recyclerview <- adapter <- arraylist <- data(json))
+    4. this asynctask get json data and add to arraylist. then set adapter for the recyclerview
+       the step create adapter (push arraylist to adapter) already done in initialize() in HomeFragment
+*/
 public class GetHomeCategoryTask extends AsyncTask<String, Void, String> {
 
     private HomeFragment homeFragment;

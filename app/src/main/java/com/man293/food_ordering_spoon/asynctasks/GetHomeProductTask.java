@@ -15,6 +15,14 @@ import java.net.URL;
 import com.man293.food_ordering_spoon.models.HomeProduct;
 import com.man293.food_ordering_spoon.views.fragments.HomeFragment;
 
+/*  STEP TO CREATE PRODUCT LIST IN HOMEFRAGMENT
+    1. create ListView in HomeFragment to contain product list
+    2. create arraylist arrHomeProduct in HomeFragment to push in adapter
+    3. create adapter HomeProductAdapter, to set adapter for the listview
+    (listview <- adapter <- arraylist <- data(json))
+    4. this asynctask get json data and add to arraylist. then set adapter for the listview
+       the step create adapter (push arraylist to adapter) already done in initialize() in HomeFragment
+*/
 public class GetHomeProductTask extends AsyncTask<String, Void, String> {
 
     private HomeFragment homeFragment;
@@ -54,7 +62,7 @@ public class GetHomeProductTask extends AsyncTask<String, Void, String> {
             JSONObject object = new JSONObject(s);
             JSONArray productJsonArr = object.getJSONArray("products");
 
-            // Clear existing data
+            // clear existing data
             homeFragment.arrHomeProduct.clear();
 
             for (int i = 0; i < productJsonArr.length(); i++) {
@@ -69,7 +77,7 @@ public class GetHomeProductTask extends AsyncTask<String, Void, String> {
                 homeFragment.originalArrHomeProduct.add(new HomeProduct(home_prod_id, home_prod_title, home_prod_desc, home_prod_price, home_prod_img, home_prod_cate_id));
             }
 
-            // Notify the adapter that the data has changed
+            // notify data changed
             homeFragment.homeProductAdapter.notifyDataSetChanged();
 
             homeFragment.loader.end();

@@ -91,9 +91,10 @@ public class HomeProductAdapter extends BaseAdapter {
         imgPath = imgPath.replaceAll("^/", ""); // Remove leading slash from the image path
 
 
-        // Concatenate base URL with image path
+        // Combine base URL with image path
         String fullImageUrl = baseUrl + "/" + imgPath;
 
+        // Picasso: a library for image download
         Picasso.get().load(fullImageUrl).into(holder.img);
 
         holder.addToCartBtn.setOnClickListener(v -> {

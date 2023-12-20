@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        // set product list and category list in home page
         new GetHomeProductTask(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_PRODUCTS__GET));
         new GetHomeCategoryTask(this).execute(getString(R.string.BASE_URL) + getString(R.string.API_GET_CATEGORIES__GET));
 
@@ -66,14 +67,21 @@ public class HomeFragment extends Fragment {
         lvHomeProduct = (ListViewComponent) view.findViewById(R.id.lvHomeProduct);
         rvHomeCategory = (RecyclerView) view.findViewById(R.id.rvHomeCategory);
         rvHomeCategory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        // array to contain list product
+
+        // initialize array to contain list product (listview <- adapter <- arraylist <- data(json))
         arrHomeProduct = new ArrayList<>();
         originalArrHomeProduct = new ArrayList<>();
         arrHomeCategory = new ArrayList<>();
         loader = new LoaderComponent(view);
         loader.start();
 
-        // Create the adapter
+        /*  EXPLAIN
+            asynctask: get data(json) from internet and set to arraylist
+            adapter: push arraylist to adapter and then listview will set adapter
+            adapter also handle logical event of that listview in HomeFragment
+            for example, when click different category will show different product
+        */
+        // create the adapter
         homeProductAdapter = new HomeProductAdapter(getContext(), R.layout.single_home_product, arrHomeProduct);
         homeCategoryAdapter = new HomeCategoryAdapter(getContext(), arrHomeCategory);
 
@@ -82,18 +90,18 @@ public class HomeFragment extends Fragment {
     private void handleCategoryClick(int position) {
         HomeCategory selectedCategory = arrHomeCategory.get(position);
 
-        // Reset all categories
+        // reset all categories
         for (int i = 0; i < arrHomeCategory.size(); i++) {
             arrHomeCategory.get(i).setSelected(false);
         }
 
-        // Set the selected category
+        // set the selected category
         selectedCategory.setSelected(true);
 
-        // Notify the adapter that the data has changed
+        // notify the adapter that the data has changed
         homeCategoryAdapter.notifyDataSetChanged();
 
-        // Update the detail text based on the selected category
+        // update the detail text based on the selected category
         updateDetailText(selectedCategory.getName());
 
         // update product when click category
@@ -107,7 +115,7 @@ public class HomeFragment extends Fragment {
                 filteredProducts.add(product);
             }
         }
-        // Update the product adapter with the filtered products
+        // update the product adapter with the filtered products
         homeProductAdapter.updateData(filteredProducts);
         lvHomeProduct.setFullHeight();
     }
