@@ -43,6 +43,8 @@ public class ViewHistoryDetails extends AppCompatActivity {
 
         loader.start();
 
+        // Nhận dữ liệu của Order_ID tương ứng từ ViewHistory khi click vào đơn hàng
+        // tương ứng ở ViewHistrory
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("selected_history")) {
             orderId = intent.getStringExtra("selected_history");
@@ -52,10 +54,11 @@ public class ViewHistoryDetails extends AppCompatActivity {
     }
 
     private void loadData() {
+        // Lấy ra user hiện hành để lấy địa chỉ cụ thể cho đường dẫn cho file JSON
+        // trên localhost
         User currentUser = User.getCurrentUser(ViewHistoryDetails.this);
         if(currentUser == null) return;
         arrayPH = new ArrayList<>();
-        adapter = new ViewHistoryDetailsAdapter(ViewHistoryDetails.this,arrayPH);
         adapter = new ViewHistoryDetailsAdapter(ViewHistoryDetails.this, arrayPH);
         listView.setAdapter(adapter);
 //        listView.setAdapter(manageAdapter);
