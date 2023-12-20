@@ -55,21 +55,25 @@ public class LoginActivity extends AppCompatActivity {
                 TextView errorMessage = findViewById(R.id.error_message);
                 // login
                 try {
+                    // Mã để lấy tên đăng nhập và mật khẩu từ các trường nhập liệu
                     TextInputEditText usernameEditText, passwordEditText;
                     usernameEditText = findViewById(R.id.phoneNumberin);
                     passwordEditText = findViewById(R.id.etPassword);
 
                     String phoneNumber =  String.valueOf(usernameEditText.getText()).trim();
                     String password =  String.valueOf(passwordEditText.getText()).trim();
+                    // Kiểm tra xem tên đăng nhập hoặc mật khẩu có trống không
                     if(phoneNumber.isEmpty() || password.isEmpty()) {
                         throw new Exception("Enter information before confirming!");
                     }
-
+                    // Xây dựng URL đăng nhập và thực hiện một nhiệm vụ đăng nhập bất đồng bộ
                     String url = getString(R.string.BASE_URL) + getString(R.string.API_LOGIN__POST);
                     LoginTask task = new LoginTask(phoneNumber, password, "_token");
                     task.execute(url);
+                    // Ẩn bất kỳ thông báo lỗi trước đó
                     errorMessage.setVisibility(View.INVISIBLE);
                 } catch (Exception ex) {
+                    // Xử lý các ngoại lệ (ví dụ: hiển thị thông báo lỗi)
                     errorMessage.setText(ex.getMessage());
                     errorMessage.setVisibility(View.VISIBLE);
                 }
@@ -82,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void onLoggedIn(User user) {
+        // Xử lý sau khi người dùng đã đăng nhập
         if (user != null) {
             User.saveCurrentUser(LoginActivity.this, user);
             startActivity(new Intent(LoginActivity.this, AppActivity.class));
@@ -115,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         @Override
         protected User doInBackground(String... strings) {
+            // Thực hiện đăng nhập bất đồng bộ
             try {
                 OkHttpClient client = new OkHttpClient();
                 Map<String, Object> data = new HashMap<>();
@@ -134,6 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Kiểm tra giá trị trước khi xử lý phản hồi từ server
                 if (res.body() != null && res.isSuccessful()) {
                     try {
+                        // Đọc thông tin người dùng từ JSON
                         JSONObject userJson = new JSONObject(res.body().string());
                         User user = new User(
                                 userJson.getString("_id"),
@@ -164,12 +171,14 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(User user) {
+            // Xử lý sau khi đăng nhập bất đồng bộ hoàn tất
             super.onPostExecute(user);
             onLoggedIn(user);
         }
     }
 
     private void initGoogleAuth() {
+        // Khởi tạo quá trình xác thực Google Sign-In và gán sự kiện click cho nút "google_auth_btn"
         Intent intent = GoogleSignManager
                 .getInstance(this)
                 .setClient(this)
@@ -183,10 +192,12 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        // Xử lý kết quả trả về từ việc đăng nhập Google
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GOOGLE_AUTH_REQUEST_CODE && data != null) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
+                // Lấy thông tin tài khoản Google nếu quá trình đăng nhập thành công
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 if(account != null) {
                     Log.d("GOOGLE_TOKEN", account.getIdToken());
@@ -198,6 +209,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     private void sendTokenToServer(String idToken, String path) {
+        // Gửi mã thông báo Google Sign-In đến server để xác thực
         AuthTask task =  new AuthTask(idToken);
         task.setOnAuthenticated(this::onLoggedIn);
         task.execute(getString(R.string.BASE_URL)+ path);
