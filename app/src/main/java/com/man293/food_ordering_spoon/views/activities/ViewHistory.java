@@ -53,6 +53,9 @@ public class ViewHistory extends AppCompatActivity {
         arrayHistory = new ArrayList<>();
         manageAdapter = new ManageHistoryAdapter(ViewHistory.this,arrayHistory);
         manageAdapter = new ManageHistoryAdapter(ViewHistory.this, arrayHistory);
+
+        // Lấy dữ liệu Order_ID khi click vào item tương ứng và chuyển dữ liệu này 
+        // sang trang ViewHistoryDetails
         manageAdapter.setItemClickListener(history -> {
             // Chuyển sang ViewHistoryDetails Activity và chuyển dữ liệu cần thiết
             Intent intent = new Intent(ViewHistory.this, ViewHistoryDetails.class);
