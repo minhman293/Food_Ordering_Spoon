@@ -13,6 +13,7 @@ import java.io.InputStream;
 
 public class FileUtils {
 
+    // Get path from uri
     public static String getPath(Context context, Uri uri) {
         String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);

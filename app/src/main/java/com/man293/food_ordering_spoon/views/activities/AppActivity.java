@@ -43,7 +43,9 @@ public class AppActivity extends AppCompatActivity {
         // INIT BOTTOM NAVIGATION
         initBottomNavigation();
 
-        /* FIREBASE TOKEN */
+        /* GET FIREBASE TOKEN END SEND TO SERVER
+         * ONLY SEND NOTIFICATION TO ADMIN ACCOUNT
+         */
         if(currentUser != null && currentUser.isAdmin()) {
             FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
@@ -73,10 +75,13 @@ public class AppActivity extends AppCompatActivity {
 
     private void openSettings() {
         Intent intent;
+        /* CHECK API VISION */
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            /* OPEN NOTIFICATION SETTINGS FOR APPLICATION IF >= ANDROID 8 */
             intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
                     .putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
         } else {
+            /* OPEN APPLICATION SETTINGS */
             intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     .setData(Uri.parse("package:" + getPackageName()));
         }
@@ -98,6 +103,7 @@ public class AppActivity extends AppCompatActivity {
                 .show();
     }
 
+    /* SEND TOKEN TO SERVER */
     private void sendRegistrationToServer(String token) {
             Map<String, Object> payload = new HashMap<>();
             payload.put("_token", token);
@@ -124,6 +130,7 @@ public class AppActivity extends AppCompatActivity {
 
         navigation.setOnClickMenuListener(item -> { });
 
+        // REPLACE FRAGMENT BASE ON ID
         navigation.setOnShowListener(item -> getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.App,

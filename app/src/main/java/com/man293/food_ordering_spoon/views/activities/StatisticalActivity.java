@@ -76,6 +76,7 @@ public class StatisticalActivity extends AppCompatActivity {
     private void initYearSpinner() {
         List<Integer> listYear = new ArrayList<>();
         int CURRENT_YEAR = Calendar.getInstance().get(Calendar.YEAR);
+        /* FROM 2021 TO CURRENT_YEAR */
         for (int i = 2021; i <= CURRENT_YEAR; i++) {
             listYear.add(i);
         }
@@ -89,7 +90,7 @@ public class StatisticalActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 int selectedYear = (int) parentView.getItemAtPosition(position);
                 yearStatistical.setText(String.valueOf(selectedYear));
-                if(!isFirstLoad) {
+                if(!isFirstLoad) { // spinner month will load data first
                     loader.start();
                     loadOrderData(StatisticalActivity.this, months.get(spn_Month.getSelectedItem()), selectedYear);
 //                    Toast.makeText(StatisticalData.this, "LOAD DATA FOR " + selectedYear, Toast.LENGTH_LONG).show();
@@ -107,7 +108,7 @@ public class StatisticalActivity extends AppCompatActivity {
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
         for (Map.Entry<String, Integer> entry : months.entrySet()) {
             if(entry.getValue() == currentMonth) {
-                spn_Month.setSelection(adapterMonth.getPosition(entry.getKey()) + 1);
+                spn_Month.setSelection(adapterMonth.getPosition(entry.getKey()) + 1); // because "Calendar.getInstance().get(Calendar.MONTH);" starts from 0
             }
         }
         spn_Month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

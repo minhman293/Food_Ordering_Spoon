@@ -22,6 +22,7 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
+// Receive firebase notifications
 public class SpoonFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NonNull RemoteMessage message) {
@@ -36,7 +37,9 @@ public class SpoonFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
+
     private void sendNotification(String title , String messageBody, String orderId) {
+        // Open OrderDetailAdminActivity when clicking on notification
         Intent intent = new Intent(this, OrderDetailAdminActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("ORDER_ID", orderId);

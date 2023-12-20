@@ -60,6 +60,7 @@ public class User {
         return  null;
     }
 
+    // delete data when logging out
     public static boolean removeCurrentUser(Context context) {
         try {
             if(context == null) return false;
@@ -88,6 +89,8 @@ public class User {
         }
     }
 
+
+    // save user's data after login
     public static User saveCurrentUser( Context context ,User user) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("auth_info", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

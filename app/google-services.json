@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "177919264686",
-    "firebase_url": "https://spoon-b83b3-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "spoon-b83b3",
-    "storage_bucket": "spoon-b83b3.appspot.com"
+    "project_number": "787651159754",
+    "project_id": "spoon-955a3",
+    "storage_bucket": "spoon-955a3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:177919264686:android:2c2cdca3d2e505042c2a3f",
+        "mobilesdk_app_id": "1:787651159754:android:852bd2226e3423184f7633",
         "android_client_info": {
           "package_name": "com.man293.food_ordering_spoon"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA36jOUkq8PGWJ8zqlJAqowEV4Rwft1J6c"
+          "current_key": "AIzaSyBT0sLVdkV_1I4W1wBXrUgRkk6VSlg2aj4"
         }
       ],
       "services": {

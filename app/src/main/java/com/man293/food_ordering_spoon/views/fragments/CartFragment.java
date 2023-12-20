@@ -61,7 +61,6 @@ public class CartFragment extends Fragment {
         return view;
     }
     private void initListView() {
-        // TODO : !REPLACE USER ID
         User currentUser = User.getCurrentUser(getContext());
         if(currentUser == null) {
             Toast.makeText(getContext(), "LOGIN REQUIRED!", Toast.LENGTH_SHORT).show();
@@ -129,6 +128,7 @@ public class CartFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             if (data != null && data.getBooleanExtra("isPaid", false)) {
+                // clear cart after checkout
                 cartAdapter.clear();
                 cartAdapter.notifyDataSetChanged();
                 listViewProduct.setFullHeight();

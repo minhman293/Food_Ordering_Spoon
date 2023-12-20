@@ -64,9 +64,10 @@ public class AdminProductActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 loader.start();
                 String categoryId = categoryAdapter.getItem(position).getId();
+                // tải về tất cá sp nếu giá trị là "All"
                 if(categoryId.equals("ALL")) {
                     getProducts(getString(R.string.API_GET_PRODUCTS__GET));
-                } else {
+                } else { // tải sp theo danh mục sp
                     getProducts(getString(R.string.API_GET_PRODUCT_BY_CATEGORY__GET, categoryId));
                 }
         }
@@ -82,11 +83,13 @@ public class AdminProductActivity extends AppCompatActivity {
         btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Xác nhận xóa
                 DialogComponent dialog = new DialogComponent(
                         AdminProductActivity.this,
                         R.style.bottom_sheet_dialog_theme,
                         "Are you sure you want to delete selected items?"
                 );
+                // sự kiện xảy ra khi click vào "Xóa" trên hộp thoại
                 dialog.setOnConfirmListener(() -> {
                     DeleteProductTask deleteTask = new DeleteProductTask(productIds);
 
@@ -94,6 +97,7 @@ public class AdminProductActivity extends AppCompatActivity {
                     deleteTask.setOnDeleteListener(isDeleted -> {
 
 
+                        // cập nhật lại ListView sau khi xóa
                         for (Product c: new ArrayList<>(arrayProduct)) {
                             if(productIds.contains(c.getId())) {
                                 arrayProduct.remove(c);
@@ -125,8 +129,10 @@ public class AdminProductActivity extends AppCompatActivity {
     }
     private void getProducts(String url) {
         arrayProduct = new ArrayList<>();
+        //* cần xóa bỏ những ID của sp được chọn trong ArrayList khi tải mới dữ liệu
         productIds.clear();
         manageAdapter = new ManageAdapter(AdminProductActivity.this,arrayProduct);
+        // thêm hoặc xóa bỏ ID sp ra khỏi danh dách sp muốn xóa
         manageAdapter.setOnCheckListener((isChecked, id) -> {
             if(isChecked) {
                 productIds.add(id);
@@ -147,6 +153,7 @@ public class AdminProductActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        // tải lại sp khi cập nhật hoặc tạo mới
         if(resultCode == Activity.RESULT_OK) {
             getProducts(getString(R.string.API_GET_PRODUCTS__GET));
         }

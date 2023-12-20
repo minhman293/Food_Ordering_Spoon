@@ -144,6 +144,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImageUri = data.getData();
+            // Get file from uri to upload to server
             selectedFile = FileUtils.uriToFile(UpdateProductActivity.this,selectedImageUri);
             imageView.setImageURI(selectedImageUri);
         }
@@ -188,7 +189,7 @@ public class UpdateProductActivity extends AppCompatActivity {
             if(product != null) {
                 for (int i = 0; i < list.size(); i++) {
                     if(list.get(i).getId().equals(product.getCategoryId())) {
-                        spinnerCategory.setSelection(i);
+                        spinnerCategory.setSelection(i); // select category of product
                         break;
                     }
                 }

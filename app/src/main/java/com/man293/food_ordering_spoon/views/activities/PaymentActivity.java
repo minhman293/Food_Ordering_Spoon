@@ -105,9 +105,10 @@ public class PaymentActivity extends AppCompatActivity {
         };
 
         for (LinearLayout method:  paymentMethods  ) {
-            /** CLICK LINEARLAYOUT TO CHECK RADIO BUTTON  */
+            /* CLICK LINEARLAYOUT TO CHECK RADIO BUTTON  */
             method.setOnClickListener(v -> {
                 int currentRadioId = getResources().getIdentifier(
+                        /* ID OF RADIO BUTTON = ID OF LINEARLAYOUT + "RadioButton"  */
                         getResources().getResourceEntryName(v.getId()) + "RadioButton",
                         "id",
                         getPackageName());

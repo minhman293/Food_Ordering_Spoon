@@ -46,10 +46,10 @@ public class ProfileFragment extends Fragment {
 
         /* Logout */
         view.findViewById(R.id.button_logout).setOnClickListener(view1 -> {
-            if(User.removeCurrentUser(getContext())) {
+            if(User.removeCurrentUser(getContext())) { // delete data from getSharedPreferences when logging out
                 GoogleSignInClient client = GoogleSignManager.getInstance(getContext()).getClient();
                 if(client != null) {
-                    client.signOut();
+                    client.signOut(); // logout if logged in with google
                 }
                 Toast.makeText(getContext(), "logged out!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), LoginActivity.class));
