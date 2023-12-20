@@ -21,6 +21,18 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/*  Các bước tạo danh sách các món ăn của từng đơn hàng trong ViewHistoryDetails
+    1. Tạo ListView trong ViewHistoryDetails để chứa danh sách 
+       các món ăn của đơn hàng đã được đặt của user tương ứng khi click vào
+       đơn hàng tương ứng từ ViewHistory
+    2. Tạo arrayList arrayPH trong ViewHistoryDetails để truyền dữ liệu các 
+       món ăn trong đơn hàng của user 
+    3. Tạo adapter ViewHistoryDetailsAdapter để set adapter cho ListView 
+       (listview <- adapter <- arraylist <- data(json))
+    4. File asynctask này lấy dữ liệu json sau đó add dữ liệu các đơn hàng
+       vào arrayPH để set adapter cho ListView trong ViewHistoryDetails
+*/
+
 public class GetHistoryDetailTask extends AsyncTask<String,Void,String> {
     private String orderID;
     private ViewHistoryDetails viewHistory;
