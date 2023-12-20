@@ -29,6 +29,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+/*  Các bước tạo danh sách các món được order và lấy thông tin 
+        người dùng tương ứng trong OrderDetailAdminActivity
+    1. Tạo ListView trong OrderDetailAdminActivity để chứa danh sách 
+       các món ăn được order
+    2. Tạo arrayList arrayOD trong OrderDetailAdminActivity để truyền dữ liệu các 
+       món ăn được order 
+    3. Tạo interface UpdateUIListener để truyền dữ liệu của người order tương ứng
+       sau khi nhấn vào từ StatisticalActivity và set dữ liệu người dùng vào các 
+       TextView tương ứng ở hàm updateUi 
+    4. Tạo adapter OrderDetaiAdapter để set adapter cho ListView 
+       (listview <- adapter <- arraylist <- data(json))
+    5. File asynctask này lấy dữ liệu json sau đó add dữ liệu các món được order
+       vào arrayOD để set adapter cho ListView và add dữ liệu người dùng vào Interface
+       UpdateUIListener để set dữ liệu người order cho các TextView ở 
+       layout OrderDetailAdminActivity thông qua hàm loadData() trong 
+       OrderDetailAdminActivity
+    */
+
 public class GetOrderDetailTask extends AsyncTask<String,Void,String> {
     private String orderID;
     private UpdateUIListener updateUIListener;
@@ -39,6 +57,7 @@ public class GetOrderDetailTask extends AsyncTask<String,Void,String> {
         this.orderID = orderID;
         this.updateUIListener = updateUIListener;
     }
+
 
     @Override
     protected String doInBackground(String... strings) {
