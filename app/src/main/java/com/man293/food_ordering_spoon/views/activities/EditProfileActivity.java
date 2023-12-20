@@ -74,29 +74,30 @@ public class EditProfileActivity extends AppCompatActivity {
             startActivityForResult(intent, PICK_IMAGE_REQUEST);
 
         });
-
+// Lấy thông tin người dùng hiện tại và cập nhật giao diện
         currentUser = User.getCurrentUser(EditProfileActivity.this);
         if(currentUser == null) return;
-
+// Xử lý sự kiện khi nút cập nhật được nhấn
         initValue();
         bt_update_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-
+                    // Lấy thông tin từ các trường nhập liệu
                     String firstName =  String.valueOf(firstNameEditText.getText()).trim();
                     String lastName =  String.valueOf(lastNameEditText.getText()).trim();
                     String address =  String.valueOf(addressEditText.getText()).trim();
                     String phoneNumber =  String.valueOf(phoneNumberEditText.getText()).trim();
                     String newPassword =  String.valueOf(newPasswordEditText.getText()).trim();
                     String currentPassword =  String.valueOf(currentPasswordEditText.getText()).trim();
-
+                    // Kiểm tra thông tin nhập liệu
                     if(phoneNumber.isEmpty() || currentPassword.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || address.isEmpty() ) {
                         Toast.makeText(EditProfileActivity.this, "Enter information before confirming!", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
+                    // Xây dựng URL cho API cập nhật thông tin người dùng
                     String url = getString(R.string.BASE_URL) + getString(R.string.API_USER_UPDATE__POST, currentUser.getId());
+                    // Thực hiện cập nhật thông tin người dùng bất đồng bộ thông qua UpdateProfileTask
                     EditProfileActivity.UpdateProfileTask task = new EditProfileActivity.UpdateProfileTask(
                             firstName,lastName, phoneNumber,address,
                              newPassword, currentPassword,
@@ -110,17 +111,20 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
     }
-
+// Khởi tạo giá trị mặc định cho các trường nhập liệu từ thông tin người dùng hiện tại
     private void initValue() {
         firstNameEditText.setText(currentUser.getFirstName());
         lastNameEditText.setText(currentUser.getLastName());
         phoneNumberEditText.setText(currentUser.getPhoneNum());
         addressEditText.setText(currentUser.getAddress());
+        // Hiển thị hình ảnh từ URL hoặc tên tệp ảnh trong trường hợp đã tải lên
         String imageSrc = currentUser.getPicture().contains("http")
                 ? currentUser.getPicture()
                 : getString(R.string.BASE_URL) + getString(R.string.PUBLIC_IMAGES, currentUser.getPicture());
         Glide.with(EditProfileActivity.this).load(imageSrc).into(imageView);
     }
+
+    // Lớp AsyncTask để thực hiện cập nhật thông tin người dùng
     private class UpdateProfileTask extends AsyncTask<String, Integer, User> {
 
         private String firstName, lastName, phoneNumber, address, password, imageSrc, currentPassword;
@@ -142,7 +146,7 @@ public class EditProfileActivity extends AppCompatActivity {
             try {
                 OkHttpClient client = new OkHttpClient();
                 RequestBody requestBody;
-                // Create a MultipartBody for sending both text and image data
+                // // Tạo MultipartBody để gửi cả dữ liệu văn bản và hình ảnh
                 if(imageFile != null) {
                     requestBody = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
@@ -155,6 +159,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             .addFormDataPart("image", "profile.jpg", RequestBody.create(MediaType.parse("image/*"), this.imageFile))
                             .build();
                 } else {
+                    // Gửi dữ liệu văn bản nếu không có hình ảnh
                     Map<String, Object> data = new HashMap<>();
                     data.put("firstName", this.firstName);
                     data.put("lastName", this.lastName);
@@ -165,12 +170,12 @@ public class EditProfileActivity extends AppCompatActivity {
                     data.put("image", this.imageSrc);
                     requestBody = RequestBody.create(MediaType.parse("application/json"), new Gson().toJson(data));
                 }
-
+                // Xây dựng yêu cầu và gửi đến server
                 Request req = new Request.Builder()
                         .url(strings[0])
                         .post(requestBody)
                         .build();
-
+                // Nhận phản hồi từ server
                 Response res = client.newCall(req).execute();
 
                 // Log the response code for debugging
@@ -180,7 +185,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 if (res.body() != null && res.isSuccessful()) {
                     String jsonResponse = res.body().string();
                     Log.d(TAG, "JSON Response: " + jsonResponse);
-
+                    // Đọc thông tin người dùng từ JSON
                     try {
                         JSONObject userJson = new JSONObject(jsonResponse);
                         User user = new User(
@@ -218,6 +223,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
     private void onUpdated(User user) {
         if (user != null) {
+            // Lưu thông tin người dùng mới và đặt kết quả trả về
             User.saveCurrentUser(EditProfileActivity.this, user);
             setResult(Activity.RESULT_OK);
             finish();
@@ -225,11 +231,13 @@ public class EditProfileActivity extends AppCompatActivity {
             Toast.makeText(EditProfileActivity.this,"Something went wrong!", Toast.LENGTH_SHORT).show();
         }
     }
+    // Xử lý kết quả sau khi chọn hình ảnh từ thư viện
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            // Chuyển đổi đường dẫn hình ảnh thành File và hiển thị trên ImageView
             Uri selectedImageUri = data.getData();
             selectedFile = FileUtils.uriToFile(EditProfileActivity.this,selectedImageUri);
             Log.d("FILE_SELECTED", String.valueOf(selectedFile));
