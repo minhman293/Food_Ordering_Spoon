@@ -44,7 +44,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 TextView errorMessage = findViewById(R.id.error_message);
-                // login
+               //        signIn
                 try {
                     TextInputEditText firstNameEditText,lastNameEditText,phoneNumberEditText,addressEditText, passwordEditText;
                     firstNameEditText = findViewById(R.id.FirstNamein);
@@ -74,7 +74,7 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         configureBackButton();
-//        signIn();
+
 
     }
     private class SigninTask extends AsyncTask<String, Integer, User> {
@@ -92,6 +92,7 @@ public class SignInActivity extends AppCompatActivity {
         @Override
         protected User doInBackground(String... strings) {
             try {
+               // Thực hiện kết nối với server
                 OkHttpClient client = new OkHttpClient();
                 Map<String, Object> data = new HashMap<>();
                 data.put("firstName", this.firstName);
@@ -110,14 +111,14 @@ public class SignInActivity extends AppCompatActivity {
                         .build();
                 Response res = client.newCall(req).execute();
 
-                // Log the response code for debugging
+                // Log phản hồi cho mục đích gỡ lỗi
                 Log.d(TAG, "Response Code: " + res.code());
 
                 // Kiểm tra giá trị trước khi xử lý phản hồi từ server
                 if (res.body() != null && res.isSuccessful()) {
                     String jsonResponse = res.body().string();
                     Log.d(TAG, "JSON Response: " + jsonResponse);
-
+                  // Đọc thông tin người dùng từ JSON
                     try {
                         JSONObject userJson = new JSONObject(jsonResponse);
                         User user = new User(
@@ -155,6 +156,7 @@ public class SignInActivity extends AppCompatActivity {
     }
     private void onSignIn(User user) {
         if (user != null) {
+           // Lưu thông tin người dùng và chuyển hướng sang AppActivity
             User.saveCurrentUser(SignInActivity.this, user);
             startActivity(new Intent(SignInActivity.this, AppActivity.class));
         } else {
@@ -163,19 +165,10 @@ public class SignInActivity extends AppCompatActivity {
             showErrorToast("Đăng ký thất bại. Kiểm tra lại số điện thoại và mật khẩu.");
         }
     }
-
+// Hiển thị thông báo lỗi dưới dạng Toast
     private void showErrorToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-//    private void signIn() {
-//        AppCompatButton nutSignin = findViewById(R.id.nutSignin);
-//        nutSignin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(SignInActivity.this, AppActivity.class));
-//            }
-//        });
-//    }
 
     private void configureBackButton() {
         Button nextButton = (Button) findViewById(R.id.nutback);
