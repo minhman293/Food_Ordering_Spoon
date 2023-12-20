@@ -55,14 +55,16 @@ public class OrderDetailAdminActivity extends AppCompatActivity {
         Log.d("ORDER_ID",ORDER_ID);
     }
 
-
     private void loadData() {
+        // Tạo arrayList arrrayOD để chứa dữ liệu các món ăn được order
         arrayOD = new ArrayList<>();
+        // Tạo mới 1 OrderDetailAdapter, truyền vào Activity và arrayOD để set
+        // dữ liệu tương ứng cho các thành phần
         adapter = new OrderDetailAdapter(OrderDetailAdminActivity.this,arrayOD);
-//        adapter = new OrderDetailAdapter(OrderDetailAdminActivity.this, arrayOD);
         listView.setAdapter(adapter);
 //        listView.setAdapter(manageAdapter);
 //        listView.setFullHeight();
+        // Lấy dữ liệu người dùng tương ứng từ GetOrderDetailTask và lưu vào các object
         GetOrderDetailTask getOrderDetailTask = new GetOrderDetailTask(this, ORDER_ID, new UpdateUIListener() {
             @Override
             public void onUpdateUI(String lastName, String firstName, double price, String orderDate, String phoneNum, String address) {
@@ -74,8 +76,11 @@ public class OrderDetailAdminActivity extends AppCompatActivity {
 //        new GetHistoryDetailTask(this,orderId).execute("http://192.168.1.211:5000/user/655a3582cd47699385f49e81/get-bill?gidzl=0rRvGjT_Vai4GVf0rsD-JW54_qlCPon15aRzISOrAqOKG_qUnpPz5nKL-aZ0PdfDHXVyGsRZ4BKyqdv_JW");
     }
 
+    // Lấy dữ liệu từ các object lưu trữ dữ liệu người dùng ở trên và set cho các
+    // thành phần tương ứng
     public void updateUi(String LastName, String FirstName, double Price, String OrderDate, String PhoneNum, String Address) {
-        // Cập nhật TextView trong activity từ dữ liệu nhận được
+        // Cập nhật TextView trong layout Activity "OrderDetailAdminActivity" 
+        // từ dữ liệu nhận được
         nameUser.setText("Get Money from " + LastName + " " + FirstName);
         price.setText(CurrencyUtils.format(Price));
         orderDate.setText(OrderDate);
